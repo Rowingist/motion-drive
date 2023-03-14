@@ -2,19 +2,19 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+src/motion-drive/[Ll]ibrary/
+src/motion-drive/[Tt]emp/
+src/motion-drive/[Oo]bj/
+src/motion-drive/[Bb]uild/
+src/motion-drive/[Bb]uilds/
+src/motion-drive/[Ll]ogs/
+src/motion-drive/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!/[Aa]ssets/**/*.meta
-!/Assets/Freeplay/**/*.unitypackage
-!/Assets/Freeplay/Modules/Module.Firebase/**/*.pdb
-!/Assets/Freeplay/Modules/Module.Firebase/**/*.pdb.meta
+!src/motion-drive/[Aa]ssets/**/*.meta
+!src/motion-drive/Assets/Plugins/Freeplay/**/*.unitypackage
+!src/motion-drive/Assets/Plugins/Freeplay/Modules/Module.Firebase/**/*.pdb
+!src/motion-drive/Assets/Plugins/Freeplay/Modules/Module.Firebase/**/*.pdb.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -61,3 +61,33 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+src/motion-drive/.vs
+
+src/motion-drive/Temp
+
+src/motion-drive/Library
+src/motion-drive/.idea
+src/motion-drive/Assembly-CSharp.csproj
+src/motion-drive/Assembly-CSharp-Editor.csproj
+src/motion-drive/motion-drive.sln
+src/motion-drive/motion-drive.csproj
+src/motion-drive/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll
+
+src/motion-drive/obj
+
+.vs
+/builds
+src/motion-drive/Assets/Plugins/Emotion-drive
+src/motion-drive/ProjectSettings/ProjectVersion.txt
+src/motion-drive/Packages/manifest.json
+src/motion-drive/Packages/packages-lock.json
+src/motion-drive/ProjectSettings/PackageManagerSettings.asset
+src/motion-drive/motion-drive.sln.DotSettings.user
+
+# Build related
+Cake/tools/**
+Cake/!tools/packages.config
+
+# Ignore media & other temp files
+*.log
+*.log.meta
