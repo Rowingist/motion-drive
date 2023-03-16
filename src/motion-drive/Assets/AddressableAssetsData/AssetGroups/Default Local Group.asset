@@ -17,12 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c6c8d2c94116bcf45b53ab58cdb8ffca
   m_SerializeEntries:
-  - m_GUID: 1a5fadd096278fc42bb73d6c448668c5
-    m_Address: Hud
+  - m_GUID: 8271955a51f96e34da51d2f490dc547a
+    m_Address: UIRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 56fae09712773584fb63896d473a98ee
     m_Address: DynamicJoystick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a5fadd096278fc42bb73d6c448668c5
+    m_Address: Hud
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Logic;
 using CodeBase.Services.PersistentProgress;
@@ -67,6 +68,11 @@ namespace CodeBase.Infrastructure.States
     {
       foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
         progressReader.LoadProgress(_progressService.Progress);
+    }
+
+    private void CameraFollow(GameObject heroCar)
+    {
+      Camera.main.GetComponent<CameraFollow>().Follow(heroCar);
     }
   }
 }
