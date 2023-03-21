@@ -21,12 +21,28 @@ MonoBehaviour:
     m_Address: UIRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 56fae09712773584fb63896d473a98ee
-    m_Address: DynamicJoystick
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 1a5fadd096278fc42bb73d6c448668c5
     m_Address: Hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: edb662ffd9d16fa41832dffc2a5df2f6
+    m_Address: DrivingJoystick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b05593db96dc4b4790b86742f2f66e1
+    m_Address: HeroFollowingTarget
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7213207cac9b27340ba6dd27fa38e8c6
+    m_Address: HeroCar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a13507a285eb80b4fb39e0f6a584fad6
+    m_Address: CheckPointTrigger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6906aeefaf76b114380aa69c959cae58
+    m_Address: CheckPointsHub
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -5,6 +5,7 @@ using CodeBase.Logic;
 using CodeBase.Services;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.SaveLoad;
+using CodeBase.Services.StaticData;
 
 namespace CodeBase.Infrastructure.States
 {
@@ -19,7 +20,7 @@ namespace CodeBase.Infrastructure.States
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
         [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>()),
-        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IPersistentProgressService>(), services.Single<IGameFactory>()),
+        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IPersistentProgressService>(), services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }

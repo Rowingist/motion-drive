@@ -4,21 +4,21 @@ namespace CodeBase.CameraLogic
 {
   public class CameraFollow : MonoBehaviour
   {
-    public Rigidbody _selfRigidbody;
+    public Rigidbody SelfRigidbody;
+    public Vector3 Offset;
 
     private Vector3 _defaultLocalPosition;
     private Quaternion _defaultLocalRotation;
 
     private Transform _following;
     
-    private void Awake()
-    {
+    private void Awake() => 
       CacheDefaultLocalTransform();
-    }
 
     private void FixedUpdate()
     {
-      _selfRigidbody.MovePosition(_following.position);
+      if(_following)
+        SelfRigidbody.MovePosition(_following.position + Offset);
     }
 
     public void SetDefaultTransform()
@@ -33,9 +33,7 @@ namespace CodeBase.CameraLogic
       _defaultLocalRotation = transform.localRotation;
     }
 
-    public void Follow(GameObject following)
-    {
+    public void Follow(GameObject following) => 
       _following = following.transform;
-    }
   }
 }

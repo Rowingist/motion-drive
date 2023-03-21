@@ -14,5 +14,10 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateHud();
     void Cleanup();
     Task<GameObject> CreateJoystick(Transform under);
+    Task<GameObject> CreateHeroFollowingTarget(Vector3 at);
+    Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub);
+    Task WarmUp();
+    Task<GameObject> CreateCheckPoint(Vector3 at);
+    Task<GameObject> CreateCheckpointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition);
   }
 }

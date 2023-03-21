@@ -1,9 +1,11 @@
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Services;
+using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.SaveLoad;
+using CodeBase.Services.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.States
@@ -34,11 +36,23 @@ namespace CodeBase.Infrastructure.States
 
     private void RegisterServices()
     {
+      RegisterStaticDataService();
       RegisterAssetProvider();
-      _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
+
+      _services.RegisterSingle<IHeroCarProviderService>(new HeroCarProviderService());
+      _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(),
+        _services.Single<IHeroCarProviderService>()));
       _services.RegisterSingle<IInputService>(InputService(_services.Single<GameFactory>()));
       _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-      _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
+      _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(),
+        _services.Single<IGameFactory>()));
+    }
+
+    private void RegisterStaticDataService()
+    {
+      IStaticDataService staticData = new StaticDataService();
+      staticData.Load();
+      _services.RegisterSingle(staticData);
     }
 
     private void RegisterAssetProvider()
@@ -47,14 +61,13 @@ namespace CodeBase.Infrastructure.States
       _services.RegisterSingle(assetProvider);
       assetProvider.Initialize();
     }
-    
-    private void EnterLoadLevel() => 
+
+    private void EnterLoadLevel() =>
       _stateMachine.Enter<LoadProgressState>();
 
     private static IInputService InputService(IGameFactory gameFactory) =>
       Application.isEditor
-        ? (IInputService) new StandaloneInputService(gameFactory)
+        ? (IInputService)new StandaloneInputService(gameFactory)
         : new MobileInputService(gameFactory);
-
   }
 }
