@@ -48,11 +48,11 @@ namespace CodeBase.Infrastructure.Factory
       return joystick;
     }
 
-    public async Task<GameObject> CreateCheckPoint(Vector3 at)
+    public async Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt)
     {
       GameObject checkPoint = await InstantiateRegisteredAsync(AssetAddress.CheckPoint);
       checkPoint.transform.position = at;
-
+      checkPoint.GetComponent<CheckPoint>().RaycasterToGround.transform.position = raycastAt;
       return checkPoint;
     }
 
@@ -75,11 +75,15 @@ namespace CodeBase.Infrastructure.Factory
 
     public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub)
     {
+      CheckPointsHub pointsHub = checkPointsHub.GetComponent<CheckPointsHub>();
+      
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
+      heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub);
+      
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
-        checkPointsHub.GetComponent<CheckPointsHub>());
-
+        pointsHub);
+      
       _heroCarProviderService.HeroCar = heroCar;
 
       return heroCar;

@@ -19,7 +19,5 @@ MonoBehaviour:
     Position: {x: 0, y: 0, z: 0}
   LevelCheckPointsHub:
     Points:
-    - PointPosition: {x: 0, y: 0, z: 9.61}
-    - PointPosition: {x: 0, y: 0, z: 13.22}
-    - PointPosition: {x: 0, y: 0, z: 17.04}
-    - PointPosition: {x: 0, y: 0, z: 20.22}
+    - PointPosition: {x: 0, y: 5.6, z: 9.61}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 11.469999}

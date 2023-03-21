@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowingTarget: {fileID: 1486592096315519225}
+  SelfRigidbody: {fileID: 1486592096315519231}

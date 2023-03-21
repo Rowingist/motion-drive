@@ -87,7 +87,7 @@ namespace CodeBase.Infrastructure.States
       var checkPoints = new List<GameObject>();
       
       foreach (LevelCheckPointsStaticData pointsStaticData in levelStaticData.LevelCheckPointsHub.Points)
-        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.PointPosition));
+        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.PointPosition, pointsStaticData.RaycastOnGroundOffset));
 
       return checkPoints;
     }

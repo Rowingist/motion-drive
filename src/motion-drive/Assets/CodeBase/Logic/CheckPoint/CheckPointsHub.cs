@@ -6,12 +6,13 @@ namespace CodeBase.Logic.CheckPoint
   public class CheckPointsHub : MonoBehaviour
   {
     public Vector3 ActiveCheckPointPosition;
+    public Quaternion ActiveCheckPointRotation;
     private List<GameObject> _levelCheckPoints;
 
     public void Construct(List<GameObject> levelCheckPoints, Vector3 heroCarInitialPoint)
     {
       _levelCheckPoints = levelCheckPoints;
-      UpdateCheckPointPosition(heroCarInitialPoint);
+      UpdateCheckPointPosition(heroCarInitialPoint, Quaternion.identity);
       Subscribe();
     }
 
@@ -33,7 +34,10 @@ namespace CodeBase.Logic.CheckPoint
       }
     }
 
-    private void UpdateCheckPointPosition(Vector3 position) => 
+    private void UpdateCheckPointPosition(Vector3 position, Quaternion rotation)
+    {
       ActiveCheckPointPosition = position;
+      ActiveCheckPointRotation = rotation;
+    }
   }
 }

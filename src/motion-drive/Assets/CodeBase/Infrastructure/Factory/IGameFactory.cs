@@ -17,7 +17,7 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateHeroFollowingTarget(Vector3 at);
     Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub);
     Task WarmUp();
-    Task<GameObject> CreateCheckPoint(Vector3 at);
+    Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt);
     Task<GameObject> CreateCheckpointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition);
   }
 }

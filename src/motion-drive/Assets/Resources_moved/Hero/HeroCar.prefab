@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6758490157615344772}
   - component: {fileID: 6758490157615344775}
   - component: {fileID: 6758490157615344769}
+  - component: {fileID: 7321269416440040754}
   m_Layer: 3
   m_Name: HeroCar
   m_TagString: Player
@@ -117,6 +118,19 @@ MonoBehaviour:
   SelfRigidbody: {fileID: 6758490157615344773}
   RotateSpeed: 10
   RotateDelay: 2
+--- !u!114 &7321269416440040754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758490157615344795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d57d92e631c4f58afffe1a18bab5aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrashChecker: {fileID: 6758490157615344775}
 --- !u!1 &6758490159107939115
 GameObject:
   m_ObjectHideFlags: 0
