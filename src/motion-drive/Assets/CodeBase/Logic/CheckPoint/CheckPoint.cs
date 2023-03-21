@@ -8,8 +8,9 @@ namespace CodeBase.Logic.CheckPoint
     private const string Player = "Player";
 
     public TriggerObserver TriggerObserver;
+    public RaycasterToGround RaycasterToGround;
     
-    public event Action<Vector3> Reached;
+    public event Action<Vector3, Quaternion> Reached;
 
     private void Start() => 
       TriggerObserver.TriggerEnter += TriggerEnter;
@@ -22,7 +23,8 @@ namespace CodeBase.Logic.CheckPoint
       if (!other.TryGetComponent(out TriggerObserver triggerObserver)) return;
       
       if(triggerObserver.tag == Player )
-        Reached?.Invoke(transform.position);
+        Reached?.Invoke(RaycasterToGround.PointOnGround(other.transform.position).Item1, 
+                        RaycasterToGround.PointOnGround(other.transform.position).Item2);
         
       DisableObject();
     }

@@ -75,11 +75,15 @@ namespace CodeBase.Infrastructure.Factory
 
     public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub)
     {
+      CheckPointsHub pointsHub = checkPointsHub.GetComponent<CheckPointsHub>();
+      
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
+      heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub);
+      
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
-        checkPointsHub.GetComponent<CheckPointsHub>());
-
+        pointsHub);
+      
       _heroCarProviderService.HeroCar = heroCar;
 
       return heroCar;
