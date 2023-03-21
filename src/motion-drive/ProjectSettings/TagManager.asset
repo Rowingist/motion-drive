@@ -5,25 +5,26 @@ TagManager:
   serializedVersion: 2
   tags:
   - InitialPoint
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Ground
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wheel
+  - Spring
+  - Obstacle
+  - CheckPoint
+  - Following
+  - ForwardRotationSensor
+  - SideRotationSensor
+  - Trampoline
+  - FollowingMovementSetting
+  - UI3D
   - 
   - 
   - 

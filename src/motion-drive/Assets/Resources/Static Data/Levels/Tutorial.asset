@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b835b51230411092246d9c1e8163e3, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  LevelKey: Tutorial
+  InitialHeroPosition: {x: 0, y: 0.89, z: 1.76}
+  LevelTransfer:
+    TransferTo: 
+    Position: {x: 0, y: 0, z: 0}
+  LevelCheckPointsHub:
+    Points:
+    - PointPosition: {x: 0, y: 0, z: 9.61}
+    - PointPosition: {x: 0, y: 0, z: 13.22}
+    - PointPosition: {x: 0, y: 0, z: 17.04}
+    - PointPosition: {x: 0, y: 0, z: 20.22}
