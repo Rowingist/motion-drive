@@ -26,10 +26,8 @@ namespace CodeBase.HeroFollowingTarget
     private IEnumerator Respawning()
     {
       DisableMovement();
-      TransitToRespawnPosition();
-
       yield return new WaitForSecondsRealtime(Constants.RespawnTime);
-      
+      TransitToRespawnPosition();
       EnableMovement();
     }
 

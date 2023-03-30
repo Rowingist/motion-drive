@@ -12,6 +12,10 @@ namespace CodeBase.Services.Input
     
     public abstract Vector2 Axis { get; }
 
+    public abstract bool IsFingerUpScreen();
+    public abstract bool IsFingerDownScreen();
+    public abstract bool IsFingerHoldOnScreen();
+    
     protected InputService(IGameFactory gameFactory)
     {
       _gameFactory = gameFactory;

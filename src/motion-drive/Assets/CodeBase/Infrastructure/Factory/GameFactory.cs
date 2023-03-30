@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using CodeBase.HeroCar;
 using CodeBase.HeroFollowingTarget;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.Services.HeroCar;
+using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
@@ -73,13 +75,18 @@ namespace CodeBase.Infrastructure.Factory
       return heroFollowingTarget;
     }
 
-    public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub)
+    public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService)
     {
       CheckPointsHub pointsHub = checkPointsHub.GetComponent<CheckPointsHub>();
       
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
       heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub);
+      HeroCarRotationInAir heroCarRotationInAir = heroCar.GetComponent<HeroCarRotationInAir>();
+      heroCarRotationInAir.Construct(inputService);
+      heroCar.GetComponentInChildren<HeroCarRotateLookPoint>().Construct(heroCarRotationInAir, InputJoystick);
+      heroCar.GetComponent<WheelsDrive>().Construct(inputService, followingTarget.GetComponent<Rigidbody>());
+      heroCar.GetComponent<WheelSteering>().Construct(inputService);
       
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);

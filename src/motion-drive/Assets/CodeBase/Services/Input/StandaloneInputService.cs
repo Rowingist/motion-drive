@@ -18,6 +18,15 @@ namespace CodeBase.Services.Input
       }
     }
 
+    public override bool IsFingerUpScreen() => 
+      UnityEngine.Input.GetMouseButtonUp(0);
+
+    public override bool IsFingerDownScreen() => 
+      UnityEngine.Input.GetMouseButtonDown(0);
+
+    public override bool IsFingerHoldOnScreen() => 
+      UnityEngine.Input.GetMouseButton(0);
+
     private static Vector2 UnityAxis() => 
       new Vector2(UnityEngine.Input.GetAxis(Horizontal), UnityEngine.Input.GetAxis(Vertical));
 

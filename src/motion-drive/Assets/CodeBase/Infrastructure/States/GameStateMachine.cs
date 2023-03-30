@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Logic;
 using CodeBase.Services;
+using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.SaveLoad;
 using CodeBase.Services.StaticData;
@@ -19,8 +20,11 @@ namespace CodeBase.Infrastructure.States
       _states = new Dictionary<Type, IExitaleState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-        [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>()),
-        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IPersistentProgressService>(), services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
+        [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(),
+          services.Single<ISaveLoadService>()),
+        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain,
+          services.Single<IPersistentProgressService>(), services.Single<IGameFactory>(),
+          services.Single<IStaticDataService>(), services.Single<IInputService>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }
@@ -47,7 +51,7 @@ namespace CodeBase.Infrastructure.States
       return state;
     }
 
-    private TState GetState<TState>() where TState : class, IExitaleState => 
+    private TState GetState<TState>() where TState : class, IExitaleState =>
       _states[typeof(TState)] as TState;
   }
 }

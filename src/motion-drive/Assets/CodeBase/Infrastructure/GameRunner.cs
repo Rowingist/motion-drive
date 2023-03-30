@@ -5,6 +5,7 @@ namespace CodeBase.Infrastructure
   public class GameRunner : MonoBehaviour
   {
     public GameBootstrapper BootstrapperPrefab;
+    public int TargetFPS;
 
     private void Awake()
     {
@@ -13,6 +14,15 @@ namespace CodeBase.Infrastructure
       if (bootstrapper != null) return;
 
       Instantiate(BootstrapperPrefab);
+    }
+
+    private void Start() => 
+      TestFPS();
+
+    private void TestFPS()
+    {
+      if (TargetFPS > 0)
+        Application.targetFrameRate = TargetFPS;
     }
   }
 }

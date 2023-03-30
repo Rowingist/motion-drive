@@ -62,7 +62,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1486592096315519225
 MonoBehaviour:
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33f9d7f62054eb8a6adb0c685d2a677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 10
-  _maxAcceleration: 10
+  _maxSpeed: 63.7
+  _maxAcceleration: 33.3
   _maxAirAcceleration: 1
   _maxGroundAngle: 25
   _horizontalForce: 0
