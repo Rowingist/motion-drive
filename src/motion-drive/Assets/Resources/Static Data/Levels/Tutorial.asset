@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   LevelKey: Tutorial
-  InitialHeroPosition: {x: 0, y: 0.89, z: 1.76}
+  InitialHeroPosition: {x: 0, y: 2.17, z: 1.76}
   LevelTransfer:
     TransferTo: 
     Position: {x: 0, y: 0, z: 0}
   LevelCheckPointsHub:
     Points:
     - PointPosition: {x: 0, y: 5.6, z: 9.61}
-      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 11.469999}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 13.799999}

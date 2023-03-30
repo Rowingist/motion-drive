@@ -42,7 +42,7 @@ namespace CodeBase.Infrastructure.States
       _services.RegisterSingle<IHeroCarProviderService>(new HeroCarProviderService());
       _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(),
         _services.Single<IHeroCarProviderService>()));
-      _services.RegisterSingle<IInputService>(InputService(_services.Single<GameFactory>()));
+      _services.RegisterSingle<IInputService>(InputService(_services.Single<IGameFactory>()));
       _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
       _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(),
         _services.Single<IGameFactory>()));

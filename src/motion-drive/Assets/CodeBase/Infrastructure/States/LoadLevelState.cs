@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CodeBase.CameraLogic;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Logic;
+using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.StaticData;
 using CodeBase.StaticData;
@@ -19,9 +20,10 @@ namespace CodeBase.Infrastructure.States
     private readonly IPersistentProgressService _progressService;
     private readonly IGameFactory _gameFactory;
     private readonly IStaticDataService _staticData;
+    private readonly IInputService _inputService;
 
     public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-      IPersistentProgressService progressService, IGameFactory gameFactory, IStaticDataService staticData)
+      IPersistentProgressService progressService, IGameFactory gameFactory, IStaticDataService staticData, IInputService inputService)
     {
       _gameStateMachine = gameStateMachine;
       _sceneLoader = sceneLoader;
@@ -29,6 +31,7 @@ namespace CodeBase.Infrastructure.States
       _progressService = progressService;
       _gameFactory = gameFactory;
       _staticData = staticData;
+      _inputService = inputService;
     }
 
     public void Enter(string sceneName)
@@ -62,7 +65,7 @@ namespace CodeBase.Infrastructure.States
       List<GameObject> checkPoints = await InitCheckPoints(levelData);
       GameObject checkPointsHub = await InitCheckPointsHub(checkPoints, levelData);
       GameObject heroFollowingTarget = await InitPlayerFollowingTarget(levelData);
-      await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub);
+      await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);
       CameraFollow(heroFollowingTarget);
     }
 
@@ -98,8 +101,8 @@ namespace CodeBase.Infrastructure.States
     private async Task<GameObject> InitPlayerFollowingTarget(LevelStaticData levelStaticData) =>
       await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition);
 
-    private async Task InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget, GameObject checkPointsHub) =>
-      await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub);
+    private async Task InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget, GameObject checkPointsHub, IInputService inputService) =>
+      await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub, inputService);
 
     private void InformProgressReaders()
     {
