@@ -39,8 +39,8 @@ namespace CodeBase.HeroFollowingTarget
 
     private float _minGroundDotProduct;
     private float _minStairsDotProduct;
-    private float _savedForwardVelocity;
     private float _currentYVelocity;
+    private bool _isSnapping;
 
     private bool OnGround => _groundContactCount > 0;
 
@@ -64,13 +64,18 @@ namespace CodeBase.HeroFollowingTarget
 
       if (!OnGround)
       {
-        _velocity.z = _savedForwardVelocity;
         SpeedUpLanding();
+        return;
       }
       
       _rigidbody.velocity = _velocity;
       ClearState();
     }
+
+    public void DisableSnapping() => 
+      _isSnapping = false;   
+    public void EnableSnapping() => 
+      _isSnapping = true;
 
     private void SpeedUpLanding()
     {
@@ -138,6 +143,8 @@ namespace CodeBase.HeroFollowingTarget
 
     private bool SnapToGround()
     {
+      return _isSnapping;
+      
       if (_stepsSinceLastGrounded > 1)
         return false;
 
