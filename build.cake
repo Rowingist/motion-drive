@@ -15,6 +15,7 @@ Task("Build-Android")
 		UnityEditor(
 		new UnityEditorArguments
 		{
+			ProjectPath = "./src/motion-drive",
 			ExecuteMethod = "CodeBase.Editor.Builder.BuildAndroid",
 			BuildTarget = BuildTarget.Android,
 			LogFile = "./artifacts/unity.log"
