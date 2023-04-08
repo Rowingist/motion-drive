@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6955006962725828194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7931282320280271340}
+    m_Modifications:
+    - target: {fileID: 4981270338799136736, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_Name
+      value: Mountain Straight+Trampolines_1 Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.13052624
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981270338799136739, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c38e59eb83a619642b2786dcd54b1a60, type: 3}
 --- !u!1001 &7609722462071774727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c74a6b24dbc704f82c69246bc91c9c, type: 3}
       propertyPath: m_Name
-      value: Straight+Trampolines_1
+      value: Straight+Trampolines_1 Forest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c74a6b24dbc704f82c69246bc91c9c, type: 3}
       propertyPath: m_Layer
@@ -127,3 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152e44506d2844279430ae81d3b37a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7931282320280271340 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09c74a6b24dbc704f82c69246bc91c9c, type: 3}
+  m_PrefabInstance: {fileID: 7609722462071774727}
+  m_PrefabAsset: {fileID: 0}

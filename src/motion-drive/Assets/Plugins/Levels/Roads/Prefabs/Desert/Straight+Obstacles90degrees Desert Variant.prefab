@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9914449
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0.13052616
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 32baa98be5b15d040ae467617ba1c14c, type: 2}
     - target: {fileID: 919132149155446097, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_Name
-      value: Straight+Obstacles90degrease
+      value: Straight+Obstacles90degrees Desert Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
       propertyPath: m_Layer
@@ -107,3 +107,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152e44506d2844279430ae81d3b37a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5571399040331186263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d935656b4d8fb914c9cf701606f9458f, type: 3}
+  m_PrefabInstance: {fileID: 5393954000965593020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7793408460428382133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5571399040331186263}
+    m_Modifications:
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.13052624
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377568, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845148858329377569, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}
+      propertyPath: m_Name
+      value: Mountain Straight+Obstacles90degrees Desert
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a54e30fb45d15b6488ec1496d31bd14a, type: 3}

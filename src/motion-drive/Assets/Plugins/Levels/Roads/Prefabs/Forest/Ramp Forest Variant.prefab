@@ -1,5 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1415053905322966567
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6178515992976450924}
+    m_Modifications:
+    - target: {fileID: 4626837788235615454, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_Name
+      value: Mountain Ramp Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.005263158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03157895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.23420013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8481999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000081460335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626837788235615455, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fac62289b679cb4bae4972dd031b3fb, type: 3}
 --- !u!1001 &5923578152697922183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17,15 +86,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a14e763a793d0134d9607115a68a8831, type: 2}
     - target: {fileID: 919132149155446097, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_Name
-      value: Rump Forest Variant
+      value: Ramp Forest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_Layer
@@ -77,6 +146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
+--- !u!4 &6178515992976450924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
+  m_PrefabInstance: {fileID: 5923578152697922183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6842567777524269014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a058479735c68a46813cf52205fc64c, type: 3}

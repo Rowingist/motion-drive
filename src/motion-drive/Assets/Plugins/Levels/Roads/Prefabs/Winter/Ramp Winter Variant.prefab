@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fab9d0a5c43fbb44cb7942e15f3d4c57, type: 2}
     - target: {fileID: 919132149155446097, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_Name
-      value: Rump Winter Variant
+      value: Ramp Winter Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
       propertyPath: m_Layer
@@ -111,3 +111,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152e44506d2844279430ae81d3b37a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &9026501408639626168 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a058479735c68a46813cf52205fc64c, type: 3}
+  m_PrefabInstance: {fileID: 8849056813337431123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8920440193783648712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9026501408639626168}
+    m_Modifications:
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.005263158
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03157895
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.23420013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8481999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000081460335
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288274, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193255136747288275, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}
+      propertyPath: m_Name
+      value: Mountain Ramp Winter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2eecdd5be5487242b3a75f5940ec14d, type: 3}

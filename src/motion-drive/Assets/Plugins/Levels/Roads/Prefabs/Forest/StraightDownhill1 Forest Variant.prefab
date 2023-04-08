@@ -1,5 +1,78 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &881471788295745691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5033458494396041149}
+    m_Modifications:
+    - target: {fileID: 2433305954396201672, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_Name
+      value: Mountain StraightDownhill1 Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433305954396201675, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eba754cd64e59ef4ea2d312b7bc65d85, type: 3}
 --- !u!1001 &4778555223572176982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,6 +138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3a93f21928b774a91b07b7eb4b8b70, type: 3}
+--- !u!4 &5033458494396041149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d3a93f21928b774a91b07b7eb4b8b70, type: 3}
+  m_PrefabInstance: {fileID: 4778555223572176982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5661516735486254343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d3a93f21928b774a91b07b7eb4b8b70, type: 3}
