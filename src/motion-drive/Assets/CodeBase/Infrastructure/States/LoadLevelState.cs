@@ -7,6 +7,7 @@ using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.StaticData;
 using CodeBase.StaticData;
+using CodeBase.StaticData.Level;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -99,10 +100,15 @@ namespace CodeBase.Infrastructure.States
       await _gameFactory.CreateCheckpointsHub(checkPoints, levelData.InitialHeroPosition);
 
     private async Task<GameObject> InitPlayerFollowingTarget(LevelStaticData levelStaticData) =>
-      await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition);
+      await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition, _inputService);
 
-    private async Task InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget, GameObject checkPointsHub, IInputService inputService) =>
-      await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub, inputService);
+    private async Task InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget, GameObject checkPointsHub, IInputService inputService)
+    {
+      GameObject bodyPrefab = _staticData.ForCar(_progressService.Progress.HeroGarage.ActiveCar).Prefab;
+      
+      await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub,
+        inputService, _loadingCurtain, bodyPrefab);
+    }
 
     private void InformProgressReaders()
     {

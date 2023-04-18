@@ -1,6 +1,6 @@
 using System;
 
-namespace CodeBase.StaticData
+namespace CodeBase.StaticData.Level
 {
   [Serializable]
   public class LevelCheckPointsHubStaticData

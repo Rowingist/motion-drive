@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CodeBase.StaticData
+namespace CodeBase.StaticData.Level
 {
   [Serializable]
   public class LevelTransferStaticData

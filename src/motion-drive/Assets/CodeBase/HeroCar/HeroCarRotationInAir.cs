@@ -83,7 +83,7 @@ namespace CodeBase.HeroCar
       if (_inputService.IsFingerUpScreen())
       {
         _coordX = Input.GetAxis("Mouse X") * RotationSpeed * Time.fixedDeltaTime * _disablerX;
-        _coordY = -Input.GetAxis("Mouse Y") * RotationSpeed * Time.fixedDeltaTime * _disablerY;
+        _coordY = Input.GetAxis("Mouse Y") * RotationSpeed * Time.fixedDeltaTime * _disablerY;
         
         _lastRotateAngle = RotateAngle;
         _isDrag = false;

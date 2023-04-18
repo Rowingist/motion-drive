@@ -1,6 +1,7 @@
 using System.Linq;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.StaticData;
+using CodeBase.StaticData.Level;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;

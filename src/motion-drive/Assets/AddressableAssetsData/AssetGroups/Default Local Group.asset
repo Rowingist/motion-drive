@@ -21,6 +21,18 @@ MonoBehaviour:
     m_Address: DrivingJoystick
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Initial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fb37a4de0e522f948b0bd504eaa9c7ff
+    m_Address: Desert_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3cb6123451bda0741a216020f6dc94bd
+    m_Address: Tutorial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

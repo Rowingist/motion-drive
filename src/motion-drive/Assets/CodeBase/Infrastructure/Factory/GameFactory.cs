@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CodeBase.HeroCar;
 using CodeBase.HeroFollowingTarget;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Logic;
 using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.Services.HeroCar;
@@ -66,27 +67,28 @@ namespace CodeBase.Infrastructure.Factory
       return hub;
     }
 
-    public async Task<GameObject> CreateHeroFollowingTarget(Vector3 at)
+    public async Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService)
     {
       GameObject heroFollowingTarget = await InstantiateRegisteredAsync(AssetAddress.HeroFollowingTargetPath, at);
       heroFollowingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>()
-        .Construct(InputJoystick as DrivingJoystick);
+        .Construct(inputService);
 
       return heroFollowingTarget;
     }
 
-    public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService)
+    public async Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService, LoadingCurtain loadingCurtain, GameObject bodyPrefab)
     {
       CheckPointsHub pointsHub = checkPointsHub.GetComponent<CheckPointsHub>();
       
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
-      heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub);
+      heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub, loadingCurtain);
       HeroCarRotationInAir heroCarRotationInAir = heroCar.GetComponent<HeroCarRotationInAir>();
       heroCarRotationInAir.Construct(inputService);
       heroCar.GetComponentInChildren<HeroCarRotateLookPoint>().Construct(heroCarRotationInAir, InputJoystick);
       heroCar.GetComponent<WheelsDrive>().Construct(inputService, followingTarget.GetComponent<Rigidbody>());
       heroCar.GetComponent<WheelSteering>().Construct(inputService);
+      heroCar.GetComponent<BodyViewChanger>().Construct(bodyPrefab);
       
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);

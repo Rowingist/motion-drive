@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CodeBase.Logic;
 using CodeBase.Services;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
@@ -15,8 +16,8 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateHud();
     void Cleanup();
     Task<GameObject> CreateJoystick(Transform under);
-    Task<GameObject> CreateHeroFollowingTarget(Vector3 at);
-    Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService);
+    Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService);
+    Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService, LoadingCurtain loadingCurtain, GameObject bodyPrefab);
     Task WarmUp();
     Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt);
     Task<GameObject> CreateCheckpointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition);

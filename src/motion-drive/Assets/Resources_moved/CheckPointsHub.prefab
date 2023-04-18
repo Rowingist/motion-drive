@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437722b8334c4d74182b71b04b61b05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveCheckPointPosition: {x: 0, y: 0, z: 0}
+  ActiveCheckPointRotation: {x: 0, y: 0, z: 0, w: 0}
+  YOffset: 0.6

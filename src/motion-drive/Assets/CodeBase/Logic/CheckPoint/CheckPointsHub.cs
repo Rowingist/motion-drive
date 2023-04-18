@@ -7,6 +7,7 @@ namespace CodeBase.Logic.CheckPoint
   {
     public Vector3 ActiveCheckPointPosition;
     public Quaternion ActiveCheckPointRotation;
+    public float YOffset;
     private List<GameObject> _levelCheckPoints;
 
     public void Construct(List<GameObject> levelCheckPoints, Vector3 heroCarInitialPoint)
@@ -36,7 +37,8 @@ namespace CodeBase.Logic.CheckPoint
 
     private void UpdateCheckPointPosition(Vector3 position, Quaternion rotation)
     {
-      ActiveCheckPointPosition = position;
+      Vector3 offset = new Vector3(0f, YOffset, 0f);
+      ActiveCheckPointPosition = position + offset;
       ActiveCheckPointRotation = rotation;
     }
   }
