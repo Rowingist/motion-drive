@@ -22,17 +22,17 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -609.2073
+        value: 0
         inSlope: 0
-        outSlope: 2298.2073
+        outSlope: 2448
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1689
-        inSlope: 2298.2073
+        value: 2448
+        inSlope: 2448
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: 
+    path: Curtain_Backgroud
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -54,7 +54,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 2521204472
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -87,17 +87,17 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -609.2073
+        value: 0
         inSlope: 0
-        outSlope: 2298.2073
+        outSlope: 2448
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1689
-        inSlope: 2298.2073
+        value: 2448
+        inSlope: 2448
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -107,7 +107,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: 
+    path: Curtain_Backgroud
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

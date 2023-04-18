@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31fea7bc7174d84a91edb82103b35f1, type: 3}
+  m_Name: MuscleCar
+  m_EditorClassIdentifier: 
+  TypeId: 1
+  Name: Muscle Car
+  IsLocked: 0
+  Acceleration: 30
+  SteeringPower: 50
+  NitroCapacity: 40
+  MaxSpeed: 60
+  MaxAirRotationSpeed: 300
+  UpgradeProgress: {fileID: 11400000, guid: 5e4013d0bf707014988888ff82c0b551, type: 2}
+  Prefab: {fileID: 5659581306349345699, guid: ed45cee9b995e7d46b25d7d567e15339, type: 3}

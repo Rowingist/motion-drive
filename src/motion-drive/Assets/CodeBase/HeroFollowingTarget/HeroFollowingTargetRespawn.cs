@@ -1,6 +1,7 @@
 using System.Collections;
 using CodeBase.HeroCar;
 using CodeBase.Logic.CheckPoint;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CodeBase.HeroFollowingTarget
@@ -28,12 +29,25 @@ namespace CodeBase.HeroFollowingTarget
       DisableMovement();
       yield return new WaitForSecondsRealtime(Constants.RespawnTime);
       TransitToRespawnPosition();
-      EnableMovement();
     }
 
-    private void TransitToRespawnPosition() => 
-      transform.position = _checkPointsHub.ActiveCheckPointPosition;
+    private void TransitToRespawnPosition() =>
+      StartCoroutine(Transiting(_checkPointsHub.ActiveCheckPointPosition));
 
+    private IEnumerator Transiting(Vector3 checkPointPosition)
+    {
+      float t = 0;
+      
+      while (t < 1)
+      {
+        transform.DOMove(checkPointPosition, Constants.RespawnTime).SetEase(Ease.Linear);
+        t += Time.deltaTime;
+        yield return null;
+      }
+      
+      EnableMovement();
+    }
+    
     private void DisableMovement()
     {
       FollowingTarget.enabled = false;

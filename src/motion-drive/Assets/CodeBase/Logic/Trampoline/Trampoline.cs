@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ namespace CodeBase.Logic.Trampoline
 
     private readonly float _gravity = Physics.gravity.y;
     private float _defaultTakeOffPower;
+    private float _lastTakeOffHorizontalForce;
 
     private void OnValidate() =>
       AdjustTakeOffPointRotation(TakeOffAngle);
@@ -25,12 +25,17 @@ namespace CodeBase.Logic.Trampoline
     private void Start()
     {
       AdjustTakeOffPointRotation(TakeOffAngle);
+      TriggerObserver.TriggerEnter += TriggerEnter;
       TriggerObserver.TriggerExit += TriggerExit;
       _defaultTakeOffPower = ComputeTakeOffPower();
     }
 
-    private void OnDestroy() => 
+    private void OnDestroy()
+    {
+      TriggerObserver.TriggerEnter -= TriggerEnter;
       TriggerObserver.TriggerExit -= TriggerExit;
+    }
+
 
     public void AdjustTakeOffPointRotation(float value)
     {
@@ -54,6 +59,15 @@ namespace CodeBase.Logic.Trampoline
       return Mathf.Sqrt(Mathf.Abs(v2));
     }
 
+    private void TriggerEnter(Collider obj)
+    {
+      if (obj.TryGetComponent(out TriggerObserver heroCar) && ObjectLayerIsPlayer(heroCar)) 
+        _lastTakeOffHorizontalForce = heroCar.transform.forward.x;
+    }
+
+    private static bool ObjectLayerIsPlayer(TriggerObserver heroCar) =>
+      heroCar.gameObject.layer == LayerMask.NameToLayer(Constants.PlayerLayer);
+
     private void TriggerExit(Collider obj)
     {
       if (obj.TryGetComponent(out HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget))
@@ -65,8 +79,7 @@ namespace CodeBase.Logic.Trampoline
       heroFollowingTarget.DisableSnapping();
       StartCoroutine(EnablingSnapping(heroFollowingTarget));
       Rigidbody targetBody = heroFollowingTarget.GetComponent<Rigidbody>();
-      targetBody.velocity = Vector3.zero;
-      Vector3 targetForward = new Vector3(0f, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
+      Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       targetBody.velocity = targetForward * _defaultTakeOffPower;
 
       // if(_guaranteedTakeOff == true)
@@ -83,6 +96,7 @@ namespace CodeBase.Logic.Trampoline
     {
       yield return new WaitForSecondsRealtime(1f);
       heroFollowingTarget.EnableSnapping();
+
     }
 
     private void OnDrawGizmos()

@@ -1,7 +1,9 @@
+using System;
 using CodeBase.Data;
-using CodeBase.Services;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.SaveLoad;
+using CodeBase.Services.StaticData;
+using CodeBase.StaticData.HeroCars;
 
 namespace CodeBase.Infrastructure.States
 {
@@ -10,12 +12,15 @@ namespace CodeBase.Infrastructure.States
     private readonly GameStateMachine _gameStateMachine;
     private readonly IPersistentProgressService _progressService;
     private readonly ISaveLoadService _saveLoadService;
+    private readonly IStaticDataService _staticDataService;
 
-    public LoadProgressState(GameStateMachine gameStateMachine, IPersistentProgressService progressService, ISaveLoadService saveLoadService)
+    public LoadProgressState(GameStateMachine gameStateMachine, IPersistentProgressService progressService,
+      ISaveLoadService saveLoadService, IStaticDataService staticDataService)
     {
       _gameStateMachine = gameStateMachine;
       _progressService = progressService;
       _saveLoadService = saveLoadService;
+      _staticDataService = staticDataService;
     }
 
     public void Enter()
@@ -28,14 +33,24 @@ namespace CodeBase.Infrastructure.States
     {
     }
 
-    private void LoadProgressOrInitNew() => 
-      _progressService.Progress = 
+    private void LoadProgressOrInitNew() =>
+      _progressService.Progress =
         _saveLoadService.LoadProgress()
         ?? NewProgress();
 
     private PlayerProgress NewProgress()
     {
-      var progress = new PlayerProgress(initialLevel: "Tutorial");
+      CarStaticData carData = _staticDataService.ForCar(CarTypeId.MuscleCar);
+      
+      var progress = new PlayerProgress(initialLevel: "Desert_1");
+      
+      progress.HeroStats.Speed = carData.MaxSpeed;
+      progress.HeroStats.Steering = carData.SteeringPower;
+      progress.HeroStats.Acceleration = carData.Acceleration;
+      progress.HeroWallet.Money = 0;
+      progress.HeroGarage.AllCars = Enum.GetNames(typeof(CarTypeId)).Length;
+      progress.HeroGarage.UnlockedCars = 1;
+      progress.HeroGarage.ActiveCar = CarTypeId.TeslaCyberTruck;
 
       return progress;
     }

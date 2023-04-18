@@ -1,0 +1,290 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88a9fff412d4d21bbb6694a621a0526, type: 3}
+  m_Name: PickupWithTrunk_UpgradeProgress
+  m_EditorClassIdentifier: 
+  AccelerationProgression: 0.15
+  SteeringPowerProgression: 0.15
+  NitroCapacityProgression: 0.15
+  AccelerationUpgrades:
+  - Name: Level_1
+    Cost: 500
+    Value: 3
+  - Name: Level_2
+    Cost: 575
+    Value: 6
+  - Name: Level_3
+    Cost: 650
+    Value: 9
+  - Name: Level_4
+    Cost: 725
+    Value: 12
+  - Name: Level_5
+    Cost: 800
+    Value: 15
+  - Name: Level_6
+    Cost: 875
+    Value: 18
+  - Name: Level_7
+    Cost: 950
+    Value: 21
+  - Name: Level_8
+    Cost: 1025
+    Value: 24
+  - Name: Level_9
+    Cost: 1100
+    Value: 27
+  - Name: Level_10
+    Cost: 1175
+    Value: 30
+  - Name: Level_11
+    Cost: 1250
+    Value: 33
+  - Name: Level_12
+    Cost: 1325
+    Value: 36
+  - Name: Level_13
+    Cost: 1400
+    Value: 39
+  - Name: Level_14
+    Cost: 1475
+    Value: 42
+  - Name: Level_15
+    Cost: 1550
+    Value: 45
+  - Name: Level_16
+    Cost: 1625
+    Value: 48
+  - Name: Level_17
+    Cost: 1700
+    Value: 51
+  - Name: Level_18
+    Cost: 1775
+    Value: 54
+  - Name: Level_19
+    Cost: 1850
+    Value: 57
+  - Name: Level_20
+    Cost: 1925
+    Value: 60
+  - Name: Level_21
+    Cost: 2000
+    Value: 63
+  - Name: Level_22
+    Cost: 2075
+    Value: 66
+  - Name: Level_23
+    Cost: 2150
+    Value: 69
+  - Name: Level_24
+    Cost: 2225
+    Value: 72
+  - Name: Level_25
+    Cost: 2300
+    Value: 75
+  - Name: Level_26
+    Cost: 2375
+    Value: 78
+  - Name: Level_27
+    Cost: 2450
+    Value: 81
+  - Name: Level_28
+    Cost: 2525
+    Value: 84
+  - Name: Level_29
+    Cost: 2600
+    Value: 87
+  - Name: Level_30
+    Cost: 2675
+    Value: 90
+  SteeringPowerUpgrades:
+  - Name: Level_1
+    Cost: 500
+    Value: 3
+  - Name: Level_2
+    Cost: 575
+    Value: 6
+  - Name: Level_3
+    Cost: 650
+    Value: 9
+  - Name: Level_4
+    Cost: 725
+    Value: 12
+  - Name: Level_5
+    Cost: 800
+    Value: 15
+  - Name: Level_6
+    Cost: 875
+    Value: 18
+  - Name: Level_7
+    Cost: 950
+    Value: 21
+  - Name: Level_8
+    Cost: 1025
+    Value: 24
+  - Name: Level_9
+    Cost: 1100
+    Value: 27
+  - Name: Level_10
+    Cost: 1175
+    Value: 30
+  - Name: Level_11
+    Cost: 1250
+    Value: 33
+  - Name: Level_12
+    Cost: 1325
+    Value: 36
+  - Name: Level_13
+    Cost: 1400
+    Value: 39
+  - Name: Level_14
+    Cost: 1475
+    Value: 42
+  - Name: Level_15
+    Cost: 1550
+    Value: 45
+  - Name: Level_16
+    Cost: 1625
+    Value: 48
+  - Name: Level_17
+    Cost: 1700
+    Value: 51
+  - Name: Level_18
+    Cost: 1775
+    Value: 54
+  - Name: Level_19
+    Cost: 1850
+    Value: 57
+  - Name: Level_20
+    Cost: 1925
+    Value: 60
+  - Name: Level_21
+    Cost: 2000
+    Value: 63
+  - Name: Level_22
+    Cost: 2075
+    Value: 66
+  - Name: Level_23
+    Cost: 2150
+    Value: 69
+  - Name: Level_24
+    Cost: 2225
+    Value: 72
+  - Name: Level_25
+    Cost: 2300
+    Value: 75
+  - Name: Level_26
+    Cost: 2375
+    Value: 78
+  - Name: Level_27
+    Cost: 2450
+    Value: 81
+  - Name: Level_28
+    Cost: 2525
+    Value: 84
+  - Name: Level_29
+    Cost: 2600
+    Value: 87
+  - Name: Level_30
+    Cost: 2675
+    Value: 90
+  NitroCapacityUpgrades:
+  - Name: Level_1
+    Cost: 500
+    Value: 3
+  - Name: Level_2
+    Cost: 575
+    Value: 6
+  - Name: Level_3
+    Cost: 650
+    Value: 9
+  - Name: Level_4
+    Cost: 725
+    Value: 12
+  - Name: Level_5
+    Cost: 800
+    Value: 15
+  - Name: Level_6
+    Cost: 875
+    Value: 18
+  - Name: Level_7
+    Cost: 950
+    Value: 21
+  - Name: Level_8
+    Cost: 1025
+    Value: 24
+  - Name: Level_9
+    Cost: 1100
+    Value: 27
+  - Name: Level_10
+    Cost: 1175
+    Value: 30
+  - Name: Level_11
+    Cost: 1250
+    Value: 33
+  - Name: Level_12
+    Cost: 1325
+    Value: 36
+  - Name: Level_13
+    Cost: 1400
+    Value: 39
+  - Name: Level_14
+    Cost: 1475
+    Value: 42
+  - Name: Level_15
+    Cost: 1550
+    Value: 45
+  - Name: Level_16
+    Cost: 1625
+    Value: 48
+  - Name: Level_17
+    Cost: 1700
+    Value: 51
+  - Name: Level_18
+    Cost: 1775
+    Value: 54
+  - Name: Level_19
+    Cost: 1850
+    Value: 57
+  - Name: Level_20
+    Cost: 1925
+    Value: 60
+  - Name: Level_21
+    Cost: 2000
+    Value: 63
+  - Name: Level_22
+    Cost: 2075
+    Value: 66
+  - Name: Level_23
+    Cost: 2150
+    Value: 69
+  - Name: Level_24
+    Cost: 2225
+    Value: 72
+  - Name: Level_25
+    Cost: 2300
+    Value: 75
+  - Name: Level_26
+    Cost: 2375
+    Value: 78
+  - Name: Level_27
+    Cost: 2450
+    Value: 81
+  - Name: Level_28
+    Cost: 2525
+    Value: 84
+  - Name: Level_29
+    Cost: 2600
+    Value: 87
+  - Name: Level_30
+    Cost: 2675
+    Value: 90

@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelfRigidbody: {fileID: 6138099062768847683}
-  Offset: {x: 0, y: 5, z: -17}
+  Offset: {x: 0, y: 13.9, z: -19.92}
 --- !u!65 &6138099062768847682
 BoxCollider:
   m_ObjectHideFlags: 0

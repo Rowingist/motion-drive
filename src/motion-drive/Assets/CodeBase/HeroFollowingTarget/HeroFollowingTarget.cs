@@ -1,3 +1,4 @@
+using CodeBase.Services.Input;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace CodeBase.HeroFollowingTarget
     [SerializeField] private float _snapToGroundSpeed = 1;
     
     private Rigidbody _rigidbody;
-    private DrivingJoystick _drivingJoystick;
+    private IInputService _playerInput;
 
     private Vector3 _velocity;
     private Vector3 _desiredVelocity;
@@ -44,8 +45,8 @@ namespace CodeBase.HeroFollowingTarget
 
     private bool OnGround => _groundContactCount > 0;
 
-    public void Construct(DrivingJoystick drivingJoystick) => 
-      _drivingJoystick = drivingJoystick;
+    public void Construct(IInputService input) => 
+      _playerInput = input;
 
     private void OnValidate() =>
       _minGroundDotProduct = Mathf.Cos(_maxGroundAngle * Mathf.Deg2Rad);
@@ -53,6 +54,7 @@ namespace CodeBase.HeroFollowingTarget
     private void Awake()
     {
       _rigidbody = GetComponent<Rigidbody>();
+      EnableSnapping();
     }
 
     private void FixedUpdate()
@@ -67,7 +69,7 @@ namespace CodeBase.HeroFollowingTarget
         SpeedUpLanding();
         return;
       }
-      
+
       _rigidbody.velocity = _velocity;
       ClearState();
     }
@@ -80,7 +82,7 @@ namespace CodeBase.HeroFollowingTarget
     private void SpeedUpLanding()
     {
       if (_velocity.y < 0)
-        _velocity.y = Mathf.SmoothDamp(_velocity.y, -_velocity.z, ref _currentYVelocity, FallSmoothTime);
+        _velocity.y = Mathf.SmoothDamp(_velocity.y, -_velocity.z * 2, ref _currentYVelocity, FallSmoothTime);
     }
 
     private void BindSpeedHorizontalDragSensitivity()
@@ -97,9 +99,12 @@ namespace CodeBase.HeroFollowingTarget
 
     private void Update()
     {
+      if(_playerInput == null)
+        return;
+
       Vector2 playerInput;
-      playerInput.x = Input.GetMouseButton(0) ? _drivingJoystick.Horizontal : 0;
-      playerInput.y = Input.GetMouseButton(0) ? 1 : 0;
+      playerInput.x = _playerInput.IsFingerHoldOnScreen() ? _playerInput.Axis.x : 0;
+      playerInput.y = _playerInput.IsFingerHoldOnScreen() ? 1 : 0;
       playerInput = Vector2.ClampMagnitude(playerInput, 1f);
 
       _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * _maxSpeed;
@@ -143,7 +148,8 @@ namespace CodeBase.HeroFollowingTarget
 
     private bool SnapToGround()
     {
-      return _isSnapping;
+      if (!_isSnapping)
+        return false;
       
       if (_stepsSinceLastGrounded > 1)
         return false;
