@@ -11,7 +11,7 @@ namespace CodeBase.CameraLogic
     private Quaternion _defaultLocalRotation;
 
     private Transform _following;
-    
+
     private void Awake() => 
       CacheDefaultLocalTransform();
 
@@ -21,19 +21,16 @@ namespace CodeBase.CameraLogic
         SelfRigidbody.MovePosition(_following.position + Offset);
     }
 
-    public void SetDefaultTransform()
-    {
-      transform.localPosition = _defaultLocalPosition;
-      transform.localRotation = _defaultLocalRotation;
-    }
-    
+    public void Follow(GameObject following) => 
+      _following = following.transform;
+
+    public void OnSetNewOffset(Vector3 offset) => 
+      Offset = new Vector3(offset.x, offset.y, offset.z);
+
     private void CacheDefaultLocalTransform()
     {
       _defaultLocalPosition = transform.localPosition;
       _defaultLocalRotation = transform.localRotation;
     }
-
-    public void Follow(GameObject following) => 
-      _following = following.transform;
   }
 }

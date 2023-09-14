@@ -21,16 +21,20 @@ MonoBehaviour:
     m_Address: DrivingJoystick
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_Address: Initial
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: fb37a4de0e522f948b0bd504eaa9c7ff
     m_Address: Desert_1
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3cb6123451bda0741a216020f6dc94bd
     m_Address: Tutorial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ffad869538a1514983306c0e929f3fe
+    m_Address: CameraSwitchPointsHub
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f1f8f79ebd813914e9215f98e0c06568
+    m_Address: CameraSwitchPoint
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

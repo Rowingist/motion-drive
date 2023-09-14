@@ -28,6 +28,6 @@ namespace CodeBase.HeroCar
       obj.TryGetComponent(out Obstacle obstacle) && obstacle.Type == ObstacleType.Static;
 
     private bool CollideWithGround(Collider obj) => 
-      obj.GetComponent<Ground>() && !LandingEvaluator.IsLandedProperlyNoCrash;
+      obj.GetComponent<Ground>() && !LandingEvaluator.IsVerticalLandWithSlowDown;
   }
 }

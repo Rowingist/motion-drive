@@ -1,4 +1,5 @@
 using System.Linq;
+using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Level;
@@ -33,6 +34,10 @@ namespace CodeBase.Editor
 
         levelData.LevelCheckPointsHub.Points = FindObjectsOfType<CheckPointMarker>()
           .Select(x => new LevelCheckPointsStaticData(x.transform.position, x.RaycasterOnGround.position))
+          .Reverse().ToArray();
+        
+        levelData.LevelCameraSwitchPointsHub.Points = FindObjectsOfType<CameraSwitchPointMarker>()
+          .Select(x => new LevelCameraSwitchPointStaticData(x.transform.position, x.FollowSetting, x.LookAtSetting))
           .Reverse().ToArray();
       }
       
