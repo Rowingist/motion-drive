@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BootstrapperPrefab: {fileID: 4025072411373807632, guid: 8bebfb02ffbe25440973300e15ca1598, type: 3}
+  TargetFPS: -1

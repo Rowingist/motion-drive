@@ -70,7 +70,7 @@ namespace CodeBase.Infrastructure.States
       GameObject checkPointsHub = await InitCheckPointsHub(checkPoints, levelData);
 
       List<GameObject> CameraSwitchPoints = await InitCameraSwitchPoints(levelData);
-      InitCameraSwitchPointsHub(CameraSwitchPoints);
+      await InitCameraSwitchPointsHub(CameraSwitchPoints);
 
       GameObject heroFollowingTarget = await InitPlayerFollowingTarget(levelData);
       GameObject heroCar = await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);

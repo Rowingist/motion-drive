@@ -17,7 +17,7 @@ namespace CodeBase.HeroFollowingTarget
     [SerializeField, Range(0f, 90f)] private float _maxGroundAngle = 25f;
     [SerializeField, Range(0f, 100f)] private float _horizontalForce = 0;
     [SerializeField] private AnimationCurve _horizontalDragPerVelocity;
-    [SerializeField] private float _aligningSpeed = 4f;
+    //[SerializeField] private float _aligningSpeed = 4f;
 
     [Header("Snapping on surface")] [SerializeField, Range(0f, 200f)]
     private float _maxSnapOnSurfaceSpeed = 100f;
