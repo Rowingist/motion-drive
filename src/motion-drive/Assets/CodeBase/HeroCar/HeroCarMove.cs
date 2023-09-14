@@ -5,6 +5,8 @@ namespace CodeBase.HeroCar
 {
   public class HeroCarMove : MonoBehaviour
   {
+    private const float MaxAngularVelocity = 1000f;
+    
     public HeroCarOnGroundChecker GroundChecker;
     
     public Rigidbody SelfRigidbody;
@@ -23,6 +25,7 @@ namespace CodeBase.HeroCar
     {
       _rotateSpeedOnStart = RotateSpeed;
       GroundChecker.TookOff += ResetRotateSpeed;
+      SelfRigidbody.maxAngularVelocity = MaxAngularVelocity;
     }
 
     private void FixedUpdate()

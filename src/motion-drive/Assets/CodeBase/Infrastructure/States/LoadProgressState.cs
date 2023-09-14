@@ -44,13 +44,15 @@ namespace CodeBase.Infrastructure.States
       
       var progress = new PlayerProgress(initialLevel: "Desert_1");
       
+      progress.HeroGarage.AllCars = Enum.GetNames(typeof(CarTypeId)).Length;
+      progress.HeroGarage.UnlockedCars = 1;
+      progress.HeroGarage.ActiveCar = carData.TypeId;
+      
       progress.HeroStats.Speed = carData.MaxSpeed;
       progress.HeroStats.Steering = carData.SteeringPower;
       progress.HeroStats.Acceleration = carData.Acceleration;
+      
       progress.HeroWallet.Money = 0;
-      progress.HeroGarage.AllCars = Enum.GetNames(typeof(CarTypeId)).Length;
-      progress.HeroGarage.UnlockedCars = 1;
-      progress.HeroGarage.ActiveCar = CarTypeId.TeslaCyberTruck;
 
       return progress;
     }

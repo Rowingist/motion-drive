@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1486592096315519230}
   - component: {fileID: 1486592096315519225}
   - component: {fileID: 3062351924522059216}
+  - component: {fileID: 3134922630314583465}
   m_Layer: 12
   m_Name: HeroFollowingTarget
   m_TagString: Untagged
@@ -77,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33f9d7f62054eb8a6adb0c685d2a677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 87.5
-  _maxAcceleration: 43.5
+  MaxSpeed: 10
+  MaxAcceleration: 10
   _maxAirAcceleration: 1
   _maxGroundAngle: 25
   _horizontalForce: 100
@@ -127,6 +128,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowingTarget: {fileID: 1486592096315519225}
   SelfRigidbody: {fileID: 1486592096315519231}
+--- !u!114 &3134922630314583465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486592096315519229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9f563e7dd94ebe893981a654b4b738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowingTarget: {fileID: 1486592096315519225}
+  _tricksForMaxBoost: 1
+  MaxBoostSpeed: 100
+  DefaultBoostSpeed: 50
+  MaxBoosAcceleration: 100
+  DefaultBoostAcceleration: 30
 --- !u!1 &9148587671610251292
 GameObject:
   m_ObjectHideFlags: 0

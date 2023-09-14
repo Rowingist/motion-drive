@@ -19,9 +19,23 @@ MonoBehaviour:
     Position: {x: 0, y: 0, z: 0}
   LevelCheckPointsHub:
     Points:
-    - PointPosition: {x: 0, y: 5.6, z: 91.4}
-      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 93.26}
-    - PointPosition: {x: 0, y: 5.6, z: 266.5}
-      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 268.36}
     - PointPosition: {x: 0, y: -3.9, z: 446}
       RaycastOnGroundOffset: {x: 0, y: -3.9, z: 531.1}
+    - PointPosition: {x: 0, y: 5.6, z: 266.5}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 268.36}
+    - PointPosition: {x: 0, y: 5.6, z: 91.4}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 93.26}
+  LevelCameraSwitchPointsHub:
+    Points:
+    - Position: {x: 0, y: 0, z: -31.1}
+      FollowSetting: {x: 0, y: 9.4, z: -20}
+      LookAtSetting: {x: 22.4, y: 0, z: 0}
+    - Position: {x: 0, y: 0, z: 43.5}
+      FollowSetting: {x: 0, y: 20.5, z: -20}
+      LookAtSetting: {x: 38, y: 0, z: 0}
+    - Position: {x: 0, y: 0, z: 937.2}
+      FollowSetting: {x: 0, y: 9.4, z: -20}
+      LookAtSetting: {x: 22.4, y: 0, z: 0}
+    - Position: {x: 0, y: 0, z: 1920}
+      FollowSetting: {x: 0, y: 20.5, z: -20}
+      LookAtSetting: {x: 38, y: 0, z: 0}

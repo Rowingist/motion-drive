@@ -8,5 +8,7 @@ namespace CodeBase.Infrastructure.AssetManagement
     public const string HeroCarPath = "HeroCar";
     public const string CheckPointsHub = "CheckPointsHub";
     public const string CheckPoint = "CheckPointTrigger";
+    public const string CameraSwitchPointsHub = "CameraSwitchPointsHub";
+    public const string CameraSwitchPoint = "CameraSwitchPoint";
   }
 }

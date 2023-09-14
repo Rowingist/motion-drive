@@ -9,10 +9,10 @@ namespace CodeBase.HeroFollowingTarget
   {
     private const float FallSmoothTime = 10f;
 
-    [Header("Movement settings")] [SerializeField, Range(0f, 100f)]
-    private float _maxSpeed = 10f;
+    [Header("Movement settings")] [Range(0f, 100f)]
+    public float MaxSpeed = 10f;
 
-    [SerializeField, Range(0f, 100f)] private float _maxAcceleration = 10f;
+    [Range(0f, 100f)] public float MaxAcceleration = 10f;
     [SerializeField, Range(0f, 100f)] private float _maxAirAcceleration = 1f;
     [SerializeField, Range(0f, 90f)] private float _maxGroundAngle = 25f;
     [SerializeField, Range(0f, 100f)] private float _horizontalForce = 0;
@@ -87,7 +87,7 @@ namespace CodeBase.HeroFollowingTarget
 
     private void BindSpeedHorizontalDragSensitivity()
     {
-      float k = _velocity.z / _maxSpeed;
+      float k = _velocity.z / MaxSpeed;
       _horizontalForce = _horizontalDragPerVelocity.Evaluate(k);
     }
 
@@ -107,7 +107,7 @@ namespace CodeBase.HeroFollowingTarget
       playerInput.y = _playerInput.IsFingerHoldOnScreen() ? 1 : 0;
       playerInput = Vector2.ClampMagnitude(playerInput, 1f);
 
-      _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * _maxSpeed;
+      _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * MaxSpeed;
     }
 
     private void EvaluateCollision(Collision collision)
@@ -200,7 +200,7 @@ namespace CodeBase.HeroFollowingTarget
       float currentX = Vector3.Dot(_velocity, xAxis);
       float currentZ = Vector3.Dot(_velocity, zAxis);
 
-      float acceleration = OnGround ? _maxAcceleration : _maxAirAcceleration;
+      float acceleration = OnGround ? MaxAcceleration : _maxAirAcceleration;
       float maxHorizontalSpeedChange = _horizontalForce * Time.deltaTime;
       float maxSpeedChange = acceleration * Time.deltaTime;
 

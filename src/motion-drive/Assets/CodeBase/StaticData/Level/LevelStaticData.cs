@@ -11,5 +11,6 @@ namespace CodeBase.StaticData.Level
     public LevelTransferStaticData LevelTransfer;
 
     public LevelCheckPointsHubStaticData LevelCheckPointsHub;
+    public LevelCameraSwitchPointsHubStaticData LevelCameraSwitchPointsHub;
   }
 }

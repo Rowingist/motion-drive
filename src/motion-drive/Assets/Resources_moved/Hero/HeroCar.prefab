@@ -5166,6 +5166,7 @@ GameObject:
   - component: {fileID: 7945364945101537129}
   - component: {fileID: 51576941087796653}
   - component: {fileID: 7059064659906126950}
+  - component: {fileID: 7026418893392168679}
   m_Layer: 3
   m_Name: HeroCar
   m_TagString: Player
@@ -5273,8 +5274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundChecker: {fileID: 6758490157615344774}
   SelfRigidbody: {fileID: 6758490157615344773}
-  RotateSpeed: 100
-  RotateDelay: 3
+  RotateSpeed: 150
+  RotateDelay: 6
 --- !u!114 &7321269416440040754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5374,6 +5375,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 5905523898070827327}
+--- !u!114 &7026418893392168679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758490157615344795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df30b4547ff4a63a3df8db567172463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TricksCounters:
+  - {fileID: 2035807701320483426}
+  - {fileID: 719637112493051169}
+  GroundChecker: {fileID: 6758490157615344774}
+  CrashChecker: {fileID: 6758490157615344775}
+  LandingEvaluator: {fileID: 6758490157615344772}
+  BoostDuration: 2
 --- !u!1 &6758490159107939115
 GameObject:
   m_ObjectHideFlags: 0

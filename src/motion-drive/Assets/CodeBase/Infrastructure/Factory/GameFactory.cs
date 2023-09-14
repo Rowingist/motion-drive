@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CodeBase.CameraLogic;
 using CodeBase.HeroCar;
+using CodeBase.HeroCar.TricksInAir;
 using CodeBase.HeroFollowingTarget;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Logic;
+using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.Services.HeroCar;
@@ -56,22 +59,42 @@ namespace CodeBase.Infrastructure.Factory
       GameObject checkPoint = await InstantiateRegisteredAsync(AssetAddress.CheckPoint);
       checkPoint.transform.position = at;
       checkPoint.GetComponent<CheckPoint>().RaycasterToGround.transform.position = raycastAt;
+      
       return checkPoint;
     }
 
-    public async Task<GameObject> CreateCheckpointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition)
+    public async Task<GameObject> CreateCheckPointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition)
     {
       GameObject hub = await InstantiateRegisteredAsync(AssetAddress.CheckPointsHub);
       hub.GetComponent<CheckPointsHub>().Construct(checkPoints, initialPointPosition);
 
       return hub;
     }
+    
+    public async Task<GameObject> CreateCameraSwitchPoint(Vector3 at, Vector3 followSetting, Vector3 lookAtSetting)
+    {
+      GameObject cameraSwitchPoint = await InstantiateRegisteredAsync(AssetAddress.CameraSwitchPoint);
+      cameraSwitchPoint.transform.position = at;
+      cameraSwitchPoint.GetComponent<CameraSwitchPoint>().Construct(followSetting, lookAtSetting);
+      
+      return cameraSwitchPoint;
+    }
+    
+    public async Task<GameObject> CreateCameraSwitchPointsHub(List<GameObject> switchPoints, CameraFollow cameraFollow, CameraLookAt cameraLookAt)
+    {
+      GameObject hub = await InstantiateRegisteredAsync(AssetAddress.CameraSwitchPointsHub);
+      hub.GetComponent<CameraSwitchPointsHub>().Construct(switchPoints, cameraFollow, cameraLookAt);
 
-    public async Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService)
+      return hub;
+    }
+
+    public async Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService playerProgress)
     {
       GameObject heroFollowingTarget = await InstantiateRegisteredAsync(AssetAddress.HeroFollowingTargetPath, at);
-      heroFollowingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>()
-        .Construct(inputService);
+      var followingTarget = heroFollowingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>();
+      followingTarget.Construct(inputService);
+      followingTarget.MaxSpeed = playerProgress.Progress.HeroStats.Speed;
+      followingTarget.MaxAcceleration = playerProgress.Progress.HeroStats.Acceleration;
 
       return heroFollowingTarget;
     }
@@ -92,6 +115,8 @@ namespace CodeBase.Infrastructure.Factory
       
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);
+      followingTarget.GetComponent<HeroFollowingTargetHandler>()
+        .Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
       
       _heroCarProviderService.HeroCar = heroCar;
 

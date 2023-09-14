@@ -6,47 +6,45 @@ namespace CodeBase.HeroCar
   {
     public HeroCarOnGroundChecker GroundChecker;
 
-    [Header("Forward/backward rotation")]
-    public float AcceptableLandingHorizontalAngleMin = 45f;
+    [Header("Forward/backward rotation")] public float AcceptableLandingHorizontalAngleMin = 45f;
     public float AcceptableLandingHorizontalAngleMax = 125f;
 
-    [Header("Left/right rotation")]
-    public float AcceptableLandingVerticalAngleMin = 45f;
+    [Header("Left/right rotation")] public float AcceptableLandingVerticalAngleMin = 45f;
     public float AcceptableLandingVerticalAngleMax = 125f;
 
-    public bool IsLandedProperlyNoCrash { get; private set; }
-    public bool IsLandedProperlyNoSlowDown { get; private set; }
-    
-    private void Start() => 
+    public bool IsVerticalLandWithSlowDown { get; private set; }
+    public bool IsHorizontalLandingWithSlowDown { get; private set; }
+
+    private void Start() =>
       GroundChecker.LandedOnGround += Evaluate;
 
-    private void OnDestroy() => 
+    private void OnDestroy() =>
       GroundChecker.LandedOnGround -= Evaluate;
-
 
     private void Evaluate()
     {
-      DetermineProperLandingToCrash();
-      DetermineProperLandingToSlowingDown();
+      DetermineVerticalLandingToSlowingDown();
+      DetermineHorizontalLandingToSlowingDown();
     }
-    
-    private void DetermineProperLandingToCrash() =>
-      IsLandedProperlyNoCrash = IsProperHorizontalAngle(
-        Vector3.SignedAngle(GroundChecker.LandInfo.transform.forward, transform.forward, transform.right));
 
-    private bool IsProperHorizontalAngle(float landAngle) => 
-      landAngle >= AcceptableLandingHorizontalAngleMin && landAngle <= AcceptableLandingHorizontalAngleMax;
+    private void DetermineVerticalLandingToSlowingDown()
+    {
+      float landAngle =
+        Vector3.SignedAngle(GroundChecker.LandInfo.transform.forward, transform.forward, transform.right);
 
-    private void DetermineProperLandingToSlowingDown()
+      IsVerticalLandWithSlowDown = AngleIsOutOfProperLandRange(landAngle, AcceptableLandingVerticalAngleMin,
+        AcceptableLandingVerticalAngleMax);
+    }
+
+    private void DetermineHorizontalLandingToSlowingDown()
     {
       float landAngle = Vector3.SignedAngle(GroundChecker.LandInfo.transform.right, transform.right, transform.up);
-      
-      IsLandedProperlyNoSlowDown = IsProperVerticalAngle(landAngle);
+
+      IsHorizontalLandingWithSlowDown = AngleIsOutOfProperLandRange(landAngle, AcceptableLandingHorizontalAngleMin,
+        AcceptableLandingHorizontalAngleMax);
     }
 
-    private bool IsProperVerticalAngle(float landAngle)
-    {
-      return landAngle >= AcceptableLandingVerticalAngleMin && landAngle <= AcceptableLandingVerticalAngleMax;
-    }
+    private bool AngleIsOutOfProperLandRange(float landAngle, float minAngle, float maxAngle) =>
+      landAngle >= minAngle && landAngle <= maxAngle;
   }
 }
