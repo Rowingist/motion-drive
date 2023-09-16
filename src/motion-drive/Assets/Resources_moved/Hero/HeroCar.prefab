@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rotator: {fileID: 8311743176649541664}
-  Speed: 15
+  Speed: 2.69
 --- !u!1 &2265494643504951581
 GameObject:
   m_ObjectHideFlags: 0
