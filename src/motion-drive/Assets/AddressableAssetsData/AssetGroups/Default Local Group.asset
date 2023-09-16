@@ -21,10 +21,6 @@ MonoBehaviour:
     m_Address: DrivingJoystick
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: fb37a4de0e522f948b0bd504eaa9c7ff
-    m_Address: Desert_1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 3cb6123451bda0741a216020f6dc94bd
     m_Address: Tutorial
     m_ReadOnly: 0

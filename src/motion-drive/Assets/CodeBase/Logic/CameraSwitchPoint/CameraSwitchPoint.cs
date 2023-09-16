@@ -33,11 +33,18 @@ namespace CodeBase.Logic.CameraSwitchPoint
     {
       if(_isUsedAsFirstGate)
         return;
-        
-      ChangeCameraTransform();
+
+      SetCameraArFirstTime();
+
       _isUsedAsFirstGate = true;
     }
-    
+
+    private void SetCameraArFirstTime()
+    {
+      _cameraFollow.OnSetNewOffset(_followSetting);
+      _cameraFollow.transform.rotation = Quaternion.Euler(_lookAtSetting);
+    }
+
     private void Start() => 
       TriggerObserver.TriggerEnter += TriggerEnter;
 

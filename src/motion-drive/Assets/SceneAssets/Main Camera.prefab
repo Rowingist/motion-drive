@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97facb87a2dc4f008b5af3d0c9cfe818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultEulerAngles: {x: 25, y: 180, z: 0}
+  RotationDuration: 1
 --- !u!114 &6356008495296411567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelfRigidbody: {fileID: 6356008495296411564}
   Offset: {x: 0, y: 16, z: -20}
+  TransitionDuration: 1
+  CloseDistance: 0.1
 --- !u!54 &6356008495296411564
 Rigidbody:
   m_ObjectHideFlags: 0

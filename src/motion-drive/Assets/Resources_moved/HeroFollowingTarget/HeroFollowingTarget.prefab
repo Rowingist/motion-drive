@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33f9d7f62054eb8a6adb0c685d2a677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 10
-  MaxAcceleration: 10
+  MaxSpeed: 100
+  MaxAcceleration: 57.6
   _maxAirAcceleration: 1
   _maxGroundAngle: 25
   _horizontalForce: 100
@@ -107,13 +107,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _aligningSpeed: 4
   _maxSnapOnSurfaceSpeed: 200
   _distanceToBeginSnap: 2
   _snapSurfaceMask:
     serializedVersion: 2
     m_Bits: 64
-  _snapToGroundSpeed: 0.5
+  _snapToGroundSpeed: 0.1
 --- !u!114 &3062351924522059216
 MonoBehaviour:
   m_ObjectHideFlags: 0
