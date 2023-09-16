@@ -74,7 +74,7 @@ namespace CodeBase.Infrastructure.States
 
       GameObject heroFollowingTarget = await InitPlayerFollowingTarget(levelData);
       GameObject heroCar = await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);
-      CameraFollow(heroFollowingTarget);
+      CameraFollow(heroCar);
     }
 
     private LevelStaticData LevelStaticData() =>
@@ -136,9 +136,9 @@ namespace CodeBase.Infrastructure.States
         progressReader.LoadProgress(_progressService.Progress);
     }
 
-    private void CameraFollow(GameObject HeroFollowingTarget)
+    private void CameraFollow(GameObject HeroCar)
     {
-      Camera.main.GetComponentInParent<CameraFollow>().Follow(HeroFollowingTarget);
+      Camera.main.GetComponentInParent<CameraFollow>().Follow(HeroCar);
     }
   }
 }

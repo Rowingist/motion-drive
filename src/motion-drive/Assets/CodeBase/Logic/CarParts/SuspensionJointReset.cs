@@ -4,7 +4,7 @@ namespace CodeBase.Logic.CarParts
 {
   public class SuspensionJointReset : MonoBehaviour
   {
-    public ConfigurableJoint BodyRotation;
+    public ConfigurableJoint[] BodyRotation;
     public ConfigurableJoint BodySpring;
 
     public void StopMove()
@@ -15,12 +15,16 @@ namespace CodeBase.Logic.CarParts
 
     private void StopBodyRotation()
     {
-      BodyRotation.yMotion = ConfigurableJointMotion.Locked;
-      BodyRotation.angularXMotion = ConfigurableJointMotion.Locked;
-      BodyRotation.angularZMotion = ConfigurableJointMotion.Locked;
+      foreach (ConfigurableJoint joint in BodyRotation)
+      {
+        joint.yMotion = ConfigurableJointMotion.Locked;
+        joint.angularXMotion = ConfigurableJointMotion.Locked;
+        joint.angularZMotion = ConfigurableJointMotion.Locked;
+        joint.angularYMotion = ConfigurableJointMotion.Locked;
+      }
     }
 
-    private void StopBodySpring() => 
+    private void StopBodySpring() =>
       BodySpring.yMotion = ConfigurableJointMotion.Locked;
 
 
@@ -32,12 +36,16 @@ namespace CodeBase.Logic.CarParts
 
     private void ResetBodyRotation()
     {
-      BodyRotation.yMotion = ConfigurableJointMotion.Free;
-      BodyRotation.angularXMotion = ConfigurableJointMotion.Free;
-      BodyRotation.angularZMotion = ConfigurableJointMotion.Free;
+      foreach (ConfigurableJoint joint in BodyRotation)
+      {
+        joint.yMotion = ConfigurableJointMotion.Free;
+        joint.angularXMotion = ConfigurableJointMotion.Free;
+        joint.angularZMotion = ConfigurableJointMotion.Free;
+        joint.angularYMotion = ConfigurableJointMotion.Free;
+      }
     }
 
-    private void ResetBodySpring() => 
+    private void ResetBodySpring() =>
       BodySpring.yMotion = ConfigurableJointMotion.Free;
   }
 }

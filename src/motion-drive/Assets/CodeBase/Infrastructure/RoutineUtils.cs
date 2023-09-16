@@ -9,7 +9,7 @@ namespace CodeBase.Infrastructure
     {
       Vector3 currentVelocity = Vector3.zero;
       
-      while (obj.rotation.eulerAngles != target.eulerAngles)
+      while (Vector3.Distance(obj.rotation.eulerAngles, target.eulerAngles) > .1)
       {
         Vector3 newEuler =
           Vector3.SmoothDamp(obj.rotation.eulerAngles, target.eulerAngles, ref currentVelocity, duration);

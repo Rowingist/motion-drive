@@ -1,54 +1,40 @@
-using System.Collections;
-using CodeBase.Infrastructure;
+using System;
 using UnityEngine;
 
 namespace CodeBase.CameraLogic
 {
   public class CameraFollow : MonoBehaviour
   {
-    public Rigidbody SelfRigidbody;
     public Vector3 Offset;
     public float TransitionDuration = 1;
     public float CloseDistance;
 
-    private Vector3 _defaultLocalPosition;
-    private Quaternion _defaultLocalRotation;
+    public Transform Following { get; private set; }
 
-    private Transform _following;
+    private bool _isChangingOffset;
+    private Vector3 _currentVelocity = Vector3.zero;
+    private Vector3 _newOffset = Vector3.zero;
 
-    private void Awake() => 
-      CacheDefaultLocalTransform();
-
-    private void FixedUpdate()
+    private void Update()
     {
-      if(_following)
-        SelfRigidbody.MovePosition(_following.position + Offset);
+      if (!_isChangingOffset) return;
+      
+      Offset = Vector3.SmoothDamp(Offset, _newOffset, ref _currentVelocity, TransitionDuration);
+        
+      transform.localPosition = Offset;
+        
+      if (Vector3.Distance(Offset, _newOffset) < CloseDistance)
+        _isChangingOffset = false;
     }
-
+    
     public void Follow(GameObject following) => 
-      _following = following.transform;
+      Following = following.transform;
 
     public void OnSetNewOffset(Vector3 offset)
     {
-      StartCoroutine(MoveToTarget(offset, TransitionDuration));
-    }
-
-    private void CacheDefaultLocalTransform()
-    {
-      _defaultLocalPosition = transform.localPosition;
-      _defaultLocalRotation = transform.localRotation;
+      _newOffset = offset;
+      _isChangingOffset = true;
     }
     
-    private IEnumerator MoveToTarget(Vector3 target, float duration = 1)
-    {
-      Vector3 currentVelocity = Vector3.zero;
-
-      while (Vector3.Distance(Offset, target) > CloseDistance)
-      {
-        Offset = Vector3.SmoothDamp(Offset, target, ref currentVelocity, duration);
-
-        yield return null;
-      }
-    }
   }
 }

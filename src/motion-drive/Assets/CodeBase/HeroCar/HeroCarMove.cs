@@ -1,4 +1,5 @@
 using System;
+using CodeBase.Services.Input;
 using UnityEngine;
 
 namespace CodeBase.HeroCar
@@ -6,20 +7,22 @@ namespace CodeBase.HeroCar
   public class HeroCarMove : MonoBehaviour
   {
     private const float MaxAngularVelocity = 1000f;
-    
+
     public HeroCarOnGroundChecker GroundChecker;
-    
+
     public Rigidbody SelfRigidbody;
     public float RotateSpeed;
     public float RotateDelay;
 
     private Vector3 _lastPosition;
     private float _rotateSpeedOnStart;
-    
+
     private Rigidbody _followingRigidbody;
 
-    public void Construct(Rigidbody followingRigidbody) => 
+    public void Construct(Rigidbody followingRigidbody)
+    {
       _followingRigidbody = followingRigidbody;
+    }
 
     private void Start()
     {
@@ -30,19 +33,23 @@ namespace CodeBase.HeroCar
 
     private void FixedUpdate()
     {
-      if(!_followingRigidbody) return;
-      
+      if (!_followingRigidbody) return;
+
       MoveRigidbody();
-      
-      if(!VelocityIsHigh()) return;
-      if(!GroundChecker.IsOnGround) return;
-      
+
+      if (!VelocityIsHigh()) return;
+      if (!GroundChecker.IsOnGround) return;
+
       RotateRigidbody();
       CacheLastPosition();
     }
 
-    private void MoveRigidbody() => 
-      SelfRigidbody.MovePosition(_followingRigidbody.position);
+    Vector3 _currentSpeed = Vector3.zero;
+    public float Speed;
+
+    private void MoveRigidbody() =>
+      SelfRigidbody.position =
+        Vector3.SmoothDamp(SelfRigidbody.position, _followingRigidbody.position, ref _currentSpeed, Speed);
 
     private void RotateRigidbody()
     {
@@ -51,16 +58,16 @@ namespace CodeBase.HeroCar
         Quaternion.RotateTowards(SelfRigidbody.rotation, lookFollowingRotation, RotateSpeed * Time.deltaTime);
     }
 
-    private void CacheLastPosition() => 
+    private void CacheLastPosition() =>
       _lastPosition = SelfRigidbody.position;
 
-    private bool VelocityIsHigh() => 
+    private bool VelocityIsHigh() =>
       _followingRigidbody.velocity.magnitude > RotateDelay;
 
-    private void ResetRotateSpeed() => 
+    private void ResetRotateSpeed() =>
       RotateSpeed = _rotateSpeedOnStart;
 
-    private void SetRotateSpeed(float value) => 
+    private void SetRotateSpeed(float value) =>
       RotateDelay = value;
   }
 }

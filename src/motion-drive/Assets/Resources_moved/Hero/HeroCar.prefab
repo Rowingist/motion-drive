@@ -489,6 +489,7 @@ MonoBehaviour:
   - {fileID: 4204013729296191085}
   - {fileID: 8416668414406607610}
   GroundChecker: {fileID: 6758490157615344774}
+  SuspensionJoints: {fileID: 5826572335480754090}
 --- !u!114 &5826572335480754090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +502,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeaffd50630481aa4d42c92961c8325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BodyRotation: {fileID: 2721877936960987279}
+  BodyRotation:
+  - {fileID: 2721877936960987279}
+  - {fileID: 5407314155922054659}
+  - {fileID: 6473277008665905220}
+  - {fileID: 7929415283597748616}
   BodySpring: {fileID: 7086780668868724698}
 --- !u!1 &571197825591977405
 GameObject:
@@ -1654,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rotator: {fileID: 8311743176649541664}
-  Speed: 2.69
+  Speed: 100
 --- !u!1 &2265494643504951581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3390,7 @@ ConfigurableJoint:
   m_YMotion: 2
   m_ZMotion: 0
   m_AngularXMotion: 2
-  m_AngularYMotion: 0
+  m_AngularYMotion: 2
   m_AngularZMotion: 2
   m_LinearLimitSpring:
     spring: 0
@@ -3481,7 +3486,7 @@ ConfigurableJoint:
   m_YMotion: 2
   m_ZMotion: 0
   m_AngularXMotion: 2
-  m_AngularYMotion: 0
+  m_AngularYMotion: 2
   m_AngularZMotion: 2
   m_LinearLimitSpring:
     spring: 0
@@ -3577,7 +3582,7 @@ ConfigurableJoint:
   m_YMotion: 2
   m_ZMotion: 0
   m_AngularXMotion: 2
-  m_AngularYMotion: 0
+  m_AngularYMotion: 2
   m_AngularZMotion: 2
   m_LinearLimitSpring:
     spring: 0
@@ -3673,7 +3678,7 @@ ConfigurableJoint:
   m_YMotion: 2
   m_ZMotion: 0
   m_AngularXMotion: 2
-  m_AngularYMotion: 0
+  m_AngularYMotion: 2
   m_AngularZMotion: 2
   m_LinearLimitSpring:
     spring: 0
@@ -5274,8 +5279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundChecker: {fileID: 6758490157615344774}
   SelfRigidbody: {fileID: 6758490157615344773}
-  RotateSpeed: 150
+  RotateSpeed: 130
   RotateDelay: 6
+  Speed: 0.09
 --- !u!114 &7321269416440040754
 MonoBehaviour:
   m_ObjectHideFlags: 0

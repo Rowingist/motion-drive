@@ -7,6 +7,7 @@ namespace CodeBase.Logic.CarParts
   {
     public ConfigurableJoint[] TargetJoints;
     public HeroCarOnGroundChecker GroundChecker;
+    public SuspensionJointReset SuspensionJoints;
 
     private SoftJointLimit[] _defaultZAngularLimits;
 
@@ -14,14 +15,26 @@ namespace CodeBase.Logic.CarParts
     {
       CacheAngularLimits();
 
-      GroundChecker.TookOff += ReduceAngularLimits;
-      GroundChecker.LandedOnGround += ResetAngularLimits;
+      GroundChecker.TookOff += OnStopAnyMovement;
+      GroundChecker.LandedOnGround += OnStartMovement;
     }
 
     private void OnDestroy()
     {
-      GroundChecker.TookOff -= ReduceAngularLimits;
-      GroundChecker.LandedOnGround -= ResetAngularLimits;
+      GroundChecker.TookOff -= OnStopAnyMovement;
+      GroundChecker.LandedOnGround -= OnStartMovement;
+    }
+
+    private void OnStopAnyMovement()
+    {
+      SuspensionJoints.StopMove();
+      ReduceAngularLimits();
+    }
+
+    private void OnStartMovement()
+    {
+      SuspensionJoints.Reset();
+      ResetAngularLimits();
     }
 
     private void CacheAngularLimits()
