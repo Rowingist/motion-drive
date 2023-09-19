@@ -131,7 +131,7 @@ namespace CodeBase.HeroFollowingTarget
     }
 
     private float GetMinDot(int layer) =>
-      ((1 << layer)) == 0 ? _minGroundDotProduct : _minStairsDotProduct;
+      1 << layer == 0 ? _minGroundDotProduct : _minStairsDotProduct;
 
     private void UpdateState()
     {

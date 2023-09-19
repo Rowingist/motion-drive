@@ -9,9 +9,11 @@ using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
+using CodeBase.Logic.UI;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using GG.Infrastructure.Utils.Swipe;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 
@@ -38,7 +40,7 @@ namespace CodeBase.Infrastructure.Factory
       await _assets.Load<GameObject>(AssetAddress.CheckPointsHub);
     }
 
-    public async Task<GameObject> CreateHud()
+    public async Task<GameObject> CreateHud(GameObject heroCar)
     {
       GameObject hud = await InstantiateRegisteredAsync(AssetAddress.HudPath);
 
@@ -50,7 +52,7 @@ namespace CodeBase.Infrastructure.Factory
       GameObject joystick = await InstantiateRegisteredAsync(AssetAddress.JoystickPath, under);
 
       InputJoystick = joystick.GetComponentInChildren<DrivingJoystick>();
-
+      
       return joystick;
     }
 
@@ -106,12 +108,13 @@ namespace CodeBase.Infrastructure.Factory
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
       heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub, loadingCurtain);
-      HeroCarRotationInAir heroCarRotationInAir = heroCar.GetComponent<HeroCarRotationInAir>();
-      heroCarRotationInAir.Construct(inputService);
-      heroCar.GetComponentInChildren<HeroCarRotateLookPoint>().Construct(heroCarRotationInAir, InputJoystick);
       heroCar.GetComponent<WheelsDrive>().Construct(inputService, followingTarget.GetComponent<Rigidbody>());
       heroCar.GetComponent<WheelSteering>().Construct(inputService);
       heroCar.GetComponent<BodyViewChanger>().Construct(bodyPrefab);
+      HeroCarOnGroundChecker heroCarOnGroundChecker = heroCar.GetComponent<HeroCarOnGroundChecker>();
+      heroCar.GetComponent<HeroCarSwipeRotationInAir>().Construct(
+        heroCarOnGroundChecker, heroCar.GetComponent<SwipeListener>());
+      heroCar.GetComponentInChildren<SpringMovementRepeater>(heroCarOnGroundChecker);
       
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);

@@ -50,7 +50,7 @@ GraphicsSettings:
     m_Tier: 2
     m_Settings:
       standardShaderQuality: 1
-      renderingPath: 1
+      renderingPath: 2
       hdrMode: 2
       realtimeGICPUUsage: 25
       useReflectionProbeBoxProjection: 0

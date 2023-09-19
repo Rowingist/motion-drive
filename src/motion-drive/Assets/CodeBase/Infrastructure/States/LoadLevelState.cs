@@ -63,8 +63,6 @@ namespace CodeBase.Infrastructure.States
     {
       LevelStaticData levelData = LevelStaticData();
 
-      GameObject hud = await InitHud();
-      GameObject joystick = await InitJoystick(hud.transform);
       
       List<GameObject> checkPoints = await InitCheckPoints(levelData);
       GameObject checkPointsHub = await InitCheckPointsHub(checkPoints, levelData);
@@ -74,15 +72,18 @@ namespace CodeBase.Infrastructure.States
 
       GameObject heroFollowingTarget = await InitPlayerFollowingTarget(levelData);
       GameObject heroCar = await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);
-      CameraFollow(heroFollowingTarget);
+      CameraFollow(heroCar);
+
+      GameObject hud = await InitHud(heroCar);
+      GameObject joystick = await InitJoystick(hud.transform);
     }
 
     private LevelStaticData LevelStaticData() =>
       _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
-    private async Task<GameObject> InitHud()
+    private async Task<GameObject> InitHud(GameObject heroCar)
     {
-      GameObject hud = await _gameFactory.CreateHud();
+      GameObject hud = await _gameFactory.CreateHud(heroCar);
 
       return hud;
     }
@@ -136,9 +137,9 @@ namespace CodeBase.Infrastructure.States
         progressReader.LoadProgress(_progressService.Progress);
     }
 
-    private void CameraFollow(GameObject HeroFollowingTarget)
+    private void CameraFollow(GameObject HeroCar)
     {
-      Camera.main.GetComponentInParent<CameraFollow>().Follow(HeroFollowingTarget);
+      Camera.main.GetComponentInParent<CameraFollow>().Follow(HeroCar);
     }
   }
 }

@@ -10,7 +10,7 @@ namespace CodeBase.HeroCar
     private HeroCarRotationInAir _rotateAxis;
     private Joystick _joystick;
 
-    private bool _isRotateEnabled;
+    public bool _isRotateEnabled;
     private bool _isInversionRotation;
 
     public void SetInversionRotation(bool value) =>
@@ -58,7 +58,6 @@ namespace CodeBase.HeroCar
 
       transform.position = _isInversionRotation == false ? _positionJoystick : _positionJoystickInverse;
     }
-
 
     private void OnDragged() =>
       transform.position = _rotateAxisPositionOffset;

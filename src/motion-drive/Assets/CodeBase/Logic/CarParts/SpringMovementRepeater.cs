@@ -1,3 +1,4 @@
+using CodeBase.HeroCar;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -10,11 +11,20 @@ namespace CodeBase.Logic.CarParts
 
     private Vector3 _following;
     private Vector3 _velocity;
+    private HeroCarOnGroundChecker _groundChecker;
 
+    private void Construct(HeroCarOnGroundChecker onGroundChecker)
+    {
+      _groundChecker = onGroundChecker;
+    }
+    
     private void Update()
     {
-      _following.y = InverseSpringTransformPoint();
-      transform.localPosition = SmoothFollowing();
+      if (_groundChecker && _groundChecker.IsOnGround)
+      {
+        _following.y = InverseSpringTransformPoint();
+        transform.localPosition = SmoothFollowing();
+      }
     }
 
     private float InverseSpringTransformPoint() =>

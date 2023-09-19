@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using CodeBase.Services.Input;
 using UnityEngine;
 
@@ -40,9 +41,11 @@ namespace CodeBase.HeroCar
     public bool IsOnlyTwoRotateAxis => _isOnlyTwoRotateAxis;
 
     public Vector3 Angle => _angle;
-
-    public void Construct(IInputService inputService) =>
+    
+    public void Construct(IInputService inputService)
+    {
       _inputService = inputService;
+    }
 
     private void OnEnable()
     {
@@ -51,10 +54,8 @@ namespace CodeBase.HeroCar
       CrashChecker.Crashed += OnLanded;
     }
 
-    private void Start()
-    {
+    private void Start() => 
       transform.parent = null;
-    }
 
     private void OnDisable()
     {
@@ -84,7 +85,7 @@ namespace CodeBase.HeroCar
       {
         _coordX = Input.GetAxis("Mouse X") * RotationSpeed * Time.fixedDeltaTime * _disablerX;
         _coordY = Input.GetAxis("Mouse Y") * RotationSpeed * Time.fixedDeltaTime * _disablerY;
-        
+
         _lastRotateAngle = RotateAngle;
         _isDrag = false;
 
@@ -122,10 +123,14 @@ namespace CodeBase.HeroCar
 
     private void LookRotate()
     {
-      Quaternion targetRotation = Quaternion.LookRotation(RotateLookPoint.transform.position - transform.position);
-
-      transform.rotation =
-        Quaternion.RotateTowards(transform.rotation, targetRotation, AdditionalTurnSpeed * Time.deltaTime);
+      Vector3 lookVector = RotateLookPoint.transform.position - transform.position;
+      
+      if (lookVector != Vector3.zero)
+      {
+        Quaternion targetRotation = Quaternion.LookRotation(lookVector);
+        transform.rotation =
+          Quaternion.RotateTowards(transform.rotation, targetRotation, AdditionalTurnSpeed * Time.deltaTime);
+      }
     }
 
 
