@@ -10,5 +10,7 @@ namespace CodeBase.Infrastructure.AssetManagement
     public const string CheckPoint = "CheckPointTrigger";
     public const string CameraSwitchPointsHub = "CameraSwitchPointsHub";
     public const string CameraSwitchPoint = "CameraSwitchPoint";
+    public const string MovementSettingsPointsHub = "MovementSettingsPointsHub";
+    public const string MovementSettingsPoint = "MovementSettingsPoint";
   }
 }

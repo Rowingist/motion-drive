@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: CameraSwitchPoint
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: bf3620705b9398b49b1dc1903dcf8530
+    m_Address: MovementSettingsPointsHub
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d7a0f4c4612f214db73bbbfc121bb19
+    m_Address: MovementSettingsPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

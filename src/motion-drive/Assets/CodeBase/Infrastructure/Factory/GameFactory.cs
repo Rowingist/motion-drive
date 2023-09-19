@@ -9,10 +9,12 @@ using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
+using CodeBase.Logic.MovementSettingsChangePoint;
 using CodeBase.Logic.UI;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using CodeBase.StaticData.Level;
 using GG.Infrastructure.Utils.Swipe;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
@@ -86,6 +88,23 @@ namespace CodeBase.Infrastructure.Factory
     {
       GameObject hub = await InstantiateRegisteredAsync(AssetAddress.CameraSwitchPointsHub);
       hub.GetComponent<CameraSwitchPointsHub>().Construct(switchPoints, cameraFollow, cameraLookAt);
+
+      return hub;
+    }
+    
+    public async Task<GameObject> CreateMoveSettingsPoint(Vector3 at, LevelMovementSettingPointStaticData levelMovementSettingsPointData)
+    {
+      GameObject moveSettingsPoint = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPoint);
+      moveSettingsPoint.transform.position = at;
+      moveSettingsPoint.GetComponent<MovementSettingsPoint>().Construct(levelMovementSettingsPointData);
+      
+      return moveSettingsPoint;
+    }
+    
+    public async Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints, GameObject followingTarget)
+    {
+      GameObject hub = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPointsHub);
+      hub.GetComponent<MovementSettingsPointsHub>().Construct(SettingsPoints, followingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>());
 
       return hub;
     }

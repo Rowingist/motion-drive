@@ -1,6 +1,7 @@
 using System.Linq;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CheckPoint;
+using CodeBase.Logic.MovementSettingsChangePoint;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Level;
 using UnityEditor;
@@ -38,6 +39,12 @@ namespace CodeBase.Editor
         
         levelData.LevelCameraSwitchPointsHub.Points = FindObjectsOfType<CameraSwitchPointMarker>()
           .Select(x => new LevelCameraSwitchPointStaticData(x.transform.position, x.FollowSetting, x.LookAtSetting))
+          .Reverse().ToArray();
+        
+        levelData.LevelMovementSettingPointsHub.Points = FindObjectsOfType<MovementSettingsPointMarker>()
+          .Select(x => new LevelMovementSettingPointStaticData(x.transform.position,
+            x.MaxSpeed, x.Acceleration, x.HorizontalDragPerVelocity, x.MaxLiftingAngle, x.MaxGroundHoldingSpeed,
+            x.HoldingOnGroundHeight, x.SnapToGroundSpeed, x.GroundDetectionDistance))
           .Reverse().ToArray();
       }
       

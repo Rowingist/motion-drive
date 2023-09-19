@@ -19,8 +19,11 @@ namespace CodeBase.Logic.CheckPoint
 
     private void Subscribe()
     {
-      foreach (GameObject checkPoint in _levelCheckPoints) 
+      foreach (GameObject checkPoint in _levelCheckPoints)
+      {
         checkPoint.GetComponent<CheckPoint>().Reached += UpdateCheckPointPosition;
+        checkPoint.transform.parent = transform;
+      } 
     }
 
     private void OnDestroy() => 

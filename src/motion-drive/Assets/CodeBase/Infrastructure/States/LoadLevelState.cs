@@ -74,8 +74,28 @@ namespace CodeBase.Infrastructure.States
       GameObject heroCar = await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);
       CameraFollow(heroCar);
 
+      List<GameObject> movementSettingsPoints = await InitMovementSettingsPoints(levelData);
+      await InitMovementSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
+      
       GameObject hud = await InitHud(heroCar);
       GameObject joystick = await InitJoystick(hud.transform);
+    }
+
+    private async Task InitMovementSettingsPointsHub(List<GameObject> movementSettingsPoints, GameObject heroFollowingTarget) => 
+      await _gameFactory.CreateMoveSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
+
+    private async Task<List<GameObject>> InitMovementSettingsPoints(LevelStaticData levelData)
+    {
+      var movementSettingsPoints = new List<GameObject>();
+
+      foreach (var pointStaticData in levelData.LevelMovementSettingPointsHub.Points)
+      {
+        var data = (LevelMovementSettingPointStaticData)pointStaticData;
+        movementSettingsPoints.Add(
+          await _gameFactory.CreateMoveSettingsPoint(pointStaticData.Position, data));
+      }
+
+      return movementSettingsPoints;
     }
 
     private LevelStaticData LevelStaticData() =>
@@ -97,9 +117,11 @@ namespace CodeBase.Infrastructure.States
     private async Task<List<GameObject>> InitCheckPoints(LevelStaticData levelStaticData)
     {
       var checkPoints = new List<GameObject>();
-      
-      foreach (LevelCheckPointsStaticData pointsStaticData in levelStaticData.LevelCheckPointsHub.Points)
-        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.PointPosition, pointsStaticData.RaycastOnGroundOffset));
+
+      foreach (var pointsStaticData in levelStaticData.LevelCheckPointsHub.Points)
+      {
+        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.Position, pointsStaticData.RaycastOnGroundOffset));
+      }
 
       return checkPoints;
     }
@@ -110,9 +132,11 @@ namespace CodeBase.Infrastructure.States
     private async Task<List<GameObject>> InitCameraSwitchPoints(LevelStaticData levelStaticData)
     {
       var cameraSwitchPoints = new List<GameObject>();
-      
-      foreach (LevelCameraSwitchPointStaticData point in levelStaticData.LevelCameraSwitchPointsHub.Points)
+
+      foreach (var point in levelStaticData.LevelCameraSwitchPointsHub.Points)
+      {
         cameraSwitchPoints.Add(await _gameFactory.CreateCameraSwitchPoint(point.Position, point.FollowSetting, point.LookAtSetting));
+      }
 
       return cameraSwitchPoints;
     }

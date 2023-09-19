@@ -8,6 +8,7 @@ using CodeBase.Services;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.StaticData.HeroCars;
+using CodeBase.StaticData.Level;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factory
@@ -27,5 +28,9 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateCheckPointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition);
     Task<GameObject> CreateCameraSwitchPoint(Vector3 at, Vector3 followSetting, Vector3 lookAtSetting);
     Task<GameObject> CreateCameraSwitchPointsHub(List<GameObject> switchPoints, CameraFollow cameraFollow, CameraLookAt cameraLookAt);
+    Task<GameObject> CreateMoveSettingsPoint(Vector3 at,
+      LevelMovementSettingPointStaticData levelMovementSettingsPointData);
+    Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints,
+      GameObject followingTarget);
   }
 }
