@@ -17,7 +17,7 @@ namespace CodeBase.Infrastructure.Factory
     List<ISavedProgressReader> ProgressReaders { get; }
     List<ISavedProgress> ProgressWriters { get; }
     Joystick InputJoystick { get; }
-    Task<GameObject> CreateHud();
+    Task<GameObject> CreateHud(GameObject heroCar);
     void Cleanup();
     Task<GameObject> CreateJoystick(Transform under);
     Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData);

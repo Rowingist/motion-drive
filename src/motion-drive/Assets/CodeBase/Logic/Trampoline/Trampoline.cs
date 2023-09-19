@@ -1,4 +1,6 @@
 using System.Collections;
+using CodeBase.Logic.CarParts;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CodeBase.Logic.Trampoline
@@ -61,8 +63,11 @@ namespace CodeBase.Logic.Trampoline
 
     private void TriggerEnter(Collider obj)
     {
-      if (obj.TryGetComponent(out TriggerObserver heroCar) && ObjectLayerIsPlayer(heroCar)) 
+      if (obj.TryGetComponent(out TriggerObserver heroCar) && ObjectLayerIsPlayer(heroCar))
+      {
         _lastTakeOffHorizontalForce = heroCar.transform.forward.x;
+        heroCar.transform.parent.transform.DORotate(Vector3.zero, 1);
+      }
     }
 
     private static bool ObjectLayerIsPlayer(TriggerObserver heroCar) =>
@@ -81,6 +86,8 @@ namespace CodeBase.Logic.Trampoline
       Rigidbody targetBody = heroFollowingTarget.GetComponent<Rigidbody>();
       Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       targetBody.velocity = targetForward * _defaultTakeOffPower;
+      
+      targetBody.AddForce(Vector3.forward * 3);
 
       // if(_guaranteedTakeOff == true)
       // {

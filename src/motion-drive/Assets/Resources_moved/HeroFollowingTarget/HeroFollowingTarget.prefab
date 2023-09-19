@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowingTarget: {fileID: 1486592096315519225}
-  _tricksForMaxBoost: 1
+  _tricksForMaxBoost: 2
   MaxBoostSpeed: 100
   DefaultBoostSpeed: 50
-  MaxBoosAcceleration: 100
+  MaxBoosAcceleration: 50
   DefaultBoostAcceleration: 30
 --- !u!1 &9148587671610251292
 GameObject:
@@ -193,7 +193,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9148587671610251292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -66,13 +66,8 @@ namespace CodeBase.HeroCar.TricksInAir
     {
       _isBoosting = true;
 
-      float t = 0;
-      while (t < 1f)
-      {
-        t += Time.deltaTime / BoostDuration;
-        yield return null;
-      }
-
+      yield return new WaitForSecondsRealtime(BoostDuration);
+      
       _isBoosting = false;
       Finished?.Invoke();
     }

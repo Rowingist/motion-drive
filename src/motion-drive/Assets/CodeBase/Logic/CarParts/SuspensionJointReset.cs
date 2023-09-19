@@ -24,8 +24,14 @@ namespace CodeBase.Logic.CarParts
       }
     }
 
-    private void StopBodySpring() =>
+    private void StopBodySpring()
+    {
       BodySpring.yMotion = ConfigurableJointMotion.Locked;
+      Rigidbody rigid = BodySpring.GetComponent<Rigidbody>();
+        
+      rigid.velocity = Vector3.zero;
+      rigid.angularVelocity = Vector3.zero;
+    }
 
 
     public void Reset()
@@ -42,6 +48,11 @@ namespace CodeBase.Logic.CarParts
         joint.angularXMotion = ConfigurableJointMotion.Free;
         joint.angularZMotion = ConfigurableJointMotion.Free;
         joint.angularYMotion = ConfigurableJointMotion.Free;
+
+        Rigidbody rigid = joint.GetComponent<Rigidbody>();
+        
+        rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
       }
     }
 
