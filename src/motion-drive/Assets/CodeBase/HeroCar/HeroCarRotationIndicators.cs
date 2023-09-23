@@ -5,7 +5,7 @@ namespace CodeBase.HeroCar
   public class HeroCarRotationIndicators : MonoBehaviour
   {
     public HeroCarOnGroundChecker GroundChecker;
-    public GameObject[] Indicators;
+    public GameObject Indicator;
 
     private void Start()
     {
@@ -19,16 +19,10 @@ namespace CodeBase.HeroCar
       GroundChecker.LandedOnGround -= DisableIndicators;
     }
 
-    private void EnableIndicators()
-    {
-      foreach (GameObject indicator in Indicators) 
-        indicator.gameObject.SetActive(true);
-    }
+    private void EnableIndicators() => 
+      Indicator.gameObject.SetActive(true);
 
-    private void DisableIndicators()
-    {
-      foreach (GameObject indicator in Indicators) 
-        indicator.gameObject.SetActive(false);
-    }
+    private void DisableIndicators() => 
+      Indicator.gameObject.SetActive(false);
   }
 }

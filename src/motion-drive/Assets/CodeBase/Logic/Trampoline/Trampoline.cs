@@ -86,17 +86,6 @@ namespace CodeBase.Logic.Trampoline
       Rigidbody targetBody = heroFollowingTarget.GetComponent<Rigidbody>();
       Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       targetBody.velocity = targetForward * _defaultTakeOffPower;
-      
-      targetBody.AddForce(Vector3.forward * 3);
-
-      // if(_guaranteedTakeOff == true)
-      // {
-      //   playerCar.SphereControl.SetMaxSpeedToSnap(0);
-      //   playerCar.CheckPreset(playerCar.StandartPreset, true);
-      // }
-      //
-      // if (_isSpringboardForTricks == true)
-      //   playerCar.SphereControl.SpeedUpAfterTrick();
     }
 
     private IEnumerator EnablingSnapping(HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget)

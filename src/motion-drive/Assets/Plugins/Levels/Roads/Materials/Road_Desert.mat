@@ -15,7 +15,7 @@ Material:
   - _UNITYSHADOWMODE_MULTIPLY
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -48,11 +48,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 0954dd08731d2174bb84c6a48e382e11, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 10, y: 31.75}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1127fcbac1c95894e86da8e747101ae1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 080cd0eba5c1a2f4ea4ec6aa8bab2569, type: 3}
         m_Scale: {x: 6, y: 20}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -122,8 +122,8 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.75333214, b: 0.40251565, a: 1}
-    - _ColorDim: {r: 0.990566, g: 0.762758, b: 0.47347802, a: 1}
+    - _Color: {r: 1, g: 0.6813245, b: 0.23113209, a: 1}
+    - _ColorDim: {r: 0.4245283, g: 0.25471094, b: 0.038047362, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
     - _ColorDimExtra: {r: 1, g: 0.8253523, b: 0.6462264, a: 1}
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}

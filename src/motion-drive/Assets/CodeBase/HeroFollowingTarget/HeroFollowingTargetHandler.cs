@@ -1,3 +1,4 @@
+using System.Collections;
 using CodeBase.HeroCar.TricksInAir;
 using UnityEngine;
 
@@ -7,39 +8,62 @@ namespace CodeBase.HeroFollowingTarget
   {
     public HeroFollowingTarget FollowingTarget;
     
-    public int _tricksForMaxBoost = 3;
-    
     public float MaxBoostSpeed;
-    public float DefaultBoostSpeed;
+    public float DefaultSpeed;
     public float MaxBoosAcceleration;
-    public float DefaultBoostAcceleration;
+    public float DefaultAcceleration;
     
     private BoostEffectAfterLanding _boostEffect;
-
+    private Coroutine _boostedMove;
+    
     public void Construct(BoostEffectAfterLanding boostEffect)
     {
       _boostEffect = boostEffect;
-      _boostEffect.Boosted += SetMoveSettings;
-      _boostEffect.Finished += ResetToDefaults;
+      _boostEffect.Started += SetMoveSettings;
+
+      SetDefaults();
     }
-    
+
     private void OnDestroy()
     {
-      _boostEffect.Boosted -= SetMoveSettings;
-      _boostEffect.Finished -= ResetToDefaults;
+      _boostEffect.Started -= SetMoveSettings;
     }
 
-    public void ResetToDefaults() => 
-      MoveWith(DefaultBoostSpeed, DefaultBoostAcceleration);
-
-    private void SetMoveSettings(int powerOf)
+    private void SetMoveSettings()
     {
-      if (powerOf > 0)
+      StopActiveCoroutine();
+      
+      _boostedMove = StartCoroutine(MoveWithAdditionalPower());
+      //FollowingTarget.GetComponent<Rigidbody>().AddForce(FollowingTarget.transform.forward * 15, ForceMode.VelocityChange);
+    }
+
+    private void StopActiveCoroutine()
+    {
+      if (_boostedMove != null)
       {
-        if (powerOf >= _tricksForMaxBoost)
-          MoveWith(MaxBoostSpeed, MaxBoosAcceleration);
+        StopCoroutine(_boostedMove);
+        _boostedMove = null;
       }
     }
+
+    private IEnumerator MoveWithAdditionalPower()
+    {
+      MoveWith(MaxBoostSpeed, MaxBoosAcceleration);
+      
+      while (_boostEffect.IsBoosting)
+        yield return null;
+
+      ResetToDefaults();
+    }
+
+    private void SetDefaults()
+    {
+      DefaultSpeed = FollowingTarget.MaxSpeed;
+      DefaultAcceleration = FollowingTarget.MaxAcceleration;
+    }
+
+    private void ResetToDefaults() => 
+      MoveWith(DefaultSpeed, DefaultAcceleration);
 
     private void MoveWith(float speed, float acceleration)
     {

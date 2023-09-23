@@ -41,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6265036439519492483, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2195
+      value: 516
       objectReference: {fileID: 0}
     - target: {fileID: 6265036440654990588, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 466
+      value: 434
       objectReference: {fileID: 0}
     - target: {fileID: 6265036440654990591, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: FollowSetting.y
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6265036440654990591, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: FollowSetting.z
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6265036440654990591, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: LookAtSetting.x
-      value: 15
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 7881010258048052827, guid: fc734e61bb3585e4c96a96a6b4190e71, type: 3}
       propertyPath: m_Name

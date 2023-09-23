@@ -8,7 +8,7 @@ QualitySettings:
   m_QualitySettings:
   - serializedVersion: 2
     name: Main
-    pixelLightCount: 4
+    pixelLightCount: 1
     shadows: 1
     shadowResolution: 1
     shadowProjection: 0
@@ -21,8 +21,8 @@ QualitySettings:
     skinWeights: 4
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 2
-    softParticles: 1
+    antiAliasing: 0
+    softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
@@ -39,7 +39,7 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
-    resolutionScalingFixedDPIFactor: 1
+    resolutionScalingFixedDPIFactor: 0
     customRenderPipeline: {fileID: 0}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
