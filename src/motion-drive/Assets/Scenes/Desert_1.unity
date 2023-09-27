@@ -218,15 +218,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4894950164802057699, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 4894950165508624904, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9515139
+      value: 0.8820447
       objectReference: {fileID: 0}
     - target: {fileID: 4894950165508624904, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.30760574
+      value: -0.47116587
       objectReference: {fileID: 0}
     - target: {fileID: 4894950165974755460, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -235,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 4894950165974755460, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_LocalPosition.z
       value: 89.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894950166029842665, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
+      propertyPath: TakeOffAngle
+      value: 56.22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
@@ -723,10 +727,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3695464529644101216}
     m_Modifications:
-    - target: {fileID: 1707130336993107416, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 85.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5806246708310746748, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
