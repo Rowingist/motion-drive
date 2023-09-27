@@ -19,29 +19,44 @@ MonoBehaviour:
     Position: {x: 0, y: 0, z: 0}
   LevelCheckPointsHub:
     Points:
-    - Position: {x: 0, y: -3.9, z: 446}
-      RaycastOnGroundOffset: {x: 0, y: -3.9, z: 531.1}
-    - Position: {x: 0, y: 5.6, z: 266.5}
-      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 268.36}
     - Position: {x: 0, y: 5.6, z: 91.4}
       RaycastOnGroundOffset: {x: 0, y: 5.6, z: 93.26}
+    - Position: {x: 0, y: 5.6, z: 266.5}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 268.36}
+    - Position: {x: 0, y: -3.9, z: 446}
+      RaycastOnGroundOffset: {x: 0, y: -3.9, z: 531.1}
   LevelCameraSwitchPointsHub:
     Points:
-    - Position: {x: 0, y: 0, z: 145}
-      FollowSetting: {x: 0, y: 3.4, z: -20}
-      LookAtSetting: {x: 5.5, y: 0, z: 0}
-    - Position: {x: 0, y: 0, z: 434}
-      FollowSetting: {x: 0, y: 16, z: -20}
-      LookAtSetting: {x: 33, y: 0, z: 0}
-    - Position: {x: 0, y: -273, z: 516}
-      FollowSetting: {x: 0, y: 8, z: -20}
-      LookAtSetting: {x: 15, y: 0, z: 0}
     - Position: {x: 0, y: 0, z: -100}
-      FollowSetting: {x: 0, y: 16, z: -20}
+      FollowSetting: {x: 0, y: 13, z: -17.8}
+      LookAtSetting: {x: 37, y: 0, z: 0}
+    - Position: {x: 0, y: 0, z: 145}
+      FollowSetting: {x: 0, y: 5.5, z: -22}
+      LookAtSetting: {x: 5.5, y: 0, z: 0}
+    - Position: {x: 0, y: 0, z: 419.5}
+      FollowSetting: {x: 0, y: 13, z: -17.4}
+      LookAtSetting: {x: 33, y: 0, z: 0}
+    - Position: {x: 0, y: -71, z: 516}
+      FollowSetting: {x: 0, y: 9.5, z: -20}
+      LookAtSetting: {x: 18.3, y: 0, z: 0}
+    - Position: {x: 0, y: -182, z: 1283.3}
+      FollowSetting: {x: 0, y: 13, z: -17.4}
+      LookAtSetting: {x: 33, y: 0, z: 0}
+    - Position: {x: 0, y: -179.6, z: 1212.5}
+      FollowSetting: {x: 0, y: 5.5, z: -22}
+      LookAtSetting: {x: 5.5, y: 0, z: 0}
+    - Position: {x: 0, y: -231.6, z: 1389.8}
+      FollowSetting: {x: 0, y: 9.5, z: -20}
+      LookAtSetting: {x: 18.3, y: 0, z: 0}
+    - Position: {x: 0, y: -293.3, z: 2110.2}
+      FollowSetting: {x: 0, y: 5.5, z: -22}
+      LookAtSetting: {x: 5.5, y: 0, z: 0}
+    - Position: {x: 0, y: -295.69998, z: 2181}
+      FollowSetting: {x: 0, y: 13, z: -17.4}
       LookAtSetting: {x: 33, y: 0, z: 0}
   LevelMovementSettingPointsHub:
     Points:
-    - Position: {x: 0, y: 0, z: -39}
+    - Position: {x: 0, y: 0, z: 1380}
       MaxSpeed: 1
       Acceleration: 2
       HorizontalDragPerVelocity: 3
@@ -59,7 +74,7 @@ MonoBehaviour:
       HoldingOnGroundHeight: 6
       SnapToGroundSpeed: 7
       GroundDetectionDistance: 8
-    - Position: {x: 0, y: 0, z: 1380}
+    - Position: {x: 0, y: 0, z: -39}
       MaxSpeed: 1
       Acceleration: 2
       HorizontalDragPerVelocity: 3

@@ -11,7 +11,6 @@ namespace CodeBase.HeroCar.Effects
 
     [SerializeField] private int _firstStep;
     [SerializeField] private int _secondStep;
-    [SerializeField] private int _thirdStep;
 
     private HeroCarSwipeRotationInAir _swipeRotationInAir;
     private HeroCarOnGroundChecker _groundChecker;
@@ -46,6 +45,8 @@ namespace CodeBase.HeroCar.Effects
 
     private void UpdateEffects()
     {
+      PlayPointUpEffect();
+
       switch (_nextCounter)
       {
         case 2:
@@ -53,14 +54,14 @@ namespace CodeBase.HeroCar.Effects
           ActivateNextEffect();
           break;
         case 4:
-          _nextCounter = _thirdStep;
-          ActivateNextEffect();
-          break;
-        case 6:
+          _nextCounter = 6;
           ActivateNextEffect();
           break;
       }
     }
+
+    private void PlayPointUpEffect() => 
+      _effects[^1].gameObject.SetActive(true);
 
     private void DisableAll()
     {

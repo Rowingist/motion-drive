@@ -253,5 +253,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameRunner
       objectReference: {fileID: 0}
+    - target: {fileID: 8801519012702579267, guid: f85c7f504765a5b43a27315e675b067d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f85c7f504765a5b43a27315e675b067d, type: 3}

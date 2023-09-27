@@ -30,6 +30,6 @@ namespace CodeBase.Logic.CameraSwitchPoint
     }
 
     private void SetCameraTransformAtStart() => 
-      _levelCameraSwitchPoints[^1].GetComponent<CameraSwitchPoint>().SetDefaultOnFirstGate();
+      _levelCameraSwitchPoints[0].GetComponent<CameraSwitchPoint>().SetDefaultOnFirstGate();
   }
 }

@@ -135,7 +135,7 @@ namespace CodeBase.Infrastructure.Factory
       HeroCarOnGroundChecker heroCarOnGroundChecker = heroCar.GetComponent<HeroCarOnGroundChecker>();
       heroCar.GetComponent<HeroCarSwipeRotationInAir>().Construct(
         heroCarOnGroundChecker, heroCar.GetComponent<SwipeListener>(), followingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>());
-      heroCar.GetComponentInChildren<SpringMovementRepeater>(heroCarOnGroundChecker);
+      heroCar.GetComponentInChildren<SpringMovementRepeater>().Construct(heroCarOnGroundChecker);
       HeroCarAirTricksCounter heroCarAirTricksCounter = heroCar.GetComponentInChildren<HeroCarAirTricksCounter>();
       heroCar.GetComponentInChildren<LandingEffect>().Construct(heroCarOnGroundChecker, heroCarRespawn, 
         heroCarAirTricksCounter);
@@ -144,7 +144,12 @@ namespace CodeBase.Infrastructure.Factory
         heroCarOnGroundChecker, heroCarAirTricksCounter);
       
       heroCar.GetComponentInChildren<CameraFOVEffect>().Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
-      
+
+      JointRotationRepeater[] repeaters = heroCar.GetComponentsInChildren<JointRotationRepeater>();
+
+      foreach (JointRotationRepeater repeater in repeaters) 
+        repeater.Construct(heroCarOnGroundChecker);
+
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);
       followingTarget.GetComponent<HeroFollowingTargetHandler>()
