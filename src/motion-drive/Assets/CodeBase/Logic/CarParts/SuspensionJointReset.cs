@@ -17,10 +17,10 @@ namespace CodeBase.Logic.CarParts
     {
       foreach (ConfigurableJoint joint in BodyRotation)
       {
-        joint.yMotion = ConfigurableJointMotion.Locked;
-        joint.angularXMotion = ConfigurableJointMotion.Locked;
-        joint.angularZMotion = ConfigurableJointMotion.Locked;
-        joint.angularYMotion = ConfigurableJointMotion.Locked;
+        joint.yMotion = Constants.Locked;
+        joint.angularXMotion = Constants.Locked;
+        joint.angularZMotion = Constants.Locked;
+        joint.angularYMotion = Constants.Locked;
       }
     }
 
@@ -44,10 +44,10 @@ namespace CodeBase.Logic.CarParts
     {
       foreach (ConfigurableJoint joint in BodyRotation)
       {
-        joint.yMotion = ConfigurableJointMotion.Free;
-        joint.angularXMotion = ConfigurableJointMotion.Free;
-        joint.angularZMotion = ConfigurableJointMotion.Free;
-        joint.angularYMotion = ConfigurableJointMotion.Free;
+        joint.yMotion = Constants.Free;
+        joint.angularXMotion = Constants.Free;
+        joint.angularZMotion = Constants.Free;
+        joint.angularYMotion = Constants.Free;
 
         Rigidbody rigid = joint.GetComponent<Rigidbody>();
         

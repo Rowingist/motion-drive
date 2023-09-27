@@ -3,7 +3,7 @@ using System;
 namespace CodeBase.StaticData.Level
 {
   [Serializable]
-  public class LevelCameraSwitchPointsHubStaticData
+  public class LevelCameraSwitchPointsHubStaticData 
   {
     public LevelCameraSwitchPointStaticData[] Points;
 

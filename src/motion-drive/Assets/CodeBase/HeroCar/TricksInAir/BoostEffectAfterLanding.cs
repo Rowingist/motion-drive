@@ -7,19 +7,25 @@ namespace CodeBase.HeroCar.TricksInAir
 {
   public class BoostEffectAfterLanding : MonoBehaviour
   {
-    public HeroCarAirTricksCounter[] TricksCounters;
+    public HeroCarAirTricksCounter TricksCounter;
     public HeroCarOnGroundChecker GroundChecker;
     public HeroCarCrashChecker CrashChecker;
     public HeroCarLandingEvaluator LandingEvaluator;
-    public float BoostDuration;
     
-    private bool _isBoosting;
+    public float BoostDuration;
+    public int MinFlipsToBoost;
+    
+    public bool IsBoosting;
 
     private Coroutine _boosting;
 
-    public event Action<int> Boosted;
-    public event Action Finished;
-    
+    public event Action Started;
+
+    private HeroFollowingTarget.HeroFollowingTarget _heroFollowingTarget;
+
+    public void Construct(HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget) => 
+      _heroFollowingTarget = heroFollowingTarget;
+
     private void Start()
     {
       CrashChecker.Crashed += StopBoostEffect;
@@ -41,16 +47,15 @@ namespace CodeBase.HeroCar.TricksInAir
     {
       if (LandingEvaluator.IsHorizontalLandingWithSlowDown || LandingEvaluator.IsVerticalLandWithSlowDown) return;
       
-      if (_isBoosting) 
+      if (IsBoosting) 
         StopActiveCoroutine();
 
-      _boosting = StartCoroutine(Boosting());
-      Boosted?.Invoke(TricksCount());
+      if(EnoughFlipsReached())
+        _boosting = StartCoroutine(Boosting());
     }
 
-    private int TricksCount() => 
-      TricksCounters.Sum(counter => counter.CompletedFlipsCached);
-
+    private bool EnoughFlipsReached() => 
+      TricksCounter.CompletedFlips >= MinFlipsToBoost;
 
     private void StopActiveCoroutine()
     {
@@ -58,18 +63,19 @@ namespace CodeBase.HeroCar.TricksInAir
       {
         StopCoroutine(_boosting);
         _boosting = null;
-        _isBoosting = false;
+        IsBoosting = false;
       }
     }
 
     private IEnumerator Boosting()
     {
-      _isBoosting = true;
-
+      IsBoosting = true;
+      _heroFollowingTarget.IsBoosting = true;
+      Started?.Invoke();
       yield return new WaitForSecondsRealtime(BoostDuration);
       
-      _isBoosting = false;
-      Finished?.Invoke();
+      IsBoosting = false;
+      _heroFollowingTarget.IsBoosting = false;
     }
   }
 }

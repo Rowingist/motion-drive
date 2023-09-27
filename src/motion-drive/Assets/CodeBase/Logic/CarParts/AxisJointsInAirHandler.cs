@@ -52,13 +52,17 @@ namespace CodeBase.Logic.CarParts
         SoftJointLimit newLimit = new SoftJointLimit();
         newLimit.limit = 0;
         targetJoint.angularZLimit = newLimit;
+        targetJoint.angularZMotion = Constants.Locked;
       }
     }
     
     private void ResetAngularLimits()
     {
       for (int i = 0; i < TargetJoints.Length; i++)
-         TargetJoints[i].angularZLimit = _defaultZAngularLimits[i];
+      {
+        TargetJoints[i].angularZLimit = _defaultZAngularLimits[i];
+        TargetJoints[i].angularZMotion = Constants.Free;
+      }
     }
   }
 }

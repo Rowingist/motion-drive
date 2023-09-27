@@ -1,3 +1,4 @@
+using CodeBase.HeroCar.TricksInAir;
 using CodeBase.Services.Input;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace CodeBase.HeroFollowingTarget
   [RequireComponent(typeof(Rigidbody))]
   public class HeroFollowingTarget : MonoBehaviour
   {
-    private const float FallSmoothTime = 10f;
+    public float FallSmoothTime = 10f;
 
     [Header("Movement settings")] [Range(0f, 100f)]
     public float MaxSpeed = 10f;
@@ -16,6 +17,7 @@ namespace CodeBase.HeroFollowingTarget
     [SerializeField, Range(0f, 100f)] private float _maxAirAcceleration = 1f;
     [SerializeField, Range(0f, 90f)] private float _maxGroundAngle = 25f;
     [SerializeField, Range(0f, 100f)] private float _horizontalForce = 0;
+
     [SerializeField] private AnimationCurve _horizontalDragPerVelocity;
     //[SerializeField] private float _aligningSpeed = 4f;
 
@@ -25,7 +27,7 @@ namespace CodeBase.HeroFollowingTarget
     [SerializeField, Min(0f)] private float _distanceToBeginSnap = 1f;
     [SerializeField] private LayerMask _snapSurfaceMask = -1;
     [SerializeField] private float _snapToGroundSpeed = 1;
-    
+
     private Rigidbody _rigidbody;
     private IInputService _playerInput;
 
@@ -45,7 +47,9 @@ namespace CodeBase.HeroFollowingTarget
 
     private bool OnGround => _groundContactCount > 0;
 
-    public void Construct(IInputService input) => 
+    public bool IsBoosting;
+
+    public void Construct(IInputService input) =>
       _playerInput = input;
 
     private void OnValidate() =>
@@ -74,10 +78,19 @@ namespace CodeBase.HeroFollowingTarget
       ClearState();
     }
 
-    public void DisableSnapping() => 
-      _isSnapping = false;   
-    public void EnableSnapping() => 
+    public void DisableSnapping() =>
+      _isSnapping = false;
+
+    public void EnableSnapping() =>
       _isSnapping = true;
+
+    public void AddDirectionalForceInAir(Vector3 direction)
+    {
+      if (OnGround)
+        return;
+
+      _rigidbody.AddForce(direction, ForceMode.VelocityChange);
+    }
 
     private void SpeedUpLanding()
     {
@@ -99,12 +112,20 @@ namespace CodeBase.HeroFollowingTarget
 
     private void Update()
     {
-      if(_playerInput == null)
+      if (_playerInput == null)
         return;
 
-      Vector2 playerInput;
+      Vector2 playerInput = Vector2.zero;
+      if (IsBoosting)
+      {
+        playerInput.y = 1;
+      }
+      else if (_playerInput != null)
+      {
+        playerInput.y = _playerInput.IsFingerHoldOnScreen() ? 1 : 0;
+      }
+
       playerInput.x = _playerInput.IsFingerHoldOnScreen() ? _playerInput.Axis.x : 0;
-      playerInput.y = _playerInput.IsFingerHoldOnScreen() ? 1 : 0;
       playerInput = Vector2.ClampMagnitude(playerInput, 1f);
 
       _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * MaxSpeed;
@@ -150,7 +171,7 @@ namespace CodeBase.HeroFollowingTarget
     {
       if (!_isSnapping)
         return false;
-      
+
       if (_stepsSinceLastGrounded > 1)
         return false;
 
@@ -212,7 +233,7 @@ namespace CodeBase.HeroFollowingTarget
 
     private Vector3 ProjectOnContactPlane(Vector3 vector) =>
       vector - _contactNormal * Vector3.Dot(vector, _contactNormal);
-    
+
     private void ClearState()
     {
       _groundContactCount = 0;

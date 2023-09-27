@@ -23,10 +23,13 @@ namespace CodeBase.Logic.CameraSwitchPoint
     private void BindSwitchPoints()
     {
       foreach (GameObject point in _levelCameraSwitchPoints)
+      {
         point.GetComponent<CameraSwitchPoint>().Construct(_cameraFollow, _cameraLookAt);
+        point.transform.parent = transform;
+      }
     }
 
     private void SetCameraTransformAtStart() => 
-      _levelCameraSwitchPoints[^1].GetComponent<CameraSwitchPoint>().SetDefaultOnFirstGate();
+      _levelCameraSwitchPoints[0].GetComponent<CameraSwitchPoint>().SetDefaultOnFirstGate();
   }
 }

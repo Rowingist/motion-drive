@@ -15,6 +15,7 @@ namespace CodeBase.StaticData.Level
       Vector3 lookAtSetting)
     {
       Position = position;
+      
       FollowSetting = followSetting;
       LookAtSetting = lookAtSetting;
     }

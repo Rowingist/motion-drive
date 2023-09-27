@@ -15,7 +15,6 @@ namespace CodeBase.HeroCar
 
     private void Start()
     {
-      transform.parent = null;
       _defaultParent = transform.parent;
 
       _carRespawn.Completed += StopJointsOnRespawn;

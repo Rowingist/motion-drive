@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.CameraLogic;
+using CodeBase.CameraLogic.Effects;
 using CodeBase.HeroCar;
+using CodeBase.HeroCar.Effects;
 using CodeBase.HeroCar.TricksInAir;
 using CodeBase.HeroFollowingTarget;
 using CodeBase.Infrastructure.AssetManagement;
@@ -9,10 +11,11 @@ using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
 using CodeBase.Logic.CheckPoint;
-using CodeBase.Logic.UI;
+using CodeBase.Logic.MovementSettingsChangePoint;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using CodeBase.StaticData.Level;
 using GG.Infrastructure.Utils.Swipe;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
@@ -89,6 +92,23 @@ namespace CodeBase.Infrastructure.Factory
 
       return hub;
     }
+    
+    public async Task<GameObject> CreateMoveSettingsPoint(Vector3 at, LevelMovementSettingPointStaticData levelMovementSettingsPointData)
+    {
+      GameObject moveSettingsPoint = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPoint);
+      moveSettingsPoint.transform.position = at;
+      moveSettingsPoint.GetComponent<MovementSettingsPoint>().Construct(levelMovementSettingsPointData);
+      
+      return moveSettingsPoint;
+    }
+    
+    public async Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints, GameObject followingTarget)
+    {
+      GameObject hub = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPointsHub);
+      hub.GetComponent<MovementSettingsPointsHub>().Construct(SettingsPoints, followingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>());
+
+      return hub;
+    }
 
     public async Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService playerProgress)
     {
@@ -107,19 +127,35 @@ namespace CodeBase.Infrastructure.Factory
       
       GameObject heroCar = await InstantiateRegisteredAsync(AssetAddress.HeroCarPath);
       heroCar.GetComponent<HeroCarMove>().Construct(followingTarget.GetComponent<Rigidbody>());
-      heroCar.GetComponent<HeroCarRespawn>().Construct(pointsHub, loadingCurtain);
+      HeroCarRespawn heroCarRespawn = heroCar.GetComponent<HeroCarRespawn>();
+      heroCarRespawn.Construct(pointsHub, loadingCurtain);
       heroCar.GetComponent<WheelsDrive>().Construct(inputService, followingTarget.GetComponent<Rigidbody>());
       heroCar.GetComponent<WheelSteering>().Construct(inputService);
       heroCar.GetComponent<BodyViewChanger>().Construct(bodyPrefab);
       HeroCarOnGroundChecker heroCarOnGroundChecker = heroCar.GetComponent<HeroCarOnGroundChecker>();
       heroCar.GetComponent<HeroCarSwipeRotationInAir>().Construct(
-        heroCarOnGroundChecker, heroCar.GetComponent<SwipeListener>());
-      heroCar.GetComponentInChildren<SpringMovementRepeater>(heroCarOnGroundChecker);
+        heroCarOnGroundChecker, heroCar.GetComponent<SwipeListener>(), followingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>());
+      heroCar.GetComponentInChildren<SpringMovementRepeater>().Construct(heroCarOnGroundChecker);
+      HeroCarAirTricksCounter heroCarAirTricksCounter = heroCar.GetComponentInChildren<HeroCarAirTricksCounter>();
+      heroCar.GetComponentInChildren<LandingEffect>().Construct(heroCarOnGroundChecker, heroCarRespawn, 
+        heroCarAirTricksCounter);
       
+      heroCar.GetComponentInChildren<GainingRotationPointsInAirEffect>().Construct( heroCar.GetComponent<HeroCarSwipeRotationInAir>(), 
+        heroCarOnGroundChecker, heroCarAirTricksCounter);
+      
+      heroCar.GetComponentInChildren<CameraFOVEffect>().Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
+
+      JointRotationRepeater[] repeaters = heroCar.GetComponentsInChildren<JointRotationRepeater>();
+
+      foreach (JointRotationRepeater repeater in repeaters) 
+        repeater.Construct(heroCarOnGroundChecker);
+
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);
       followingTarget.GetComponent<HeroFollowingTargetHandler>()
         .Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
+      
+      heroCar.GetComponent<BoostEffectAfterLanding>().Construct(followingTarget.GetComponent<HeroFollowingTarget.HeroFollowingTarget>());
       
       _heroCarProviderService.HeroCar = heroCar;
 

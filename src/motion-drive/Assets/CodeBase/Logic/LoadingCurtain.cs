@@ -7,7 +7,7 @@ namespace CodeBase.Logic
   {
     private const float HideStep = 0.03f;
     
-    public CanvasGroup Curtain;
+    //public CanvasGroup Curtain;
 
     private void Awake()
     {
@@ -17,21 +17,23 @@ namespace CodeBase.Logic
     public void Show()
     {
       gameObject.SetActive(true);
-      Curtain.alpha = 1;
+      //Curtain.alpha = 1;
     }
 
     public void Hide()
-    {
-      StartCoroutine(DoFadeIn());
+    {      
+      gameObject.SetActive(false);
+
+      //StartCoroutine(DoFadeIn());
     }
 
     private IEnumerator DoFadeIn()
     {
       WaitForSeconds fadeInSeconds = new WaitForSeconds(HideStep);
       
-      while (Curtain.alpha > 0f)
+      while(true) //(//Curtain.alpha > 0f)
       {
-        Curtain.alpha -= HideStep;
+        //Curtain.alpha -= HideStep;
         yield return fadeInSeconds;
       }
       
