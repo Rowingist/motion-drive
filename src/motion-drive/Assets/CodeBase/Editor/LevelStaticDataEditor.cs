@@ -14,6 +14,7 @@ namespace CodeBase.Editor
   public class LevelStaticDataEditor : UnityEditor.Editor
   {
     private const string InitialPointTag = "InitialPoint";
+    private const string FinalPointTag = "FinalPoint";
 
     public override void OnInspectorGUI()
     {
@@ -46,6 +47,8 @@ namespace CodeBase.Editor
             x.MaxSpeed, x.Acceleration, x.HorizontalDragPerVelocity, x.MaxLiftingAngle, x.MaxGroundHoldingSpeed,
             x.HoldingOnGroundHeight, x.SnapToGroundSpeed, x.GroundDetectionDistance))
           .Reverse().ToArray();
+
+        levelData.FinishZPosition = GameObject.FindWithTag(FinalPointTag).transform.position.z;
       }
       
       EditorUtility.SetDirty(target);

@@ -7,6 +7,8 @@ using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.SaveLoad;
 using CodeBase.Services.StaticData;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 
 namespace CodeBase.Infrastructure.States
 {

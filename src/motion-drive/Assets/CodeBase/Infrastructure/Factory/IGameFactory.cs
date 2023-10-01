@@ -9,6 +9,8 @@ using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.StaticData.HeroCars;
 using CodeBase.StaticData.Level;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factory
@@ -18,7 +20,7 @@ namespace CodeBase.Infrastructure.Factory
     List<ISavedProgressReader> ProgressReaders { get; }
     List<ISavedProgress> ProgressWriters { get; }
     Joystick InputJoystick { get; }
-    Task<GameObject> CreateHud(GameObject heroCar);
+    Task<GameObject> CreateHud(float finishZPosition, GameObject heroCar, GameObject followingTarget);
     void Cleanup();
     Task<GameObject> CreateJoystick(Transform under);
     Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData);

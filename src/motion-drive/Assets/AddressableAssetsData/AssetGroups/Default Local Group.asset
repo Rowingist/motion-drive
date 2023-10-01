@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: MovementSettingsPoint
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 90946afae56580b4bb3dcaee4ea90371
+    m_Address: RaceConditionIndicators
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

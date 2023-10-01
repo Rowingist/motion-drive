@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InitialPoint
   - CheckPoint
+  - FinalPoint
   layers:
   - Default
   - TransparentFX
@@ -40,12 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 2D
+    uniqueID: 845093435
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: OnGroundEffects
+  - name: 3D
     uniqueID: 3142358515
-    locked: 0
-  - name: Ground
-    uniqueID: 2226033487
     locked: 0

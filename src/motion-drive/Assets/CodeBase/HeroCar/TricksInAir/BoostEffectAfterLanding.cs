@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using CodeBase.FollowingTarget;
 using UnityEngine;
 
 namespace CodeBase.HeroCar.TricksInAir
@@ -21,9 +22,9 @@ namespace CodeBase.HeroCar.TricksInAir
 
     public event Action Started;
 
-    private HeroFollowingTarget.HeroFollowingTarget _heroFollowingTarget;
+    private HeroFollowingTarget _heroFollowingTarget;
 
-    public void Construct(HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget) => 
+    public void Construct(HeroFollowingTarget heroFollowingTarget) => 
       _heroFollowingTarget = heroFollowingTarget;
 
     private void Start()
