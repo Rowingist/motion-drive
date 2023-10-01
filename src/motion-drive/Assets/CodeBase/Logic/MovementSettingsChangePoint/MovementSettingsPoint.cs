@@ -1,3 +1,4 @@
+using CodeBase.FollowingTarget;
 using CodeBase.StaticData.Level;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
     private float _snapToGroundSpeed;
     private float _groundDetectionDistance;
 
-    private HeroFollowingTarget.HeroFollowingTarget _followingTarget; 
+    private HeroFollowingTarget _followingTarget; 
     
     public void Construct(LevelMovementSettingPointStaticData pointStaticData)
     {
@@ -32,7 +33,7 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
       _groundDetectionDistance = pointStaticData.GroundDetectionDistance;
     }
 
-    public void Construct(HeroFollowingTarget.HeroFollowingTarget followingTarget)
+    public void Construct(HeroFollowingTarget followingTarget)
     {
       _followingTarget = followingTarget;
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using CodeBase.HeroCar.TricksInAir;
 using UnityEngine;
 
-namespace CodeBase.HeroFollowingTarget
+namespace CodeBase.FollowingTarget
 {
   public class HeroFollowingTargetHandler : MonoBehaviour
   {

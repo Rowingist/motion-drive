@@ -4,7 +4,7 @@ using CodeBase.Logic.CheckPoint;
 using DG.Tweening;
 using UnityEngine;
 
-namespace CodeBase.HeroFollowingTarget
+namespace CodeBase.FollowingTarget
 {
   public class HeroFollowingTargetRespawn : MonoBehaviour
   {

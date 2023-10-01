@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using CodeBase.Logic;
 using CodeBase.Logic.CheckPoint;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 using UnityEngine;
 
 namespace CodeBase.HeroCar

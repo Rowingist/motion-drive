@@ -1,6 +1,8 @@
 using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
 using CodeBase.Services;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 
 namespace CodeBase.Infrastructure
 {

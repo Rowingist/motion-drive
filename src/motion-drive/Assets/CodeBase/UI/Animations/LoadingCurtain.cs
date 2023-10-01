@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CodeBase.Logic
+namespace CodeBase.UI.Animations
 {
+  [RequireComponent(typeof(CanvasGroup))]
   public class LoadingCurtain : MonoBehaviour
   {
     private const float HideStep = 0.03f;
     
-    //public CanvasGroup Curtain;
+    public CanvasGroup Curtain;
 
     private void Awake()
     {
@@ -17,23 +18,21 @@ namespace CodeBase.Logic
     public void Show()
     {
       gameObject.SetActive(true);
-      //Curtain.alpha = 1;
+      Curtain.alpha = 1;
     }
 
     public void Hide()
-    {      
-      gameObject.SetActive(false);
-
-      //StartCoroutine(DoFadeIn());
+    {
+      StartCoroutine(DoFadeIn());
     }
 
     private IEnumerator DoFadeIn()
     {
       WaitForSeconds fadeInSeconds = new WaitForSeconds(HideStep);
       
-      while(true) //(//Curtain.alpha > 0f)
+      while(Curtain.alpha > 0f)
       {
-        //Curtain.alpha -= HideStep;
+        Curtain.alpha -= HideStep;
         yield return fadeInSeconds;
       }
       

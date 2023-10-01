@@ -1,5 +1,7 @@
 using CodeBase.Infrastructure.States;
 using CodeBase.Logic;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure

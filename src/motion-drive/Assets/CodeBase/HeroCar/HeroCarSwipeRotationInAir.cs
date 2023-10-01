@@ -1,4 +1,5 @@
 using System;
+using CodeBase.FollowingTarget;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -14,13 +15,13 @@ namespace CodeBase.HeroCar
     private SwipeListener _swipeListener;
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotate;
     private HeroCarOnGroundChecker _groundChecker;
-    private HeroFollowingTarget.HeroFollowingTarget _heroFollowingTarget;
+    private HeroFollowingTarget _heroFollowingTarget;
 
     public float DirectionForce = 1f;
     
     public event Action Flipped; 
 
-    public void Construct(HeroCarOnGroundChecker groundChecker, SwipeListener swipeListener, HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget)
+    public void Construct(HeroCarOnGroundChecker groundChecker, SwipeListener swipeListener, HeroFollowingTarget heroFollowingTarget)
     {
       _groundChecker = groundChecker;
       InitSwipeListener(swipeListener);

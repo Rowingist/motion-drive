@@ -1,9 +1,7 @@
-using CodeBase.HeroCar.TricksInAir;
 using CodeBase.Services.Input;
-using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 
-namespace CodeBase.HeroFollowingTarget
+namespace CodeBase.FollowingTarget
 {
   [RequireComponent(typeof(Rigidbody))]
   public class HeroFollowingTarget : MonoBehaviour
@@ -48,6 +46,8 @@ namespace CodeBase.HeroFollowingTarget
     private bool OnGround => _groundContactCount > 0;
 
     public bool IsBoosting;
+
+    public float Velocity => _velocity.magnitude;
 
     public void Construct(IInputService input) =>
       _playerInput = input;

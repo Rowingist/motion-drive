@@ -1,4 +1,5 @@
 using System.Collections;
+using CodeBase.FollowingTarget;
 using CodeBase.Logic.CarParts;
 using DG.Tweening;
 using UnityEngine;
@@ -75,11 +76,11 @@ namespace CodeBase.Logic.Trampoline
 
     private void TriggerExit(Collider obj)
     {
-      if (obj.TryGetComponent(out HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget))
+      if (obj.TryGetComponent(out HeroFollowingTarget heroFollowingTarget))
         TakeOff(heroFollowingTarget);
     }
 
-    private void TakeOff(HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget)
+    private void TakeOff(HeroFollowingTarget heroFollowingTarget)
     {
       heroFollowingTarget.DisableSnapping();
       StartCoroutine(EnablingSnapping(heroFollowingTarget));
@@ -88,7 +89,7 @@ namespace CodeBase.Logic.Trampoline
       targetBody.velocity = targetForward * _defaultTakeOffPower;
     }
 
-    private IEnumerator EnablingSnapping(HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget)
+    private IEnumerator EnablingSnapping(HeroFollowingTarget heroFollowingTarget)
     {
       yield return new WaitForSecondsRealtime(1f);
       heroFollowingTarget.EnableSnapping();

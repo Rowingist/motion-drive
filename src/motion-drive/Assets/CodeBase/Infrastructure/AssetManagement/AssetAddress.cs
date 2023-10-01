@@ -12,5 +12,6 @@ namespace CodeBase.Infrastructure.AssetManagement
     public const string CameraSwitchPoint = "CameraSwitchPoint";
     public const string MovementSettingsPointsHub = "MovementSettingsPointsHub";
     public const string MovementSettingsPoint = "MovementSettingsPoint";
+    public const string RaceConditionIndicators = "RaceConditionIndicators";
   }
 }

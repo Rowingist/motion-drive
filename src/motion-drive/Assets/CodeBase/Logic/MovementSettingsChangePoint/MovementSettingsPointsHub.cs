@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CodeBase.FollowingTarget;
 using UnityEngine;
 
 namespace CodeBase.Logic.MovementSettingsChangePoint
@@ -6,10 +7,10 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
   public class MovementSettingsPointsHub : MonoBehaviour
   {
     private List<GameObject> _movementSettingPoints;
-    private HeroFollowingTarget.HeroFollowingTarget _heroFollowingTarget;
+    private HeroFollowingTarget _heroFollowingTarget;
 
     public void Construct(List<GameObject> movementSettingPoints,
-      HeroFollowingTarget.HeroFollowingTarget heroFollowingTarget)
+      HeroFollowingTarget heroFollowingTarget)
     {
       _movementSettingPoints = movementSettingPoints;
       _heroFollowingTarget = heroFollowingTarget;

@@ -10,6 +10,8 @@ using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.StaticData;
 using CodeBase.StaticData;
 using CodeBase.StaticData.Level;
+using CodeBase.UI;
+using CodeBase.UI.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +28,8 @@ namespace CodeBase.Infrastructure.States
     private readonly IInputService _inputService;
 
     public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-      IPersistentProgressService progressService, IGameFactory gameFactory, IStaticDataService staticData, IInputService inputService)
+      IPersistentProgressService progressService, IGameFactory gameFactory, IStaticDataService staticData,
+      IInputService inputService)
     {
       _gameStateMachine = gameStateMachine;
       _sceneLoader = sceneLoader;
@@ -63,7 +66,7 @@ namespace CodeBase.Infrastructure.States
     {
       LevelStaticData levelData = LevelStaticData();
 
-      
+
       List<GameObject> checkPoints = await InitCheckPoints(levelData);
       GameObject checkPointsHub = await InitCheckPointsHub(checkPoints, levelData);
 
@@ -76,12 +79,13 @@ namespace CodeBase.Infrastructure.States
 
       List<GameObject> movementSettingsPoints = await InitMovementSettingsPoints(levelData);
       await InitMovementSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
-      
-      GameObject hud = await InitHud(heroCar);
+
+      GameObject hud = await InitHud(levelData, heroCar, heroFollowingTarget);
       GameObject joystick = await InitJoystick(hud.transform);
     }
 
-    private async Task InitMovementSettingsPointsHub(List<GameObject> movementSettingsPoints, GameObject heroFollowingTarget) => 
+    private async Task InitMovementSettingsPointsHub(List<GameObject> movementSettingsPoints,
+      GameObject heroFollowingTarget) =>
       await _gameFactory.CreateMoveSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
 
     private async Task<List<GameObject>> InitMovementSettingsPoints(LevelStaticData levelData)
@@ -90,7 +94,7 @@ namespace CodeBase.Infrastructure.States
 
       foreach (var pointStaticData in levelData.LevelMovementSettingPointsHub.Points)
       {
-        var data = (LevelMovementSettingPointStaticData)pointStaticData;
+        var data = pointStaticData;
         movementSettingsPoints.Add(
           await _gameFactory.CreateMoveSettingsPoint(pointStaticData.Position, data));
       }
@@ -101,9 +105,9 @@ namespace CodeBase.Infrastructure.States
     private LevelStaticData LevelStaticData() =>
       _staticData.ForLevel(SceneManager.GetActiveScene().name);
 
-    private async Task<GameObject> InitHud(GameObject heroCar)
+    private async Task<GameObject> InitHud(LevelStaticData levelData, GameObject heroCar, GameObject followingTarget)
     {
-      GameObject hud = await _gameFactory.CreateHud(heroCar);
+      GameObject hud = await _gameFactory.CreateHud(levelData.FinishZPosition, heroCar, followingTarget);
 
       return hud;
     }
@@ -120,37 +124,42 @@ namespace CodeBase.Infrastructure.States
 
       foreach (var pointsStaticData in levelStaticData.LevelCheckPointsHub.Points)
       {
-        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.Position, pointsStaticData.RaycastOnGroundOffset));
+        checkPoints.Add(await _gameFactory.CreateCheckPoint(pointsStaticData.Position,
+          pointsStaticData.RaycastOnGroundOffset));
       }
 
       return checkPoints;
     }
 
-    private async Task<GameObject> InitCheckPointsHub(List<GameObject> checkPoints, LevelStaticData levelData) => 
+    private async Task<GameObject> InitCheckPointsHub(List<GameObject> checkPoints, LevelStaticData levelData) =>
       await _gameFactory.CreateCheckPointsHub(checkPoints, levelData.InitialHeroPosition);
-    
+
     private async Task<List<GameObject>> InitCameraSwitchPoints(LevelStaticData levelStaticData)
     {
       var cameraSwitchPoints = new List<GameObject>();
 
       foreach (var point in levelStaticData.LevelCameraSwitchPointsHub.Points)
       {
-        cameraSwitchPoints.Add(await _gameFactory.CreateCameraSwitchPoint(point.Position, point.FollowSetting, point.LookAtSetting));
+        cameraSwitchPoints.Add(
+          await _gameFactory.CreateCameraSwitchPoint(point.Position, point.FollowSetting, point.LookAtSetting));
       }
 
       return cameraSwitchPoints;
     }
 
-    private async Task<GameObject> InitCameraSwitchPointsHub(List<GameObject> cameraSwitchPoints) => 
-      await _gameFactory.CreateCameraSwitchPointsHub(cameraSwitchPoints, Camera.main.GetComponentInParent<CameraFollow>(), Camera.main.GetComponentInParent<CameraLookAt>());
+    private async Task<GameObject> InitCameraSwitchPointsHub(List<GameObject> cameraSwitchPoints) =>
+      await _gameFactory.CreateCameraSwitchPointsHub(cameraSwitchPoints,
+        Camera.main.GetComponentInParent<CameraFollow>(), Camera.main.GetComponentInParent<CameraLookAt>());
 
     private async Task<GameObject> InitPlayerFollowingTarget(LevelStaticData levelStaticData) =>
-      await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition, _inputService, _progressService);
+      await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition, _inputService,
+        _progressService);
 
-    private async Task<GameObject> InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget, GameObject checkPointsHub, IInputService inputService)
+    private async Task<GameObject> InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget,
+      GameObject checkPointsHub, IInputService inputService)
     {
       GameObject bodyPrefab = _staticData.ForCar(_progressService.Progress.HeroGarage.ActiveCar).Prefab;
-      
+
       return await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub,
         inputService, _loadingCurtain, bodyPrefab);
     }
