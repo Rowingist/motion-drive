@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &360626086 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2510853739969052785, guid: ac273882acc772c4fa512c440997d318, type: 3}
+  m_PrefabInstance: {fileID: 4470759174926134212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &798761924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,10 +1382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera Container
       objectReference: {fileID: 0}
-    - target: {fileID: 955817145590253235, guid: ac273882acc772c4fa512c440997d318, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1106648440127015404, guid: ac273882acc772c4fa512c440997d318, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1445,6 +1446,18 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1726068989}
+    - target: {fileID: 3059095814265740287, guid: ac273882acc772c4fa512c440997d318, type: 3}
+      propertyPath: m_Cameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 360626086}
+    - target: {fileID: 3614918839668541741, guid: ac273882acc772c4fa512c440997d318, type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232957627984687636, guid: ac273882acc772c4fa512c440997d318, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac273882acc772c4fa512c440997d318, type: 3}
 --- !u!1001 &7697356079536760989

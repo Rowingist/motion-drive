@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using CodeBase.HeroCar;
 using UnityEngine;
@@ -16,10 +17,10 @@ namespace CodeBase.UI.Elements
     {
       _finishPositionZ = finishPositionZ;
       _heroCar = heroCar;
-
+      
       StartCoroutine(UpdatePlayerPositionInfo());
     }
-
+    
     private IEnumerator UpdatePlayerPositionInfo()
     {
       WaitForSecondsRealtime updateRoutine = new WaitForSecondsRealtime(UpdateRate);

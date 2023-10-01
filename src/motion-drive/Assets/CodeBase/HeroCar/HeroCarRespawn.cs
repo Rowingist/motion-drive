@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using CodeBase.Logic;
 using CodeBase.Logic.CheckPoint;
-using CodeBase.UI;
 using CodeBase.UI.Animations;
 using UnityEngine;
 
@@ -14,6 +12,8 @@ namespace CodeBase.HeroCar
     private CheckPointsHub _checkPointsHub;
     private LoadingCurtain _loadingCurtain;
 
+    private HeroCarJoints _carJoints;
+    
     public event Action Completed;
     
     public bool IsRespawning { get; private set; }
@@ -22,6 +22,8 @@ namespace CodeBase.HeroCar
     {
       _checkPointsHub = checkPointsHub;
       _loadingCurtain = loadingCurtain;
+
+      _carJoints = GetComponentInChildren<HeroCarJoints>();
     }
 
     private void Start() => 
@@ -41,6 +43,7 @@ namespace CodeBase.HeroCar
       yield return new WaitForSecondsRealtime(Constants.RespawnTime);
       _loadingCurtain.Show();
       Completed?.Invoke();
+      yield return new WaitUntil(() => _carJoints.AreReadyToMove);
       yield return new WaitForSecondsRealtime(Constants.TransitionToCheckpointDuration);
       _loadingCurtain.Hide();
       IsRespawning = false;

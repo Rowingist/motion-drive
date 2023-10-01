@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.CameraLogic;
+using CodeBase.CameraLogic.Effects;
 using CodeBase.HeroCar;
+using CodeBase.Infrastructure.Events;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
@@ -172,7 +174,8 @@ namespace CodeBase.Infrastructure.States
 
     private void CameraFollow(GameObject HeroCar)
     {
-      Camera.main.GetComponentInParent<CameraFollow>().Follow(HeroCar);
+      CameraFollow cameraFollow = Camera.main.GetComponentInParent<CameraFollow>();
+      cameraFollow.Follow(HeroCar);
     }
   }
 }

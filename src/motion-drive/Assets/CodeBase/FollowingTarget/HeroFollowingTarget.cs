@@ -45,7 +45,7 @@ namespace CodeBase.FollowingTarget
 
     private bool OnGround => _groundContactCount > 0;
 
-    public bool IsBoosting;
+    public bool IsBoosting { get; private set; }
 
     public float Velocity => _velocity.magnitude;
 
@@ -60,6 +60,11 @@ namespace CodeBase.FollowingTarget
       _rigidbody = GetComponent<Rigidbody>();
       EnableSnapping();
     }
+
+    public void StartBoosting() => 
+      IsBoosting = true;
+    public void StopBoosting() => 
+      IsBoosting = false;
 
     private void FixedUpdate()
     {
@@ -123,6 +128,10 @@ namespace CodeBase.FollowingTarget
       else if (_playerInput != null)
       {
         playerInput.y = _playerInput.IsFingerHoldOnScreen() ? 1 : 0;
+      }
+      else
+      {
+        playerInput.y = 0f;
       }
 
       playerInput.x = _playerInput.IsFingerHoldOnScreen() ? _playerInput.Axis.x : 0;

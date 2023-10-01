@@ -13,6 +13,8 @@ namespace CodeBase.HeroCar
 
     private Transform _defaultParent;
 
+    public bool AreReadyToMove = true;
+
     private void Start()
     {
       _defaultParent = transform.parent;
@@ -36,6 +38,7 @@ namespace CodeBase.HeroCar
     {
       float t = 0f;
 
+      AreReadyToMove = false;
       _jointReset.StopMove();
       
       while (t < 1f)
@@ -51,6 +54,7 @@ namespace CodeBase.HeroCar
       }
       
       _jointReset.Reset();
+      AreReadyToMove = true;
     }
   }
 }

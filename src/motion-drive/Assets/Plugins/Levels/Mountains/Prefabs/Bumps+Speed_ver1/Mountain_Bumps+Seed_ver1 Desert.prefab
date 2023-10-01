@@ -359,6 +359,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7547684802192651915, guid: fde67efb931767540a5a7c05d3ffb400, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.061
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547684802192651915, guid: fde67efb931767540a5a7c05d3ffb400, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860000020571457581, guid: fde67efb931767540a5a7c05d3ffb400, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8953657234100036214, guid: fde67efb931767540a5a7c05d3ffb400, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 18

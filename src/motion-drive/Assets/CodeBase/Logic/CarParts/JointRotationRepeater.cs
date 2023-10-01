@@ -1,4 +1,7 @@
+using System;
 using CodeBase.HeroCar;
+using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -9,51 +12,34 @@ namespace CodeBase.Logic.CarParts
     public float Speed;
     private HeroCarOnGroundChecker _groundChecker;
 
-    private bool IsFollowing;
+    public bool IsNeedToCheckGround;
 
     public void Construct(HeroCarOnGroundChecker groundChecker)
     {
       _groundChecker = groundChecker;
-      SubscribeOnGroundCheckEvents();
-    }
-    
-    private void SubscribeOnGroundCheckEvents()
-    {
-      _groundChecker.TookOff += StopFollowDelayed;
-      _groundChecker.LandedOnGround += StartFollow;
-    }
 
-    private void StartFollow() => 
-      IsFollowing = true;
-
-    private void StopFollowDelayed()
-    {
-      Invoke(nameof(StopFollow), Constants.DisableJointsAfterTookOffDelay);
-    }
-    
-    private void StopFollow()
-    {
-      IsFollowing = false;
+      _groundChecker.TookOff += MakeProperRotation;
     }
 
     private void Update()
     {
-      if(!IsFollowing)
-        return;
+      if (IsNeedToCheckGround)
+        if (!(_groundChecker && _groundChecker.IsOnGround))
+          return;
 
-      transform.rotation = NewRotation();
+          transform.rotation = NewRotation();
     }
 
     private void OnDestroy() => 
-      CleanUp();
+      _groundChecker.TookOff -= MakeProperRotation;
 
-    private void CleanUp()
+    private void MakeProperRotation()
     {
-      _groundChecker.TookOff -= StopFollowDelayed;
-      _groundChecker.LandedOnGround -= StartFollow;
+      if (IsNeedToCheckGround)
+        transform.DORotate(Vector3.zero, .2f);
     }
 
-    private Quaternion NewRotation() => 
+    private Quaternion NewRotation() =>
       Quaternion.Lerp(transform.rotation, Rotator.rotation, Time.deltaTime * Speed);
   }
 }

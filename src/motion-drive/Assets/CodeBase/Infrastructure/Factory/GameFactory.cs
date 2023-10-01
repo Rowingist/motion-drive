@@ -7,6 +7,8 @@ using CodeBase.HeroCar;
 using CodeBase.HeroCar.Effects;
 using CodeBase.HeroCar.TricksInAir;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Events;
+using CodeBase.Infrastructure.Events.LevelStart.Subscribers;
 using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
@@ -56,7 +58,6 @@ namespace CodeBase.Infrastructure.Factory
       indicators.GetComponentInChildren<ProgressActorUI>().Construct(finishPosition, heroCar.GetComponent<HeroCarMove>());
       
       indicators.GetComponentInChildren<SpeedActorUI>().Construct(followingTarget.GetComponent<HeroFollowingTarget>());
-      
       
       return hud;
     }
@@ -150,12 +151,17 @@ namespace CodeBase.Infrastructure.Factory
       heroCar.GetComponentInChildren<LandingEffect>().Construct(heroCarOnGroundChecker, heroCarRespawn, 
         heroCarAirTricksCounter);
       
+      
       heroCar.GetComponentInChildren<GainingRotationPointsInAirEffect>().Construct( heroCar.GetComponent<HeroCarSwipeRotationInAir>(), 
         heroCarOnGroundChecker, heroCarAirTricksCounter);
-      
-      heroCar.GetComponentInChildren<CameraFOVEffect>().Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
+
+      BoostEffectAfterLanding boostEffectAfterLanding = heroCar.GetComponent<BoostEffectAfterLanding>();
+      CameraFOVEffect fovEffect = heroCar.GetComponentInChildren<CameraFOVEffect>();
+      fovEffect.Construct(boostEffectAfterLanding);
+      heroCar.GetComponent<BoostEffectOnStartLevelSubscriber>().Construct(fovEffect);
 
       JointRotationRepeater[] repeaters = heroCar.GetComponentsInChildren<JointRotationRepeater>();
+      heroCar.GetComponent<HeroCarDeath>().Construct(followingTarget.GetComponent<HeroFollowingTarget>());
 
       foreach (JointRotationRepeater repeater in repeaters) 
         repeater.Construct(heroCarOnGroundChecker);
@@ -163,9 +169,9 @@ namespace CodeBase.Infrastructure.Factory
       followingTarget.GetComponent<HeroFollowingTargetRespawn>().Construct(heroCar.GetComponent<HeroCarCrashChecker>(),
         pointsHub);
       followingTarget.GetComponent<HeroFollowingTargetHandler>()
-        .Construct(heroCar.GetComponent<BoostEffectAfterLanding>());
+        .Construct(boostEffectAfterLanding);
       
-      heroCar.GetComponent<BoostEffectAfterLanding>().Construct(followingTarget.GetComponent<HeroFollowingTarget>());
+      boostEffectAfterLanding.Construct(followingTarget.GetComponent<HeroFollowingTarget>());
       
       _heroCarProviderService.HeroCar = heroCar;
 

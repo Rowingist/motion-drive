@@ -12,10 +12,10 @@ namespace CodeBase.HeroCar.TricksInAir
     public HeroCarOnGroundChecker GroundChecker;
     public HeroCarCrashChecker CrashChecker;
     public HeroCarLandingEvaluator LandingEvaluator;
-    
+
     public float BoostDuration;
     public int MinFlipsToBoost;
-    
+
     public bool IsBoosting;
 
     private Coroutine _boosting;
@@ -24,7 +24,7 @@ namespace CodeBase.HeroCar.TricksInAir
 
     private HeroFollowingTarget _heroFollowingTarget;
 
-    public void Construct(HeroFollowingTarget heroFollowingTarget) => 
+    public void Construct(HeroFollowingTarget heroFollowingTarget) =>
       _heroFollowingTarget = heroFollowingTarget;
 
     private void Start()
@@ -47,15 +47,15 @@ namespace CodeBase.HeroCar.TricksInAir
     private void BoostAttempt()
     {
       if (LandingEvaluator.IsHorizontalLandingWithSlowDown || LandingEvaluator.IsVerticalLandWithSlowDown) return;
-      
-      if (IsBoosting) 
+
+      if (IsBoosting)
         StopActiveCoroutine();
 
-      if(EnoughFlipsReached())
+      if (EnoughFlipsReached())
         _boosting = StartCoroutine(Boosting());
     }
 
-    private bool EnoughFlipsReached() => 
+    private bool EnoughFlipsReached() =>
       TricksCounter.CompletedFlips >= MinFlipsToBoost;
 
     private void StopActiveCoroutine()
@@ -64,19 +64,20 @@ namespace CodeBase.HeroCar.TricksInAir
       {
         StopCoroutine(_boosting);
         _boosting = null;
-        IsBoosting = false;
       }
+
+      IsBoosting = false;
     }
 
     private IEnumerator Boosting()
     {
       IsBoosting = true;
-      _heroFollowingTarget.IsBoosting = true;
+      _heroFollowingTarget.StartBoosting();
       Started?.Invoke();
       yield return new WaitForSecondsRealtime(BoostDuration);
-      
+
       IsBoosting = false;
-      _heroFollowingTarget.IsBoosting = false;
+      _heroFollowingTarget.StopBoosting();
     }
   }
 }

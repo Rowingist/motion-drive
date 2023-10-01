@@ -46,6 +46,16 @@ namespace CodeBase.FollowingTarget
       }
       
       EnableMovement();
+
+      t = 0;
+      while (t < 1)
+      {
+        FollowingTarget.StartBoosting();
+        t += Time.deltaTime;
+        yield return null;
+      }
+      
+      FollowingTarget.StopBoosting();
     }
     
     private void DisableMovement()
