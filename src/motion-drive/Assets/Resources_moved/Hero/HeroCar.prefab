@@ -4245,6 +4245,7 @@ MonoBehaviour:
   SelfRigidbody: {fileID: 6758490157615344773}
   RotateSpeed: 130
   RotateDelay: 6
+  _followingRigidbody: {fileID: 0}
   Speed: 0.09
 --- !u!114 &7321269416440040754
 MonoBehaviour:

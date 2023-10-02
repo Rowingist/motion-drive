@@ -17,7 +17,7 @@ namespace CodeBase.HeroCar
     private Vector3 _lastPosition;
     private float _rotateSpeedOnStart;
 
-    private Rigidbody _followingRigidbody;
+    public Rigidbody _followingRigidbody;
 
     public void Construct(Rigidbody followingRigidbody)
     {
@@ -53,9 +53,11 @@ namespace CodeBase.HeroCar
 
     private void RotateRigidbody()
     {
-      Quaternion lookFollowingRotation = Quaternion.LookRotation(_followingRigidbody.velocity);
+      //Quaternion lookFollowingRotation = Quaternion.LookRotation(_followingRigidbody.velocity);
+
+      Quaternion newRotation = Quaternion.LookRotation(_followingRigidbody.position - transform.position);
       SelfRigidbody.rotation =
-        Quaternion.RotateTowards(SelfRigidbody.rotation, lookFollowingRotation, RotateSpeed * Time.deltaTime);
+        Quaternion.RotateTowards(SelfRigidbody.rotation, newRotation, RotateSpeed * Time.deltaTime);
     }
 
     private void CacheLastPosition() =>
