@@ -1,4 +1,5 @@
 using System;
+using CodeBase.FollowingTarget;
 using CodeBase.HeroCar;
 using CodeBase.Logic;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace CodeBase.Infrastructure.Events
       if (_isActivated)
         return;
 
-      if (obj.GetComponent<HeroCarMove>())
+      if (obj.GetComponent<HeroFollowingTarget>())
       {
         EventHolder<CurrentLevelFinishInfo>.RaiseRegistrationInfo(new CurrentLevelFinishInfo());
         _isActivated = true;

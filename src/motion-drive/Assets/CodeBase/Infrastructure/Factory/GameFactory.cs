@@ -9,6 +9,7 @@ using CodeBase.HeroCar.TricksInAir;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Events;
 using CodeBase.Infrastructure.Events.LevelStart.Subscribers;
+using CodeBase.Infrastructure.Events.Subscribers;
 using CodeBase.Logic;
 using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Logic.CarParts;
@@ -21,6 +22,7 @@ using CodeBase.StaticData.Level;
 using CodeBase.UI;
 using CodeBase.UI.Animations;
 using CodeBase.UI.Elements;
+using CodeBase.UI.Services.Windows;
 using GG.Infrastructure.Utils.Swipe;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
@@ -31,15 +33,19 @@ namespace CodeBase.Infrastructure.Factory
   {
     private readonly IAssetProvider _assets;
     private readonly IHeroCarProviderService _heroCarProviderService;
+    private readonly IWindowService _windowService;
+    
     public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
     public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 
     public Joystick InputJoystick { get; private set; }
 
-    public GameFactory(IAssetProvider assets, IHeroCarProviderService heroCarProviderService)
+    public GameFactory(IAssetProvider assets, IHeroCarProviderService heroCarProviderService,
+      IWindowService windowService)
     {
       _assets = assets;
       _heroCarProviderService = heroCarProviderService;
+      _windowService = windowService;
     }
     
     public async Task WarmUp()
@@ -58,6 +64,8 @@ namespace CodeBase.Infrastructure.Factory
       indicators.GetComponentInChildren<ProgressActorUI>().Construct(finishPosition, heroCar.GetComponent<HeroCarMove>());
       
       indicators.GetComponentInChildren<SpeedActorUI>().Construct(followingTarget.GetComponent<HeroFollowingTarget>());
+      
+      hud.GetComponentInChildren<EnableFinishCongratulationWindowSubscriber>().Construct(_windowService);
       
       return hud;
     }
@@ -129,6 +137,8 @@ namespace CodeBase.Infrastructure.Factory
       followingTarget.MaxSpeed = playerProgress.Progress.HeroStats.Speed;
       followingTarget.MaxAcceleration = playerProgress.Progress.HeroStats.Acceleration;
 
+      followingTarget.GetComponent<DisableInputOfMovementCar>().Construct(inputService, followingTarget);
+      
       return heroFollowingTarget;
     }
 

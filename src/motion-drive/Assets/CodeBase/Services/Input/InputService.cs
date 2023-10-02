@@ -15,7 +15,9 @@ namespace CodeBase.Services.Input
     public abstract bool IsFingerUpScreen();
     public abstract bool IsFingerDownScreen();
     public abstract bool IsFingerHoldOnScreen();
-    
+    public void Deactivate() => 
+      _gameFactory.InputJoystick.gameObject.SetActive(false);
+
     protected InputService(IGameFactory gameFactory)
     {
       _gameFactory = gameFactory;

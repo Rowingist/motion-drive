@@ -12,7 +12,6 @@ namespace CodeBase.Infrastructure.Events.LevelStart
       if(_isActivated)
         return;
       
-      Debug.Log("level started");
       EventHolder<CurrentLevelStartInfo>.RaiseRegistrationInfo(new CurrentLevelStartInfo());
       _isActivated = true;
     }

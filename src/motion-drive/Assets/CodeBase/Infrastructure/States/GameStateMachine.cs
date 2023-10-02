@@ -9,6 +9,7 @@ using CodeBase.Services.SaveLoad;
 using CodeBase.Services.StaticData;
 using CodeBase.UI;
 using CodeBase.UI.Animations;
+using CodeBase.UI.Services.Factory;
 
 namespace CodeBase.Infrastructure.States
 {
@@ -26,7 +27,7 @@ namespace CodeBase.Infrastructure.States
           services.Single<ISaveLoadService>(), services.Single<IStaticDataService>()),
         [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain,
           services.Single<IPersistentProgressService>(), services.Single<IGameFactory>(),
-          services.Single<IStaticDataService>(), services.Single<IInputService>()),
+          services.Single<IStaticDataService>(), services.Single<IInputService>(), services.Single<IUIFactory>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }

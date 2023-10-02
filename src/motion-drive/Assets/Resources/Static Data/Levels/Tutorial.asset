@@ -25,3 +25,4 @@ MonoBehaviour:
     Points: []
   LevelMovementSettingPointsHub:
     Points: []
+  FinishZPosition: 0

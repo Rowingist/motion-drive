@@ -61,6 +61,11 @@ namespace CodeBase.FollowingTarget
       EnableSnapping();
     }
 
+    public void StopSmooth()
+    {
+      _velocity = Vector3.zero;
+    }
+
     public void StartBoosting() => 
       IsBoosting = true;
     public void StopBoosting() => 

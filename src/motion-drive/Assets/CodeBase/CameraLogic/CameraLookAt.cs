@@ -11,12 +11,7 @@ namespace CodeBase.CameraLogic
 
     private Coroutine _currentRotatingForces;
     private bool _isChangingOffset;
-
-    private void Start()
-    {
-      
-    }
-
+    
     public void OnSetNewOffset(Vector3 offset)
     {
       if (_currentRotatingForces != null)

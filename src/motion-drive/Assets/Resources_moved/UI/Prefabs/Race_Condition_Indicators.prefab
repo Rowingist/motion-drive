@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6400701027281298363}
   - component: {fileID: 3668020625619702857}
   - component: {fileID: 8347893620556981964}
+  - component: {fileID: 2089454739845509054}
   m_Layer: 5
   m_Name: Race_Condition_Indicators
   m_TagString: Untagged
@@ -145,6 +146,20 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2089454739845509054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119155503730821495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548b9e04c3504d7c98f09a316536d15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 8347893620556981964}
+  FadeDuration: 0.3
 --- !u!1 &1457880460532807230
 GameObject:
   m_ObjectHideFlags: 0

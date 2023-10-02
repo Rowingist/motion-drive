@@ -79,7 +79,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _circularMoveCamera: {fileID: 2510853739969052785}
-  _cameraFOVEffect: {fileID: 0}
 --- !u!1 &955817145590253257
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,8 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 16, z: -20}
-  TransitionDuration: 1
-  CloseDistance: 0.1
+  TransitionDuration: 0.5
+  CloseDistance: 0.2
 --- !u!114 &955817145590253262
 MonoBehaviour:
   m_ObjectHideFlags: 0

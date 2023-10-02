@@ -13,30 +13,45 @@ namespace CodeBase.Logic.CarParts
     private HeroCarOnGroundChecker _groundChecker;
 
     public bool IsNeedToCheckGround;
+    private bool _isLookingStraight;
 
     public void Construct(HeroCarOnGroundChecker groundChecker)
     {
       _groundChecker = groundChecker;
 
-      _groundChecker.TookOff += MakeProperRotation;
+      _groundChecker.LandedOnGround += OnStopLookStraight;
     }
 
     private void Update()
     {
       if (IsNeedToCheckGround)
-        if (!(_groundChecker && _groundChecker.IsOnGround))
-          return;
+      {
+        if (_groundChecker && !_groundChecker.IsOnGround)
+        {
+          if (!_isLookingStraight)
+          {
+            MakeProperRotation();
+         
+            return;
+          }
 
-          transform.rotation = NewRotation();
+          return;
+        }
+      }
+
+      transform.rotation = NewRotation();
     }
 
-    private void OnDestroy() => 
-      _groundChecker.TookOff -= MakeProperRotation;
+    private void OnDestroy() =>
+      _groundChecker.LandedOnGround -= OnStopLookStraight;
+
+    private void OnStopLookStraight() => 
+      _isLookingStraight = false;
 
     private void MakeProperRotation()
     {
-      if (IsNeedToCheckGround)
-        transform.DORotate(Vector3.zero, .2f);
+      transform.localRotation = quaternion.identity;
+      _isLookingStraight = true;
     }
 
     private Quaternion NewRotation() =>
