@@ -7,6 +7,7 @@ namespace CodeBase.Car
 {
   public class CarJoints : MonoBehaviour
   {
+    [SerializeField] private MoveType _moveType = MoveType.Player;
     [SerializeField] private Rigidbody[] _targetJoints;
     [SerializeField] private PlayerCarRespawn _carRespawn;
     [SerializeField] private SuspensionJointReset _jointReset;
@@ -20,12 +21,14 @@ namespace CodeBase.Car
     {
       _defaultParent = transform.parent;
 
-      _carRespawn.Completed += StopJointsOnRespawn;
+      if(_moveType == MoveType.Player)
+        _carRespawn.Completed += StopJointsOnRespawn;
     }
 
     private void OnDestroy()
     {
-      _carRespawn.Completed -= StopJointsOnRespawn;
+      if(_moveType == MoveType.Player)
+        _carRespawn.Completed -= StopJointsOnRespawn;
     }
 
     public void ResetParent() => 

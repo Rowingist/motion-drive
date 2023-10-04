@@ -9,9 +9,9 @@ namespace CodeBase.HeroCar
     public PlayerCarCrashChecker CrashChecker;
     public ParticleSystem DeathFX;
     
-    private HeroFollowingTarget _followingTarget;
+    private PlayerFollowingTarget _followingTarget;
 
-    public void Construct(HeroFollowingTarget followingTarget)
+    public void Construct(PlayerFollowingTarget followingTarget)
     {
       _followingTarget = followingTarget;
 

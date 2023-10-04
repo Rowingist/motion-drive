@@ -1,5 +1,3 @@
-using System;
-using DG.Tweening;
 using UnityEngine;
 
 namespace CodeBase.EnemyCar
@@ -11,11 +9,18 @@ namespace CodeBase.EnemyCar
 
     public GameObject View;
     
-    public Rigidbody AffectedRigidBody;
-    public EnemyCarFollowingTarget FollowingTarget;
+    private Rigidbody _affectedRigidBody;
 
     public float InFlameDuration;
     public float PushPower;
+    
+    private EnemyFollowingTarget _followingTarget;
+
+    public void Construct(Rigidbody affectedRigidBody)
+    {
+      _affectedRigidBody = affectedRigidBody;
+      _followingTarget = _affectedRigidBody.GetComponent<EnemyFollowingTarget>();
+    }
 
     private void Start()
     {
@@ -23,15 +28,17 @@ namespace CodeBase.EnemyCar
       DieEffect.gameObject.SetActive(false);
     }
 
-    [ContextMenu("Play")]
     public void BeginDeath()
     {
-      FollowingTarget.enabled = false;
+      if(!_followingTarget || !_affectedRigidBody)
+        return;
+      
+      _followingTarget.enabled = false;
       
       BurnEffect.gameObject.SetActive(true);
-      AffectedRigidBody.AddForce(Vector3.forward * PushPower, ForceMode.VelocityChange);
       
-      
+      _affectedRigidBody.AddForce(Vector3.forward * PushPower, ForceMode.VelocityChange);
+
       Invoke(nameof(Die), InFlameDuration);
     }
 

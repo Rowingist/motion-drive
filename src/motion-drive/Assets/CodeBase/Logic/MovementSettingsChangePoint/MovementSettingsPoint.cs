@@ -18,7 +18,7 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
     private float _snapToGroundSpeed;
     private float _groundDetectionDistance;
 
-    private HeroFollowingTarget _followingTarget; 
+    private PlayerFollowingTarget _followingTarget; 
     
     public void Construct(LevelMovementSettingPointStaticData pointStaticData)
     {
@@ -33,7 +33,7 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
       _groundDetectionDistance = pointStaticData.GroundDetectionDistance;
     }
 
-    public void Construct(HeroFollowingTarget followingTarget)
+    public void Construct(PlayerFollowingTarget followingTarget)
     {
       _followingTarget = followingTarget;
     }

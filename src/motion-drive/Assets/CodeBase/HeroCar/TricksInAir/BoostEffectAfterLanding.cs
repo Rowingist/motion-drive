@@ -23,10 +23,10 @@ namespace CodeBase.HeroCar.TricksInAir
 
     public event Action Started;
 
-    private HeroFollowingTarget _heroFollowingTarget;
+    private PlayerFollowingTarget _playerFollowingTarget;
 
-    public void Construct(HeroFollowingTarget heroFollowingTarget) =>
-      _heroFollowingTarget = heroFollowingTarget;
+    public void Construct(PlayerFollowingTarget playerFollowingTarget) =>
+      _playerFollowingTarget = playerFollowingTarget;
 
     private void Start()
     {
@@ -73,12 +73,12 @@ namespace CodeBase.HeroCar.TricksInAir
     private IEnumerator Boosting()
     {
       IsBoosting = true;
-      _heroFollowingTarget.StartBoosting();
+      _playerFollowingTarget.StartBoosting();
       Started?.Invoke();
       yield return new WaitForSecondsRealtime(BoostDuration);
 
       IsBoosting = false;
-      _heroFollowingTarget.StopBoosting();
+      _playerFollowingTarget.StopBoosting();
     }
   }
 }

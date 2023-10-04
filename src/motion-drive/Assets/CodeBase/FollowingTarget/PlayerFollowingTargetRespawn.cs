@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace CodeBase.FollowingTarget
 {
-  public class HeroFollowingTargetRespawn : MonoBehaviour
+  public class PlayerFollowingTargetRespawn : MonoBehaviour
   {
-    public HeroFollowingTarget FollowingTarget;
+    public PlayerFollowingTarget FollowingTarget;
     public Rigidbody SelfRigidbody;
     
     private PlayerCarCrashChecker _crashChecker;

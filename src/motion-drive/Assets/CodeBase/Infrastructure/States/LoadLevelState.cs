@@ -74,8 +74,7 @@ namespace CodeBase.Infrastructure.States
     private async Task InitGameWorld()
     {
       LevelStaticData levelData = LevelStaticData();
-
-
+      
       List<GameObject> checkPoints = await InitCheckPoints(levelData);
       GameObject checkPointsHub = await InitCheckPointsHub(checkPoints, levelData);
 
@@ -89,8 +88,14 @@ namespace CodeBase.Infrastructure.States
       List<GameObject> movementSettingsPoints = await InitMovementSettingsPoints(levelData);
       await InitMovementSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
 
-      GameObject hud = await InitHud(levelData, heroCar, heroFollowingTarget);
-      GameObject joystick = await InitJoystick(hud.transform);
+      GameObject  spline = await InitEnemySpline();
+      GameObject splineWalker = await InitEnemySplineWalker(spline);
+      GameObject enemyFollowingTarget = await InitEnemyFollowingTarget(splineWalker);
+      await InitEnemyCar(enemyFollowingTarget);
+      
+      GameObject hud = await InitHud(levelData, heroCar, heroFollowingTarget); 
+      
+      await InitJoystick(hud.transform);
     }
 
     private async Task InitMovementSettingsPointsHub(List<GameObject> movementSettingsPoints,
@@ -161,7 +166,7 @@ namespace CodeBase.Infrastructure.States
         Camera.main.GetComponentInParent<CameraFollow>(), Camera.main.GetComponentInParent<CameraLookAt>());
 
     private async Task<GameObject> InitPlayerFollowingTarget(LevelStaticData levelStaticData) =>
-      await _gameFactory.CreateHeroFollowingTarget(levelStaticData.InitialHeroPosition, _inputService,
+      await _gameFactory.CreatePlayerFollowingTarget(levelStaticData.InitialHeroPosition, _inputService,
         _progressService);
 
     private async Task<GameObject> InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget,
@@ -169,10 +174,22 @@ namespace CodeBase.Infrastructure.States
     {
       GameObject bodyPrefab = _staticData.ForCar(_progressService.Progress.HeroGarage.ActiveCar).Prefab;
 
-      return await _gameFactory.CreateHeroCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub,
+      return await _gameFactory.CreatePlayerCar(levelStaticData.InitialHeroPosition, heroFollowingTarget, checkPointsHub,
         inputService, _loadingCurtain, bodyPrefab);
     }
 
+    private async Task<GameObject> InitEnemySpline() => 
+      await _gameFactory.CreateEnemySpline();
+
+    private async Task<GameObject> InitEnemySplineWalker(GameObject spline) => 
+      await _gameFactory.CreateEnemySplineWalker(Vector3.zero, spline);
+    
+    private async Task<GameObject> InitEnemyFollowingTarget(GameObject target) => 
+      await _gameFactory.CreateEnemyFollowingTarget(Vector3.zero, target);
+    
+    private async Task<GameObject> InitEnemyCar(GameObject followingTarget) => 
+      await _gameFactory.CreateEnemyCar(Vector3.zero, followingTarget);
+    
     private void InformProgressReaders()
     {
       foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)

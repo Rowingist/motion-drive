@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CodeBase.FollowingTarget
 {
-  public class HeroFollowingTargetHandler : MonoBehaviour
+  public class PlayerFollowingTargetHandler : MonoBehaviour
   {
-    public HeroFollowingTarget FollowingTarget;
+    public PlayerFollowingTarget FollowingTarget;
     
     public float MaxBoostSpeed;
     public float DefaultSpeed;

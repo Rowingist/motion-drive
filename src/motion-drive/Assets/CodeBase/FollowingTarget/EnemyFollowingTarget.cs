@@ -1,21 +1,20 @@
-using System;
 using System.Collections;
 using CodeBase.Car;
-using CodeBase.HeroCar;
 using CodeBase.Logic.Bezier;
 using UnityEngine;
 
 namespace CodeBase.EnemyCar
 {
-  public class EnemyCarFollowingTarget : MonoBehaviour
+  public class EnemyFollowingTarget : MonoBehaviour
   {
     public Rigidbody Rigidbody;
-    public Transform target;
     public float SnapYOffset = 0.85f;
 
-    public LayerMask SnapToMask;
+    public LayerMask MaskToSnap;
 
-    public CarOnGroundChecker GroundChecker;
+    private Transform _target;
+    private CarOnGroundChecker _groundChecker;
+    private SplineWalker _splineWalker;
 
     private float _lastPositionY;
 
@@ -23,17 +22,26 @@ namespace CodeBase.EnemyCar
 
     private Vector3 _currentPosition;
 
+    public void Construct(Transform target)
+    {
+      _target = target;
+      _splineWalker = _target.GetComponent<SplineWalker>();
+    }
+
+    public void Construct(CarOnGroundChecker groundChecker) => 
+      _groundChecker = groundChecker;
+
     private void FixedUpdate()
     {
-      if (!target)
+      if (!_target)
         return;
 
       if (!_isSnappingToGround)
         return;
 
-      _currentPosition = new Vector3(target.position.x, _lastPositionY, target.position.z);
+      _currentPosition = new Vector3(_target.position.x, _lastPositionY, _target.position.z);
       if (Physics.Raycast(Rigidbody.position + Vector3.up * 2, Vector3.down, out RaycastHit hitInfo, 1000,
-            SnapToMask))
+            MaskToSnap))
       {
         _currentPosition.y = hitInfo.point.y + SnapYOffset;
         _lastPositionY = _currentPosition.y;
@@ -42,15 +50,20 @@ namespace CodeBase.EnemyCar
       Rigidbody.MovePosition(_currentPosition);
     }
 
-    public void StartSnapping() =>
-      _isSnappingToGround = true;
-
     private IEnumerator CheckingToStartSnapping()
     {
-      yield return new WaitUntil(() => GroundChecker.IsOnGround);
-      target.GetComponent<SplineWalker>().MakeLastPointUnreachable();
+      yield return new WaitUntil(() => _groundChecker.IsOnGround);
+      
+      ContinueMovementBySpline();
+      
       StartSnapping();
     }
+
+    private void ContinueMovementBySpline() => 
+      _splineWalker.MakeLastPointUnreachable();
+
+    private void StartSnapping() =>
+      _isSnappingToGround = true;
 
     public void StopSnapping()
     {
@@ -58,9 +71,7 @@ namespace CodeBase.EnemyCar
       Invoke(nameof(StartCheckingRoutine), 1f);
     }
 
-    private void StartCheckingRoutine()
-    {
+    private void StartCheckingRoutine() => 
       StartCoroutine(CheckingToStartSnapping());
-    }
   }
 }

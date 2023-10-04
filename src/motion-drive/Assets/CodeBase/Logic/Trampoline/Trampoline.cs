@@ -78,34 +78,34 @@ namespace CodeBase.Logic.Trampoline
 
     private void TriggerExit(Collider obj)
     {
-      if (obj.TryGetComponent(out HeroFollowingTarget heroFollowingTarget))
+      if (obj.TryGetComponent(out PlayerFollowingTarget heroFollowingTarget))
         TakeOff(heroFollowingTarget);
 
-      if (obj.TryGetComponent(out EnemyCarFollowingTarget enemyCarFollowingTarget)) 
+      if (obj.TryGetComponent(out EnemyFollowingTarget enemyCarFollowingTarget)) 
         TakeOff(enemyCarFollowingTarget);
     }
 
-    private void TakeOff(HeroFollowingTarget heroFollowingTarget)
+    private void TakeOff(PlayerFollowingTarget playerFollowingTarget)
     {
-      heroFollowingTarget.DisableSnapping();
-      StartCoroutine(EnablingSnapping(heroFollowingTarget));
-      Rigidbody targetBody = heroFollowingTarget.GetComponent<Rigidbody>();
+      playerFollowingTarget.DisableSnapping();
+      StartCoroutine(EnablingSnapping(playerFollowingTarget));
+      Rigidbody targetBody = playerFollowingTarget.GetComponent<Rigidbody>();
       Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       targetBody.velocity = targetForward * _defaultTakeOffPower;
     }
 
-    private void TakeOff(EnemyCarFollowingTarget enemyCarFollowingTarget)
+    private void TakeOff(EnemyFollowingTarget enemyFollowingTarget)
     {
-      enemyCarFollowingTarget.StopSnapping();
-      Rigidbody enemyRigidBody = enemyCarFollowingTarget.GetComponent<Rigidbody>();
+      enemyFollowingTarget.StopSnapping();
+      Rigidbody enemyRigidBody = enemyFollowingTarget.GetComponent<Rigidbody>();
       Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       enemyRigidBody.velocity = targetForward * _defaultTakeOffPower;
     }
 
-    private IEnumerator EnablingSnapping(HeroFollowingTarget heroFollowingTarget)
+    private IEnumerator EnablingSnapping(PlayerFollowingTarget playerFollowingTarget)
     {
       yield return new WaitForSecondsRealtime(1f);
-      heroFollowingTarget.EnableSnapping();
+      playerFollowingTarget.EnableSnapping();
     }
 
     private void OnDrawGizmos()

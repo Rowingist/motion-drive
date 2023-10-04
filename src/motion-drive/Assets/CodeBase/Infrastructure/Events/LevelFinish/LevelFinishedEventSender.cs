@@ -23,7 +23,7 @@ namespace CodeBase.Infrastructure.Events
       if (_isActivated)
         return;
 
-      if (obj.GetComponent<HeroFollowingTarget>())
+      if (obj.GetComponent<PlayerFollowingTarget>())
       {
         EventHolder<CurrentLevelFinishInfo>.RaiseRegistrationInfo(new CurrentLevelFinishInfo());
         _isActivated = true;

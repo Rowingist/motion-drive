@@ -20,19 +20,23 @@ namespace CodeBase.Infrastructure.Factory
     List<ISavedProgressReader> ProgressReaders { get; }
     List<ISavedProgress> ProgressWriters { get; }
     Joystick InputJoystick { get; }
-    Task<GameObject> CreateHud(float finishZPosition, GameObject heroCar, GameObject followingTarget);
-    void Cleanup();
-    Task<GameObject> CreateJoystick(Transform under);
-    Task<GameObject> CreateHeroFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData);
-    Task<GameObject> CreateHeroCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService, LoadingCurtain loadingCurtain, GameObject bodyPrefab);
+    
     Task WarmUp();
+    Task<GameObject> CreateHud(float finishZPosition, GameObject heroCar, GameObject followingTarget);
+    Task<GameObject> CreateJoystick(Transform under);
     Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt);
     Task<GameObject> CreateCheckPointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition);
     Task<GameObject> CreateCameraSwitchPoint(Vector3 at, Vector3 followSetting, Vector3 lookAtSetting);
     Task<GameObject> CreateCameraSwitchPointsHub(List<GameObject> switchPoints, CameraFollow cameraFollow, CameraLookAt cameraLookAt);
-    Task<GameObject> CreateMoveSettingsPoint(Vector3 at,
-      LevelMovementSettingPointStaticData levelMovementSettingsPointData);
-    Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints,
-      GameObject followingTarget);
+    Task<GameObject> CreateMoveSettingsPoint(Vector3 at, LevelMovementSettingPointStaticData levelMovementSettingsPointData);
+    Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints, GameObject followingTarget);
+    Task<GameObject> CreatePlayerFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData);
+    Task<GameObject> CreatePlayerCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService, LoadingCurtain loadingCurtain, GameObject bodyPrefab);
+    Task<GameObject> CreateEnemySpline();
+    Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline);
+    Task<GameObject> CreateEnemyFollowingTarget(Vector3 at, GameObject target);
+    Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget);
+
+    void Cleanup();
   }
 }

@@ -5,6 +5,8 @@ namespace CodeBase.Logic.CarParts
 {
   public class WheelSteering : MonoBehaviour
   {
+    public MoveType MoveType;
+    
     private const string Horizontal = nameof(Horizontal);
 
     public Animator[] Animators;

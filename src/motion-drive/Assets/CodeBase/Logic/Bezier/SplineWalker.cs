@@ -1,12 +1,12 @@
-using System;
+using CodeBase.Infrastructure.Events;
+using CodeBase.Infrastructure.Events.LevelStart.Subscribers;
 using CodeBase.Logic.Bezier.Movement;
 using UnityEngine;
 
 namespace CodeBase.Logic.Bezier
 {
-  public class SplineWalker : MonoBehaviour
+  public class SplineWalker : OnStartLevelSubscriber
   {
-    public BezierSpline Spline;
     public TriggerObserver TriggerObserver;
 
     public float Duration;
@@ -14,10 +14,17 @@ namespace CodeBase.Logic.Bezier
 
     public SplineWalkerMode Mode;
 
+    private BezierSpline _spline;
+    
     private float _progress;
     private bool _goingForward = true;
 
     private float _lastPositionZ;
+    
+    public bool IsStarted;
+
+    public void Construct(BezierSpline spline) => 
+      _spline = spline;
 
     private void Start()
     {
@@ -28,16 +35,20 @@ namespace CodeBase.Logic.Bezier
     private void OnDestroy() => 
       TriggerObserver.TriggerEnter -= UpdateLastTrampolineTargetPointZ;
 
+    protected override void OnLevelStarted(CurrentLevelStartInfo levelStartInfo) => 
+      IsStarted = true;
+
     private void UpdateLastTrampolineTargetPointZ(Collider obj)
     {
-      print("Got");
-      
       if (obj.gameObject.layer == LayerMask.NameToLayer("Trampoline"))
         _lastPositionZ = obj.GetComponentInParent<Trampoline.Trampoline>().LandingPoint.position.z;
     }
 
     private void Update()
     {
+      if(!IsStarted)
+        return;
+
       if(transform.position.z >= _lastPositionZ)
         return;
 
@@ -73,12 +84,12 @@ namespace CodeBase.Logic.Bezier
         }
       }
 
-      Vector3 position = Spline.GetPoint(_progress);
+      Vector3 position = _spline.GetPoint(_progress);
       transform.localPosition = position;
       
       if (LookForward)
       {
-        transform.LookAt(position + Spline.GetDirection(_progress));
+        transform.LookAt(position + _spline.GetDirection(_progress));
       }
     }
 

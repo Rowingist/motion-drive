@@ -15,14 +15,12 @@ namespace CodeBase.Car
     private Vector3 _lastPosition;
     private float _rotateSpeedOnStart;
 
-    public Rigidbody _followingRigidbody;
+    private Rigidbody _followingRigidbody;
 
     public MoveType MoveType = MoveType.Player;
 
-    public void Construct(Rigidbody followingRigidbody)
-    {
+    public void Construct(Rigidbody followingRigidbody) => 
       _followingRigidbody = followingRigidbody;
-    }
 
     private void Start()
     {

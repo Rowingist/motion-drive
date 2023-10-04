@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CodeBase.FollowingTarget
 {
   [RequireComponent(typeof(Rigidbody))]
-  public class HeroFollowingTarget : MonoBehaviour
+  public class PlayerFollowingTarget : MonoBehaviour
   {
     public float FallSmoothTime = 10f;
 

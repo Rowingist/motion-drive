@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1486592096315519225}
   - component: {fileID: 3062351924522059216}
   - component: {fileID: 3134922630314583465}
-  - component: {fileID: 1975305136469266711}
   - component: {fileID: 3782690715834659343}
   m_Layer: 12
   m_Name: HeroFollowingTarget
@@ -147,24 +146,6 @@ MonoBehaviour:
   DefaultSpeed: 0
   MaxBoosAcceleration: 100
   DefaultAcceleration: 0
---- !u!114 &1975305136469266711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486592096315519229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c26457e5a744e8b94c717bff8f14de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 1486592096315519231}
-  target: {fileID: 0}
-  SnapYOffset: 0.85
-  SnapToMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3782690715834659343
 MonoBehaviour:
   m_ObjectHideFlags: 0

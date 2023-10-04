@@ -6,9 +6,9 @@ namespace CodeBase.Infrastructure.Events.Subscribers
   public class DisableInputOfMovementCar : OnLevelEndSubscriber
   {
     private IInputService _input;
-    private HeroFollowingTarget _followingTarget;
+    private PlayerFollowingTarget _followingTarget;
 
-    public void Construct(IInputService input, HeroFollowingTarget followingTarget)
+    public void Construct(IInputService input, PlayerFollowingTarget followingTarget)
     {
       _input = input;
       _followingTarget = followingTarget;

@@ -17,7 +17,7 @@ namespace CodeBase.HeroCar
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotateTweener;
     
     private CarOnGroundChecker _groundChecker;
-    private HeroFollowingTarget _heroFollowingTarget;
+    private PlayerFollowingTarget _playerFollowingTarget;
 
     public float Power = 1f;
 
@@ -25,10 +25,10 @@ namespace CodeBase.HeroCar
     
     public event Action Flipped; 
 
-    public void Construct(CarOnGroundChecker groundChecker, SwipeListener swipeListener, HeroFollowingTarget heroFollowingTarget)
+    public void Construct(CarOnGroundChecker groundChecker, SwipeListener swipeListener, PlayerFollowingTarget playerFollowingTarget)
     {
       _groundChecker = groundChecker;
-      _heroFollowingTarget = heroFollowingTarget;
+      _playerFollowingTarget = playerFollowingTarget;
 
       InitSwipeListener(swipeListener);
       SubscribeOnSwipes();
@@ -78,6 +78,6 @@ namespace CodeBase.HeroCar
       transform.DORotate(eulerAngle, RotationDuration, RotateMode.LocalAxisAdd).SetEase(Ease.InOutCubic);
 
     private void AffectFightTrajectory(Vector3 direction) => 
-      _heroFollowingTarget.AddDirectionalForceInAir(direction * Power);
+      _playerFollowingTarget.AddDirectionalForceInAir(direction * Power);
   }
 }
