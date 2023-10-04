@@ -14,7 +14,7 @@ namespace CodeBase.CameraLogic
     private Vector3 _currentVelocity = Vector3.zero;
     private Vector3 _newOffset = Vector3.zero;
 
-    private void LateUpdate()
+    private void Update()
     {
       if (!_isChangingOffset) return;
       

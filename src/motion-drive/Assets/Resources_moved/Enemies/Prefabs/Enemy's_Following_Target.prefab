@@ -129,6 +129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 5813089352348021392}
   SnapYOffset: 0.85
-  SnapToMask:
+  MaskToSnap:
     serializedVersion: 2
     m_Bits: 64

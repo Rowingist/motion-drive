@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f719db921eb478ca92d4d7b15f5aa87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveType: 0
   _targetJoints:
   - {fileID: 4917094808921797643}
   - {fileID: 2687534387591939369}
@@ -4245,7 +4246,7 @@ MonoBehaviour:
   SelfRigidbody: {fileID: 6758490157615344773}
   RotateSpeed: 130
   RotateDelay: 6
-  _followingRigidbody: {fileID: 0}
+  MoveType: 0
   Speed: 0.09
 --- !u!114 &7321269416440040754
 MonoBehaviour:
@@ -4289,6 +4290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ae1513dde84d3fb7b6cc67239d1b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveType: 0
   Wheels:
   - {fileID: 1788949699768136675}
   - {fileID: 6475446803018492028}
@@ -4309,6 +4311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe7fa9c2a904b5a883436dbdc7dc749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveType: 0
   Animators:
   - {fileID: 8295756233076069943}
   - {fileID: 2695926608116332333}
@@ -4357,7 +4360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationDuration: 0.48
-  DirectionForce: 5
+  Power: 1
 --- !u!114 &4928273115507653125
 MonoBehaviour:
   m_ObjectHideFlags: 0

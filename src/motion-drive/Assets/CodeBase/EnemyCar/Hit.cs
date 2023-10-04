@@ -1,4 +1,5 @@
 using System.Linq;
+using CodeBase.HeroCar;
 using CodeBase.Logic;
 using UnityEngine;
 
@@ -32,6 +33,8 @@ namespace CodeBase.EnemyCar
     {
       if (TryGetHit(out player))
       {
+        print(player.name);
+        
         if (_enemyCarDeath)
           _enemyCarDeath.BeginDeath();
 
@@ -40,10 +43,18 @@ namespace CodeBase.EnemyCar
         else
           AddPushForceAfterHit(player.transform.right);
 
-        TriggerObserver.TriggerEnter -= TryDead;
+        LevelRaceStatistics statistics = player.GetComponent<LevelRaceStatistics>();
+        
+        if(statistics) 
+          statistics.CollectKill();
+
+        CleanUp();
         enabled = false;
       }
     }
+
+    private void CleanUp() => 
+      TriggerObserver.TriggerEnter -= TryDead;
 
     private bool PlayerOnLeft() => 
       player.transform.position.x - transform.position.x <= 0;
