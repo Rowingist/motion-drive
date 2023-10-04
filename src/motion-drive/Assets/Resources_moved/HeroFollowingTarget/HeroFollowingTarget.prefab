@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FallSmoothTime: 0.1
   MaxSpeed: 100
-  MaxAcceleration: 57.6
+  MaxAcceleration: 100
   _maxAirAcceleration: 100
   _maxGroundAngle: 25
   _horizontalForce: 100
@@ -161,6 +161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 1486592096315519231}
   target: {fileID: 0}
+  SnapYOffset: 0.85
+  SnapToMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3782690715834659343
 MonoBehaviour:
   m_ObjectHideFlags: 0

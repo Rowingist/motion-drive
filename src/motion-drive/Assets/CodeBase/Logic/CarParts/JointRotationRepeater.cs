@@ -42,8 +42,11 @@ namespace CodeBase.Logic.CarParts
       transform.rotation = NewRotation();
     }
 
-    private void OnDestroy() =>
-      _groundChecker.LandedOnGround -= OnStopLookStraight;
+    private void OnDestroy()
+    {
+      if(_groundChecker)
+        _groundChecker.LandedOnGround -= OnStopLookStraight;
+    }
 
     private void OnStopLookStraight() => 
       _isLookingStraight = false;

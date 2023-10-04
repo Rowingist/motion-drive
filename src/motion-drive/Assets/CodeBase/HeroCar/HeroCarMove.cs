@@ -19,6 +19,8 @@ namespace CodeBase.HeroCar
 
     public Rigidbody _followingRigidbody;
 
+    public MoveType MoveType = MoveType.Player;
+
     public void Construct(Rigidbody followingRigidbody)
     {
       _followingRigidbody = followingRigidbody;
@@ -53,11 +55,13 @@ namespace CodeBase.HeroCar
 
     private void RotateRigidbody()
     {
-      //Quaternion lookFollowingRotation = Quaternion.LookRotation(_followingRigidbody.velocity);
+      Quaternion lookFollowingRotation;
+      lookFollowingRotation = MoveType == MoveType.Player
+        ? Quaternion.LookRotation(_followingRigidbody.velocity)
+        : Quaternion.LookRotation(_followingRigidbody.position - transform.position);
 
-      Quaternion newRotation = Quaternion.LookRotation(_followingRigidbody.position - transform.position);
       SelfRigidbody.rotation =
-        Quaternion.RotateTowards(SelfRigidbody.rotation, newRotation, RotateSpeed * Time.deltaTime);
+        Quaternion.RotateTowards(SelfRigidbody.rotation, lookFollowingRotation, RotateSpeed * Time.deltaTime);
     }
 
     private void CacheLastPosition() =>

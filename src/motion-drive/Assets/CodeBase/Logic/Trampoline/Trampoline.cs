@@ -1,5 +1,7 @@
 using System.Collections;
+using CodeBase.EnemyCar;
 using CodeBase.FollowingTarget;
+using CodeBase.HeroCar;
 using CodeBase.Logic.CarParts;
 using DG.Tweening;
 using UnityEngine;
@@ -78,6 +80,9 @@ namespace CodeBase.Logic.Trampoline
     {
       if (obj.TryGetComponent(out HeroFollowingTarget heroFollowingTarget))
         TakeOff(heroFollowingTarget);
+
+      if (obj.TryGetComponent(out EnemyCarFollowingTarget enemyCarFollowingTarget)) 
+        TakeOff(enemyCarFollowingTarget);
     }
 
     private void TakeOff(HeroFollowingTarget heroFollowingTarget)
@@ -89,11 +94,18 @@ namespace CodeBase.Logic.Trampoline
       targetBody.velocity = targetForward * _defaultTakeOffPower;
     }
 
+    private void TakeOff(EnemyCarFollowingTarget enemyCarFollowingTarget)
+    {
+      enemyCarFollowingTarget.StopSnapping();
+      Rigidbody enemyRigidBody = enemyCarFollowingTarget.GetComponent<Rigidbody>();
+      Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
+      enemyRigidBody.velocity = targetForward * _defaultTakeOffPower;
+    }
+
     private IEnumerator EnablingSnapping(HeroFollowingTarget heroFollowingTarget)
     {
       yield return new WaitForSecondsRealtime(1f);
       heroFollowingTarget.EnableSnapping();
-
     }
 
     private void OnDrawGizmos()

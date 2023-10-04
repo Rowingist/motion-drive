@@ -1,3 +1,4 @@
+using System;
 using CodeBase.Logic.Bezier.Movement;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace CodeBase.Logic.Bezier
   public class SplineWalker : MonoBehaviour
   {
     public BezierSpline Spline;
+    public TriggerObserver TriggerObserver;
 
     public float Duration;
     public bool LookForward;
@@ -15,8 +17,30 @@ namespace CodeBase.Logic.Bezier
     private float _progress;
     private bool _goingForward = true;
 
+    private float _lastPositionZ;
+
+    private void Start()
+    {
+      TriggerObserver.TriggerEnter += UpdateLastTrampolineTargetPointZ;
+      MakeLastPointUnreachable();
+    }
+
+    private void OnDestroy() => 
+      TriggerObserver.TriggerEnter -= UpdateLastTrampolineTargetPointZ;
+
+    private void UpdateLastTrampolineTargetPointZ(Collider obj)
+    {
+      print("Got");
+      
+      if (obj.gameObject.layer == LayerMask.NameToLayer("Trampoline"))
+        _lastPositionZ = obj.GetComponentInParent<Trampoline.Trampoline>().LandingPoint.position.z;
+    }
+
     private void Update()
     {
+      if(transform.position.z >= _lastPositionZ)
+        return;
+
       if (_goingForward)
       {
         _progress += Time.deltaTime / Duration;
@@ -56,6 +80,11 @@ namespace CodeBase.Logic.Bezier
       {
         transform.LookAt(position + Spline.GetDirection(_progress));
       }
+    }
+
+    public void MakeLastPointUnreachable()
+    {
+      _lastPositionZ = float.MaxValue;
     }
   }
 }

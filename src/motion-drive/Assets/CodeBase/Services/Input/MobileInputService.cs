@@ -14,8 +14,13 @@ namespace CodeBase.Services.Input
     public override bool IsFingerDownScreen() => 
       _gameFactory.InputJoystick.IsPointerDown;
 
-    public override bool IsFingerHoldOnScreen() => 
-      _gameFactory.InputJoystick.IsPointer;
+    public override bool IsFingerHoldOnScreen()
+    {
+      if (_gameFactory == null)
+        return false;
+      
+      return _gameFactory.InputJoystick.IsPointer;
+    }
 
     public MobileInputService(IGameFactory gameFactory) : base(gameFactory) => 
       _gameFactory = gameFactory;
