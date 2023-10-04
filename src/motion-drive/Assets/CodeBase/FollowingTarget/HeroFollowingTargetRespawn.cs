@@ -11,10 +11,10 @@ namespace CodeBase.FollowingTarget
     public HeroFollowingTarget FollowingTarget;
     public Rigidbody SelfRigidbody;
     
-    private HeroCarCrashChecker _crashChecker;
+    private PlayerCarCrashChecker _crashChecker;
     private CheckPointsHub _checkPointsHub;
 
-    public void Construct(HeroCarCrashChecker crashChecker, CheckPointsHub checkPointsHub)
+    public void Construct(PlayerCarCrashChecker crashChecker, CheckPointsHub checkPointsHub)
     {
       _crashChecker = crashChecker;
       _checkPointsHub = checkPointsHub;

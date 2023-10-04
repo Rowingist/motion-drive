@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using CodeBase.Car;
 using CodeBase.FollowingTarget;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace CodeBase.HeroCar.TricksInAir
   public class BoostEffectAfterLanding : MonoBehaviour
   {
     public HeroCarAirTricksCounter TricksCounter;
-    public HeroCarOnGroundChecker GroundChecker;
-    public HeroCarCrashChecker CrashChecker;
-    public HeroCarLandingEvaluator LandingEvaluator;
+    public CarOnGroundChecker GroundChecker;
+    public PlayerCarCrashChecker CrashChecker;
+    public PlayerCarLandingEvaluator LandingEvaluator;
 
     public float BoostDuration;
     public int MinFlipsToBoost;

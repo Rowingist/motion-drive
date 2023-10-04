@@ -1,3 +1,4 @@
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using CodeBase.Services.Input;
 using UnityEngine;
@@ -6,11 +7,13 @@ namespace CodeBase.Logic.CarParts
 {
   public class WheelsDrive : MonoBehaviour
   {
+    public MoveType MoveType = MoveType.Player;
+    
     public GameObject[] Wheels;
 
     public float Speed;
     public float MaxDriveSpeed;
-    public HeroCarOnGroundChecker GroundChecker;
+    public CarOnGroundChecker GroundChecker;
 
     private Vector3 _rotation;
     private float _rotationX;
@@ -29,7 +32,8 @@ namespace CodeBase.Logic.CarParts
     {
       if (_inputService is null) return;
 
-      if (!_inputService.IsFingerHoldOnScreen() && !GroundChecker.IsOnGround) return;
+      if (MoveType == MoveType.Player)
+        if (!_inputService.IsFingerHoldOnScreen() && !GroundChecker.IsOnGround) return;
 
       ChoseRotationMagnitude(_following.velocity.magnitude);
 

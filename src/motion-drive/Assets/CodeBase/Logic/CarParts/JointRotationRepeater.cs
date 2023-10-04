@@ -1,4 +1,5 @@
 using System;
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using DG.Tweening;
 using Unity.Mathematics;
@@ -10,12 +11,12 @@ namespace CodeBase.Logic.CarParts
   {
     public Transform Rotator;
     public float Speed;
-    private HeroCarOnGroundChecker _groundChecker;
+    private CarOnGroundChecker _groundChecker;
 
     public bool IsNeedToCheckGround;
     private bool _isLookingStraight;
 
-    public void Construct(HeroCarOnGroundChecker groundChecker)
+    public void Construct(CarOnGroundChecker groundChecker)
     {
       _groundChecker = groundChecker;
 

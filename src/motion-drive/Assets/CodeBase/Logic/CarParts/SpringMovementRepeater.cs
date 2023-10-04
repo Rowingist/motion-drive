@@ -1,3 +1,4 @@
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ namespace CodeBase.Logic.CarParts
 
     private Vector3 _following;
     private Vector3 _velocity;
-    private HeroCarOnGroundChecker _groundChecker;
+    private CarOnGroundChecker _groundChecker;
 
-    public void Construct(HeroCarOnGroundChecker onGroundChecker)
+    public void Construct(CarOnGroundChecker onGroundChecker)
     {
       _groundChecker = onGroundChecker;
     }

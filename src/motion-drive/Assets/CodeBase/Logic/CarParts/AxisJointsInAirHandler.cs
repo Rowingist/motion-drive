@@ -1,3 +1,4 @@
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace CodeBase.Logic.CarParts
   public class AxisJointsInAirHandler : MonoBehaviour
   {
     public ConfigurableJoint[] TargetJoints;
-    public HeroCarOnGroundChecker GroundChecker;
+    public CarOnGroundChecker GroundChecker;
     public SuspensionJointReset SuspensionJoints;
 
     private SoftJointLimit[] _defaultZAngularLimits;

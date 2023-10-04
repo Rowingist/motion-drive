@@ -1,10 +1,11 @@
+using CodeBase.Car;
 using UnityEngine;
 
 namespace CodeBase.HeroCar
 {
-  public class HeroCarLandingEvaluator : MonoBehaviour
+  public class PlayerCarLandingEvaluator : MonoBehaviour
   {
-    public HeroCarOnGroundChecker GroundChecker;
+    public CarOnGroundChecker GroundChecker;
 
     [Header("Forward/backward rotation")] public float AcceptableLandingHorizontalAngleMin = 45f;
     public float AcceptableLandingHorizontalAngleMax = 125f;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CodeBase.HeroCar
 {
-  public class HeroCarDeath : MonoBehaviour
+  public class PlayerCarDeath : MonoBehaviour
   {
-    public HeroCarCrashChecker CrashChecker;
+    public PlayerCarCrashChecker CrashChecker;
     public ParticleSystem DeathFX;
     
     private HeroFollowingTarget _followingTarget;

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace CodeBase.HeroCar
 {
-  public class HeroCarCrashChecker : MonoBehaviour
+  public class PlayerCarCrashChecker : MonoBehaviour
   {
     public TriggerObserver TriggerObserver;
-    public HeroCarLandingEvaluator LandingEvaluator;
+    public PlayerCarLandingEvaluator LandingEvaluator;
 
     public event Action Crashed;
     

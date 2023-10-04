@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
+using CodeBase.Car;
 using CodeBase.Logic.CheckPoint;
 using CodeBase.UI.Animations;
 using UnityEngine;
 
 namespace CodeBase.HeroCar
 {
-  public class HeroCarRespawn : MonoBehaviour
+  public class PlayerCarRespawn : MonoBehaviour
   {
-    public HeroCarCrashChecker CrashChecker;
+    public PlayerCarCrashChecker CrashChecker;
     private CheckPointsHub _checkPointsHub;
     private LoadingCurtain _loadingCurtain;
 
-    private HeroCarJoints _carJoints;
+    private CarJoints _carJoints;
     
     public event Action Completed;
     
@@ -23,7 +24,7 @@ namespace CodeBase.HeroCar
       _checkPointsHub = checkPointsHub;
       _loadingCurtain = loadingCurtain;
 
-      _carJoints = GetComponentInChildren<HeroCarJoints>();
+      _carJoints = GetComponentInChildren<CarJoints>();
     }
 
     private void Start() => 

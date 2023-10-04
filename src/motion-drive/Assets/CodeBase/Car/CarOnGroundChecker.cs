@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace CodeBase.HeroCar
+namespace CodeBase.Car
 {
-  public class HeroCarOnGroundChecker : MonoBehaviour
+  public class CarOnGroundChecker : MonoBehaviour
   {
     public LayerMask RaycastLayer;
     public float TakingOffHeight;

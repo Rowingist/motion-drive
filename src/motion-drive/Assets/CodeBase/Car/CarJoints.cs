@@ -1,13 +1,14 @@
 using System.Collections;
+using CodeBase.HeroCar;
 using CodeBase.Logic.CarParts;
 using UnityEngine;
 
-namespace CodeBase.HeroCar
+namespace CodeBase.Car
 {
-  public class HeroCarJoints : MonoBehaviour
+  public class CarJoints : MonoBehaviour
   {
     [SerializeField] private Rigidbody[] _targetJoints;
-    [SerializeField] private HeroCarRespawn _carRespawn;
+    [SerializeField] private PlayerCarRespawn _carRespawn;
     [SerializeField] private SuspensionJointReset _jointReset;
     [SerializeField] private float ResetSpeedRespawned;
 

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace CodeBase.HeroCar
 {
-  public class HeroCarBlinker : MonoBehaviour
+  public class PlayerCarBlinker : MonoBehaviour
   {
     private const int Cycles = 10;
     private const float Interval = 0.1f;
 
-    public HeroCarCrashChecker CrashChecker;
-    public HeroCarRespawn CarRespawn;
+    public PlayerCarCrashChecker CrashChecker;
+    public PlayerCarRespawn CarRespawn;
     public GameObject[] HeroCarViewParts;
 
     private void Start()

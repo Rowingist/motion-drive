@@ -12,5 +12,10 @@ namespace CodeBase
     
     public const ConfigurableJointMotion Locked = ConfigurableJointMotion.Locked;
     public const ConfigurableJointMotion Free = ConfigurableJointMotion.Free;
+
+    public static readonly Vector3 EulerAngleX360 = new(360f, 0f, 0f);
+    public static readonly Vector3 EulerAngleMinusX360 = new(-360f, 0f, 0f);
+    public static readonly Vector3 EulerAngleY360 = new(0f, 360f, 0f);
+    public static readonly Vector3 EulerAngleMinusY360 = new(0f, -360f, 0f);
   }
 }

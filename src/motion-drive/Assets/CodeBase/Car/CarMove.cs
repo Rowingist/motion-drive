@@ -1,14 +1,12 @@
-using System;
-using CodeBase.Services.Input;
 using UnityEngine;
 
-namespace CodeBase.HeroCar
+namespace CodeBase.Car
 {
-  public class HeroCarMove : MonoBehaviour
+  public class CarMove : MonoBehaviour
   {
     private const float MaxAngularVelocity = 1000f;
 
-    public HeroCarOnGroundChecker GroundChecker;
+    public CarOnGroundChecker GroundChecker;
 
     public Rigidbody SelfRigidbody;
     public float RotateSpeed;

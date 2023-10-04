@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using CodeBase.Logic.Bezier;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace CodeBase.EnemyCar
 
     public LayerMask SnapToMask;
 
-    public HeroCarOnGroundChecker GroundChecker;
+    public CarOnGroundChecker GroundChecker;
 
     private float _lastPositionY;
 

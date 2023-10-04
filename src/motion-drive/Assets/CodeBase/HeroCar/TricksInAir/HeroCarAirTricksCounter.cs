@@ -1,21 +1,22 @@
+using CodeBase.Car;
 using UnityEngine;
 
 namespace CodeBase.HeroCar.TricksInAir
 {
-  [RequireComponent(typeof(HeroCarOnGroundChecker), typeof(HeroCarCrashChecker), typeof(HeroCarSwipeRotationInAir))]
+  [RequireComponent(typeof(CarOnGroundChecker), typeof(PlayerCarCrashChecker), typeof(PlayerCarSwipeRotationInAir))]
   public class HeroCarAirTricksCounter : MonoBehaviour
   {
-    private HeroCarOnGroundChecker _groundCheck;
-    private HeroCarCrashChecker _crashChecker;
-    private HeroCarSwipeRotationInAir _rotationInAir;
+    private CarOnGroundChecker _groundCheck;
+    private PlayerCarCrashChecker _crashChecker;
+    private PlayerCarSwipeRotationInAir _rotationInAir;
     
     public int CompletedFlips { get; private set; }
 
     private void Awake()
     {
-      _groundCheck = GetComponent<HeroCarOnGroundChecker>();
-      _crashChecker = GetComponent<HeroCarCrashChecker>();
-      _rotationInAir = GetComponent<HeroCarSwipeRotationInAir>();
+      _groundCheck = GetComponent<CarOnGroundChecker>();
+      _crashChecker = GetComponent<PlayerCarCrashChecker>();
+      _rotationInAir = GetComponent<PlayerCarSwipeRotationInAir>();
     }
 
     private void Start()
