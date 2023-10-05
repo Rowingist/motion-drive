@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using CodeBase.CameraLogic;
 using CodeBase.CameraLogic.Effects;
@@ -30,6 +31,7 @@ using CodeBase.UI.Services.Windows;
 using GG.Infrastructure.Utils.Swipe;
 using Plugins.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CodeBase.Infrastructure.Factory
 {
@@ -195,33 +197,39 @@ namespace CodeBase.Infrastructure.Factory
       return heroCar;
     }
 
-    public async Task<GameObject> CreateEnemySpline()
+    public async Task<GameObject> CreateEnemySpline(Vector3 at, int index)
     {
-      GameObject spline = await InstantiateRegisteredAsync(AssetAddress.EnemySplinePath);
+      StringBuilder splinePath = new StringBuilder();
+      splinePath.Append(AssetAddress.EnemySplinePath);
+      splinePath.Append(SceneManager.GetActiveScene().name);
+      splinePath.Append('_');
+      splinePath.Append(index);
 
+      GameObject spline = await InstantiateRegisteredAsync(splinePath.ToString(), at);
+      
       return spline;
     }
 
     public async Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline)
     {
-      GameObject splineWalker = await InstantiateRegisteredAsync(AssetAddress.EnemySplineWalkerPath);
+      GameObject splineWalker = await InstantiateRegisteredAsync(AssetAddress.EnemySplineWalkerPath, at);
 
       splineWalker.GetComponent<SplineWalker>().Construct(spline.GetComponent<BezierSpline>());
-      
+
       return splineWalker;
     }
 
     public async Task<GameObject> CreateEnemyFollowingTarget(Vector3 at, GameObject target)
     {
-      GameObject followingTarget = await InstantiateRegisteredAsync(AssetAddress.EnemyFollowingTargetPath);
+      GameObject followingTarget = await InstantiateRegisteredAsync(AssetAddress.EnemyFollowingTargetPath, at);
       followingTarget.GetComponent<EnemyFollowingTarget>().Construct(target.transform);
-      
+
       return followingTarget;
     }
 
     public async Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget)
     {
-      GameObject enemyCar = await InstantiateRegisteredAsync(AssetAddress.EnemyCarPath);
+      GameObject enemyCar = await InstantiateRegisteredAsync(AssetAddress.EnemyCarPath, at);
       
       Rigidbody followingRigidbody = followingTarget.GetComponent<Rigidbody>();
      

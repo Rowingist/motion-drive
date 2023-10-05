@@ -1,3 +1,4 @@
+using CodeBase.StaticData.EnemySplines;
 using UnityEngine;
 
 namespace CodeBase.StaticData.Level
@@ -15,5 +16,7 @@ namespace CodeBase.StaticData.Level
     public LevelMovementSettingPointsHub LevelMovementSettingPointsHub;
 
     public float FinishZPosition;
+
+    public LevelEnemySplinesStaticData SplinesStaticData;
   }
 }

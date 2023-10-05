@@ -84,3 +84,4 @@ MonoBehaviour:
       SnapToGroundSpeed: 7
       GroundDetectionDistance: 8
   FinishZPosition: 2236.8
+  SplinesStaticData: {fileID: 11400000, guid: a9b927c58bcfb6a4286f9ca88f956983, type: 2}

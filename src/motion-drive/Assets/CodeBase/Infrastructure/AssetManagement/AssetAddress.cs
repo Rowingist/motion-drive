@@ -13,7 +13,7 @@ namespace CodeBase.Infrastructure.AssetManagement
     public const string MovementSettingsPointsHub = "MovementSettingsPointsHub";
     public const string MovementSettingsPoint = "MovementSettingsPoint";
     public const string RaceConditionIndicators = "RaceConditionIndicators";
-    public const string EnemySplinePath = "EnemySpline";
+    public const string EnemySplinePath = "EnemySpline_";
     public const string EnemySplineWalkerPath = "EnemySplineWalker";
     public const string EnemyFollowingTargetPath = "EnemyFollowingTarget";
     public const string EnemyCarPath = "EnemyCar";

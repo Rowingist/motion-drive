@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c95dbea35a842c981f2767c2e31488c, type: 3}
+  m_Name: SplinesStaticData_Desert_1
+  m_EditorClassIdentifier: 
+  Configs:
+  - Label: Enemy_Spline
+    Template: {fileID: 3049837610203898757, guid: f6df659cacb8c9743bc259de65922149, type: 3}
+    InitialPosition:
+      x: 5
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_1
+    Template: {fileID: 9027546962709777257, guid: 921f1956ad39ff040895abe5ff12849a, type: 3}
+    InitialPosition:
+      x: 10
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_2
+    Template: {fileID: 8078476966099557562, guid: aa855bdaa6d7b264887a61d41147a178, type: 3}
+    InitialPosition:
+      x: 15
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_3
+    Template: {fileID: 4770988174938874624, guid: 6b7b997165a7ed6468e3c2d91090f703, type: 3}
+    InitialPosition:
+      x: 20
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_4
+    Template: {fileID: 4448574626918034480, guid: ec54ac9eb6d5fee43ac0727a5f4cfd01, type: 3}
+    InitialPosition:
+      x: -5
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_5
+    Template: {fileID: 8275839475225360817, guid: 007d26e41e33aa34ea5e79bb0712d725, type: 3}
+    InitialPosition:
+      x: -10
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_6
+    Template: {fileID: 948315989461586176, guid: 1d015a43ffb45fc4bacce877cc27e254, type: 3}
+    InitialPosition:
+      x: -15
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_7
+    Template: {fileID: 2757812133174127638, guid: 17b4e799bacb91d4e93218432d967158, type: 3}
+    InitialPosition:
+      x: -20
+      y: 0
+      z: 0
+  - Label: Enemy_Spline_8
+    Template: {fileID: 6865905924479602637, guid: ed6edacbe4cdac844b187ce423ac1431, type: 3}
+    InitialPosition:
+      x: -25
+      y: 0
+      z: 0
