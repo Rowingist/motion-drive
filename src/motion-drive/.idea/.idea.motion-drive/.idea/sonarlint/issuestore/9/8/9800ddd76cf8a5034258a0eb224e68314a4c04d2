@@ -1,0 +1,7 @@
+
+acsharpsquid:S1104	"DMake this field 'private' and encapsulate it in a 'public' property.(éª†’
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¤öèò
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(èøİ“
+^csharpsquid:S3459*"ARemove unassigned field '_minStairsDotProduct', or set its value.(ÒÊÅ±
+ˆcsharpsquid:S2583…"eChange this condition so that it does not always evaluate to 'True'. Some code paths are unreachable.(ô²½üÿÿÿÿ
+@csharpsquid:S125"Remove this commented out code.(ÚëŸšıÿÿÿÿ
