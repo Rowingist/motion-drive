@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740926986232700978}
   - component: {fileID: 740926986232700973}
+  - component: {fileID: 4155437985952422750}
   m_Layer: 8
   m_Name: Enemy's_SplineWalker
   m_TagString: Untagged
@@ -46,10 +47,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerObserver: {fileID: 740926987892805717}
-  Duration: 10
+  SelfBody: {fileID: 4155437985952422750}
+  Duration: 60
   LookForward: 1
   Mode: 0
-  IsStarted: 0
+  IsRunning: 0
+--- !u!54 &4155437985952422750
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740926986232700972}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 116
+  m_CollisionDetection: 2
 --- !u!1 &740926987892805712
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +81,6 @@ GameObject:
   - component: {fileID: 740926987892805719}
   - component: {fileID: 740926987892805722}
   - component: {fileID: 740926987892805717}
-  - component: {fileID: 740926987892805723}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -80,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 740926987892805712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28405, y: 0.28405, z: 0.28405}
+  m_LocalScale: {x: 0.55951226, y: 0.55951226, z: 0.55951226}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 740926986232700978}
@@ -161,19 +178,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bc13591a19438eb265a55925027bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &740926987892805723
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740926987892805712}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2

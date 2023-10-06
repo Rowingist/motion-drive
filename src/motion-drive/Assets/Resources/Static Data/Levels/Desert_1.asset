@@ -23,8 +23,8 @@ MonoBehaviour:
       RaycastOnGroundOffset: {x: 0, y: 5.6, z: 176.5}
     - Position: {x: 0, y: 5.6, z: 266.5}
       RaycastOnGroundOffset: {x: 0, y: 5.6, z: 351.6}
-    - Position: {x: 0, y: -3.9, z: 446}
-      RaycastOnGroundOffset: {x: 0, y: -3.9, z: 531.1}
+    - Position: {x: 0, y: -3.9, z: 542.4}
+      RaycastOnGroundOffset: {x: 0, y: -3.9, z: 545.60004}
   LevelCameraSwitchPointsHub:
     Points:
     - Position: {x: 0, y: 0, z: -100}
@@ -57,31 +57,34 @@ MonoBehaviour:
   LevelMovementSettingPointsHub:
     Points:
     - Position: {x: 0, y: 0, z: 1380}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 70
+      Acceleration: 30
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 55
     - Position: {x: 0, y: 0, z: 502}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 90
+      Acceleration: 50
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 40
     - Position: {x: 0, y: 0, z: -39}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 80
+      Acceleration: 40
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 60
   FinishZPosition: 2236.8
   SplinesStaticData: {fileID: 11400000, guid: a9b927c58bcfb6a4286f9ca88f956983, type: 2}

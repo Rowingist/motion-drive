@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CodeBase.EnemyCar
@@ -6,8 +7,6 @@ namespace CodeBase.EnemyCar
   {
     public ParticleSystem BurnEffect;
     public ParticleSystem DieEffect;
-
-    public GameObject View;
     
     private Rigidbody _affectedRigidBody;
 
@@ -15,6 +14,8 @@ namespace CodeBase.EnemyCar
     public float PushPower;
     
     private EnemyFollowingTarget _followingTarget;
+
+    public event Action Dead;
 
     public void Construct(Rigidbody affectedRigidBody)
     {
@@ -37,7 +38,7 @@ namespace CodeBase.EnemyCar
       
       BurnEffect.gameObject.SetActive(true);
       
-      _affectedRigidBody.AddForce(Vector3.forward * PushPower, ForceMode.VelocityChange);
+      _affectedRigidBody.AddForce((Vector3.forward+Vector3.down) * PushPower, ForceMode.VelocityChange);
 
       Invoke(nameof(Die), InFlameDuration);
     }
@@ -45,9 +46,11 @@ namespace CodeBase.EnemyCar
     public void Die()
     {
       BurnEffect.gameObject.SetActive(false);
-      View.SetActive(false);
       DieEffect.gameObject.SetActive(true);
+     
       enabled = false;
+      
+      Dead?.Invoke();
     }
   }
 }

@@ -9,6 +9,8 @@ namespace CodeBase.Logic.CheckPoint
 
     public TriggerObserver TriggerObserver;
     public RaycasterToGround RaycasterToGround;
+
+    private bool _isReachedByPlayer;
     
     public event Action<Vector3, Quaternion> Reached;
 
@@ -21,15 +23,16 @@ namespace CodeBase.Logic.CheckPoint
     private void TriggerEnter(Collider other)
     {
       if (!other.TryGetComponent(out TriggerObserver triggerObserver)) return;
-      
-      if(triggerObserver.tag == Player )
+      if (_isReachedByPlayer) return;
+
+      if(triggerObserver.tag == Player)
         Reached?.Invoke(RaycasterToGround.PointOnGround(other.transform.position).Item1, 
                         RaycasterToGround.PointOnGround(other.transform.position).Item2);
         
       DisableObject();
     }
 
-    private void DisableObject() => 
-      gameObject.SetActive(false);
+    private void DisableObject() =>
+      _isReachedByPlayer = true;
   }
 }

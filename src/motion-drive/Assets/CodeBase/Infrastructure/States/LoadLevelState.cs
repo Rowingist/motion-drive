@@ -1,19 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeBase.CameraLogic;
-using CodeBase.CameraLogic.Effects;
 using CodeBase.Data;
-using CodeBase.HeroCar;
-using CodeBase.Infrastructure.Events;
 using CodeBase.Infrastructure.Factory;
-using CodeBase.Logic;
-using CodeBase.Logic.CameraSwitchPoint;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
 using CodeBase.Services.StaticData;
-using CodeBase.StaticData;
 using CodeBase.StaticData.Level;
-using CodeBase.UI;
 using CodeBase.UI.Animations;
 using CodeBase.UI.Services.Factory;
 using UnityEngine;
@@ -82,14 +75,14 @@ namespace CodeBase.Infrastructure.States
       List<GameObject> CameraSwitchPoints = await InitCameraSwitchPoints(levelData);
       await InitCameraSwitchPointsHub(CameraSwitchPoints);
 
+      await InitEnemies(levelData);
+
       GameObject heroFollowingTarget = await InitPlayerFollowingTarget(levelData);
       GameObject heroCar = await InitHeroCar(levelData, heroFollowingTarget, checkPointsHub, _inputService);
       CameraFollow(heroCar);
 
       List<GameObject> movementSettingsPoints = await InitMovementSettingsPoints(levelData);
       await InitMovementSettingsPointsHub(movementSettingsPoints, heroFollowingTarget);
-
-      InitEnemies(levelData);
 
       GameObject hud = await InitHud(levelData, heroCar, heroFollowingTarget);
 
@@ -101,11 +94,11 @@ namespace CodeBase.Infrastructure.States
       for (int i = 0; i < levelData.SplinesStaticData.Configs.Count; i++)
       {
         Vector3 at = levelData.SplinesStaticData.Configs[i].InitialPosition.AsUnityVector();
-        
+
         GameObject spline = await InitEnemySpline(at, i);
-        GameObject splineWalker = await InitEnemySplineWalker(at, spline);
+        GameObject splineWalker = await InitEnemySplineWalker(at, spline, levelData);
         GameObject enemyFollowingTarget = await InitEnemyFollowingTarget(at, splineWalker);
-        await InitEnemyCar(at, enemyFollowingTarget);
+        await InitEnemyCar(at, enemyFollowingTarget, splineWalker);
       }
     }
 
@@ -178,7 +171,8 @@ namespace CodeBase.Infrastructure.States
 
     private async Task<GameObject> InitPlayerFollowingTarget(LevelStaticData levelStaticData) =>
       await _gameFactory.CreatePlayerFollowingTarget(levelStaticData.InitialHeroPosition, _inputService,
-        _progressService);
+        _progressService, levelStaticData.LevelMovementSettingPointsHub.Points[^1].MaxSpeed,
+        levelStaticData.LevelMovementSettingPointsHub.Points[^1].Acceleration);
 
     private async Task<GameObject> InitHeroCar(LevelStaticData levelStaticData, GameObject heroFollowingTarget,
       GameObject checkPointsHub, IInputService inputService)
@@ -193,14 +187,14 @@ namespace CodeBase.Infrastructure.States
     private async Task<GameObject> InitEnemySpline(Vector3 at, int index) =>
       await _gameFactory.CreateEnemySpline(at, index);
 
-    private async Task<GameObject> InitEnemySplineWalker(Vector3 at, GameObject spline) =>
-      await _gameFactory.CreateEnemySplineWalker(at, spline);
+    private async Task<GameObject> InitEnemySplineWalker(Vector3 at, GameObject spline, LevelStaticData levelData) =>
+      await _gameFactory.CreateEnemySplineWalker(at, spline, levelData.LevelMovementSettingPointsHub.Points[^1].EnemySpeedBySpline);
 
     private async Task<GameObject> InitEnemyFollowingTarget(Vector3 at, GameObject target) =>
       await _gameFactory.CreateEnemyFollowingTarget(at, target);
 
-    private async Task<GameObject> InitEnemyCar(Vector3 at, GameObject followingTarget) =>
-      await _gameFactory.CreateEnemyCar(at, followingTarget);
+    private async Task<GameObject> InitEnemyCar(Vector3 at, GameObject followingTarget, GameObject splineWalker) =>
+      await _gameFactory.CreateEnemyCar(at, followingTarget, splineWalker);
 
     private void InformProgressReaders()
     {

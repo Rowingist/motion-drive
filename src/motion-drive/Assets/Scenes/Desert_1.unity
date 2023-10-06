@@ -133,37 +133,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4635133285828622595, guid: 6044d281fcdf3d6478cc127c23224722, type: 3}
   m_PrefabInstance: {fileID: 1787235702}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &202106221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 202106222}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &202106222
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202106221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232097499
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +772,10 @@ PrefabInstance:
     - target: {fileID: 4894950166346335396, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894950166477955584, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
+      propertyPath: m_Size.z
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 4894950166477955590, guid: f821f2ff4f0195d4a8a6924b120abec6, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1879,6 +1852,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3695464529644101216}
     m_Modifications:
+    - target: {fileID: 1707130336993107416, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5806246708310746748, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1893,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5806246708310746748, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 446
+      value: 542.4
       objectReference: {fileID: 0}
     - target: {fileID: 5806246708310746748, guid: bc694d930376ed749847f784c7ae18fe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1978,14 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c1aecbd7d4d7fb4bb70faf298f4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 1
-  Acceleration: 2
-  HorizontalDragPerVelocity: 3
-  MaxLiftingAngle: 4
-  MaxGroundHoldingSpeed: 5
-  HoldingOnGroundHeight: 6
-  SnapToGroundSpeed: 7
-  GroundDetectionDistance: 8
+  StageSettingsTypeData: {fileID: 11400000, guid: 8076ad4f43a3227448c5b863cac7ce38, type: 2}
 --- !u!1001 &3695464531349541574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2055,14 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c1aecbd7d4d7fb4bb70faf298f4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 1
-  Acceleration: 2
-  HorizontalDragPerVelocity: 3
-  MaxLiftingAngle: 4
-  MaxGroundHoldingSpeed: 5
-  HoldingOnGroundHeight: 6
-  SnapToGroundSpeed: 7
-  GroundDetectionDistance: 8
+  StageSettingsTypeData: {fileID: 11400000, guid: 6cba8f04a63336c4f840b0f17e6e4670, type: 2}
 --- !u!4 &3695464531375555162
 Transform:
   m_ObjectHideFlags: 0
@@ -2107,14 +2070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c1aecbd7d4d7fb4bb70faf298f4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 1
-  Acceleration: 2
-  HorizontalDragPerVelocity: 3
-  MaxLiftingAngle: 4
-  MaxGroundHoldingSpeed: 5
-  HoldingOnGroundHeight: 6
-  SnapToGroundSpeed: 7
-  GroundDetectionDistance: 8
+  StageSettingsTypeData: {fileID: 11400000, guid: 39a9b4f510ae2e244a05b53481d9d30c, type: 2}
 --- !u!4 &3695464531441541656
 Transform:
   m_ObjectHideFlags: 0

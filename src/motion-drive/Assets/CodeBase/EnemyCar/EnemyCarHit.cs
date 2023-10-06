@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using CodeBase.HeroCar;
 using CodeBase.Logic;
@@ -5,7 +6,8 @@ using UnityEngine;
 
 namespace CodeBase.EnemyCar
 {
-  public class Hit : MonoBehaviour
+  [RequireComponent(typeof(EnemyCarDeath))]
+  public class EnemyCarHit : MonoBehaviour
   {
     public float Cleavage = 0.5f;
     public float Power = 40f;
@@ -24,26 +26,27 @@ namespace CodeBase.EnemyCar
       _enemyCarDeath = GetComponent<EnemyCarDeath>();
     }
 
-    private Collider player;
+    private Collider _player;
 
-    private void Start() =>
+    private void OnEnable()
+    {
+      _player = null;
       TriggerObserver.TriggerEnter += TryDead;
+    }
 
     private void TryDead(Collider obj)
     {
-      if (TryGetHit(out player))
+      if (TryGetHit(out _player))
       {
-        print(player.name);
-        
         if (_enemyCarDeath)
           _enemyCarDeath.BeginDeath();
 
         if (PlayerOnLeft())
-          AddPushForceAfterHit(-player.transform.right);
+          AddPushForceAfterHit(-_player.transform.right);
         else
-          AddPushForceAfterHit(player.transform.right);
+          AddPushForceAfterHit(_player.transform.right);
 
-        LevelRaceStatistics statistics = player.GetComponent<LevelRaceStatistics>();
+        LevelRaceStatistics statistics = _player.GetComponent<LevelRaceStatistics>();
         
         if(statistics) 
           statistics.CollectKill();
@@ -57,11 +60,11 @@ namespace CodeBase.EnemyCar
       TriggerObserver.TriggerEnter -= TryDead;
 
     private bool PlayerOnLeft() => 
-      player.transform.position.x - transform.position.x <= 0;
+      _player.transform.position.x - transform.position.x <= 0;
 
     private void AddPushForceAfterHit(Vector3 direction)
     {
-      player.GetComponent<Rigidbody>().AddForce( direction * Power,
+      _player.GetComponent<Rigidbody>().AddForce( direction * Power,
         ForceMode.VelocityChange);
     }
 

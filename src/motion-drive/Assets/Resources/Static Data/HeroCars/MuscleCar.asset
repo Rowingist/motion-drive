@@ -15,10 +15,10 @@ MonoBehaviour:
   TypeId: 1
   Name: Muscle Car
   IsLocked: 0
-  Acceleration: 30
-  SteeringPower: 50
+  Acceleration: 1
+  IncomePerActions: 0
   NitroCapacity: 40
-  MaxSpeed: 60
+  MaxSpeed: 1
   MaxAirRotationSpeed: 300
   UpgradeProgress: {fileID: 11400000, guid: 5e4013d0bf707014988888ff82c0b551, type: 2}
   Prefab: {fileID: 5659581306349345699, guid: ed45cee9b995e7d46b25d7d567e15339, type: 3}

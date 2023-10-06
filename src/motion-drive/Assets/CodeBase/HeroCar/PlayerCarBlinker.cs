@@ -1,16 +1,9 @@
-using System.Collections;
-using UnityEngine;
-
 namespace CodeBase.HeroCar
 {
-  public class PlayerCarBlinker : MonoBehaviour
+  public class PlayerCarBlinker : CarBlinker
   {
-    private const int Cycles = 10;
-    private const float Interval = 0.1f;
-
     public PlayerCarCrashChecker CrashChecker;
     public PlayerCarRespawn CarRespawn;
-    public GameObject[] HeroCarViewParts;
 
     private void Start()
     {
@@ -24,34 +17,7 @@ namespace CodeBase.HeroCar
       CarRespawn.Completed -= Blink;
     }
 
-    private void Blink() =>
+    protected override void Blink() => 
       StartCoroutine(Blinking());
-
-    private IEnumerator Blinking()
-    {
-      yield return new WaitForSecondsRealtime(Interval);
-      
-      for (int i = 0; i < Cycles; i++)
-      {
-        EnableParts();
-        yield return new WaitForSecondsRealtime(Interval);
-        DisableParts();
-        yield return new WaitForSecondsRealtime(Interval);
-      }
-
-      EnableParts();
-    }
-
-    private void DisableParts()
-    {
-      foreach (GameObject part in HeroCarViewParts)
-        part.SetActive(false);
-    }
-
-    private void EnableParts()
-    {
-      foreach (GameObject part in HeroCarViewParts)
-        part.SetActive(true);
-    }
   }
 }

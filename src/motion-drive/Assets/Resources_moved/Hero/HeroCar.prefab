@@ -4273,11 +4273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582c2e76f7b44995baa01aa93851cf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrashChecker: {fileID: 6758490157615344775}
-  CarRespawn: {fileID: 7321269416440040754}
   HeroCarViewParts:
   - {fileID: 7699648372738599387}
   - {fileID: 7900409648184364262}
+  CrashChecker: {fileID: 6758490157615344775}
+  CarRespawn: {fileID: 7321269416440040754}
 --- !u!114 &7945364945101537129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6135,6 +6135,14 @@ PrefabInstance:
       propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19891556, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19891556, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19907850, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -6169,7 +6177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19909248, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_RenderAlignment
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19909248, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_Materials.Array.size

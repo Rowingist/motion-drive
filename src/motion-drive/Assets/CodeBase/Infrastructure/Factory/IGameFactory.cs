@@ -30,12 +30,12 @@ namespace CodeBase.Infrastructure.Factory
     Task<GameObject> CreateCameraSwitchPointsHub(List<GameObject> switchPoints, CameraFollow cameraFollow, CameraLookAt cameraLookAt);
     Task<GameObject> CreateMoveSettingsPoint(Vector3 at, LevelMovementSettingPointStaticData levelMovementSettingsPointData);
     Task<GameObject> CreateMoveSettingsPointsHub(List<GameObject> SettingsPoints, GameObject followingTarget);
-    Task<GameObject> CreatePlayerFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData);
+    Task<GameObject> CreatePlayerFollowingTarget(Vector3 at, IInputService inputService, IPersistentProgressService carData, float stageMaxSpeed, float stageMaxAcceleration);
     Task<GameObject> CreatePlayerCar(Vector3 at, GameObject followingTarget, GameObject checkPointsHub, IInputService inputService, LoadingCurtain loadingCurtain, GameObject bodyPrefab);
     Task<GameObject> CreateEnemySpline(Vector3 ad, int index);
-    Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline);
+    Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline, float startDuration);
     Task<GameObject> CreateEnemyFollowingTarget(Vector3 at, GameObject target);
-    Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget);
+    Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget, GameObject splineWalker);
 
     void Cleanup();
   }

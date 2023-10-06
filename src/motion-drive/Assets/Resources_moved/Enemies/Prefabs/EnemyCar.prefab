@@ -3542,6 +3542,9 @@ GameObject:
   - component: {fileID: 6755177334070816638}
   - component: {fileID: 4273280904131840879}
   - component: {fileID: 8557716411465620305}
+  - component: {fileID: 7774625461702059738}
+  - component: {fileID: 5321751723274371275}
+  - component: {fileID: 494615007945683726}
   m_Layer: 19
   m_Name: EnemyCar
   m_TagString: Untagged
@@ -3617,7 +3620,7 @@ MonoBehaviour:
   GroundChecker: {fileID: 7026489442036262814}
   SelfRigidbody: {fileID: 7026489442036262813}
   RotateSpeed: 230
-  RotateDelay: 1
+  RotateDelay: 0
   MoveType: 1
   Speed: 0.09
 --- !u!114 &5911672996483200113
@@ -3683,6 +3686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cleavage: 7.4
+  Power: 40
   TriggerObserver: {fileID: 7026489441114017805}
 --- !u!114 &8557716411465620305
 MonoBehaviour:
@@ -3698,9 +3702,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BurnEffect: {fileID: 7153599848499642859}
   DieEffect: {fileID: 1411908227585567187}
-  View: {fileID: 4679902740189200746}
-  InFlameDuration: 3
+  InFlameDuration: 1
   PushPower: 40
+--- !u!114 &7774625461702059738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026489442036262787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a523443dd54135836da07ef1093751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerObserver: {fileID: 7026489441114017805}
+  OffsetY: 1
+--- !u!114 &5321751723274371275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026489442036262787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b5e3d6bb63452bb8678f6470299b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathDuration: 3
+--- !u!114 &494615007945683726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026489442036262787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11095c2bc6fb49f593f056008e138adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeroCarViewParts:
+  - {fileID: 5902535352905713662}
+  - {fileID: 6238406257859355331}
 --- !u!1 &7243459921642564511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4592,7 +4637,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: c54d31c7df8cb7d4e80622a6f62f4507, type: 3}
     - target: {fileID: 19831162, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19831162, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: stopAction
@@ -4604,7 +4649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19836202, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19836202, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: moveWithTransform
@@ -4612,7 +4657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19838564, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19838564, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: moveWithTransform
@@ -4636,7 +4681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19870492, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19870492, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: moveWithTransform
@@ -4644,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19882286, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19882286, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: useUnscaledTime
@@ -4656,7 +4701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19891556, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19891556, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: moveWithTransform
@@ -4684,7 +4729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19907850, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_RenderAlignment
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19907850, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_Materials.Array.size
@@ -4712,7 +4757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19909248, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_RenderAlignment
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19909248, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_Materials.Array.size
@@ -4764,7 +4809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19965796, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_RenderAlignment
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19965796, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_Materials.Array.size
@@ -4784,7 +4829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19991742, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_RenderAlignment
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19991742, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_Materials.Array.size
@@ -4859,11 +4904,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1474ecbc57248034fa7615c05d1f001f, type: 3}
---- !u!1 &4679902740189200746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2131490036137691638, guid: 1474ecbc57248034fa7615c05d1f001f, type: 3}
-  m_PrefabInstance: {fileID: 6730286982865307804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5456544240545471440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1648108872440075084, guid: 1474ecbc57248034fa7615c05d1f001f, type: 3}

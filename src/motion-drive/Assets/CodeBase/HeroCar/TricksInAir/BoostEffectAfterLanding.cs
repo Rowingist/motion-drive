@@ -14,7 +14,7 @@ namespace CodeBase.HeroCar.TricksInAir
     public PlayerCarCrashChecker CrashChecker;
     public PlayerCarLandingEvaluator LandingEvaluator;
 
-    public float BoostDuration;
+    public float BoostDuration = 1f;
     public int MinFlipsToBoost;
 
     public bool IsBoosting;
@@ -75,7 +75,7 @@ namespace CodeBase.HeroCar.TricksInAir
       IsBoosting = true;
       _playerFollowingTarget.StartBoosting();
       Started?.Invoke();
-      yield return new WaitForSecondsRealtime(BoostDuration);
+      yield return new WaitForSecondsRealtime(BoostDuration + MinFlipsToBoost / 100);
 
       IsBoosting = false;
       _playerFollowingTarget.StopBoosting();

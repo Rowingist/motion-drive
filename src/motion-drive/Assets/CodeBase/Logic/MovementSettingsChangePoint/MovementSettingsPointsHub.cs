@@ -7,10 +7,10 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
   public class MovementSettingsPointsHub : MonoBehaviour
   {
     private List<GameObject> _movementSettingPoints;
-    private PlayerFollowingTarget _playerFollowingTarget;
+    private PlayerFollowingTargetHandler _playerFollowingTarget;
 
     public void Construct(List<GameObject> movementSettingPoints,
-      PlayerFollowingTarget playerFollowingTarget)
+      PlayerFollowingTargetHandler playerFollowingTarget)
     {
       _movementSettingPoints = movementSettingPoints;
       _playerFollowingTarget = playerFollowingTarget;

@@ -73,5 +73,10 @@ namespace CodeBase.EnemyCar
 
     private void StartCheckingRoutine() => 
       StartCoroutine(CheckingToStartSnapping());
+
+    public void ChangeSpeed(float value)
+    {
+      _splineWalker.ChangeDuration(value);
+    }
   }
 }

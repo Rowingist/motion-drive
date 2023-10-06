@@ -9,9 +9,10 @@ namespace CodeBase.FollowingTarget
     public PlayerFollowingTarget FollowingTarget;
     
     public float MaxBoostSpeed;
-    public float DefaultSpeed;
+    public float CurrentSpeed;
+    
     public float MaxBoosAcceleration;
-    public float DefaultAcceleration;
+    public float CurrentAcceleration;
     
     private BoostEffectAfterLanding _boostEffect;
     private Coroutine _boostedMove;
@@ -21,12 +22,16 @@ namespace CodeBase.FollowingTarget
       _boostEffect = boostEffect;
       _boostEffect.Started += SetMoveSettings;
 
-      SetDefaults();
+      SetCurrentParameters();
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() => 
       _boostEffect.Started -= SetMoveSettings;
+
+    private void SetCurrentParameters()
+    {
+      CurrentSpeed = FollowingTarget.MaxSpeed;
+      CurrentAcceleration = FollowingTarget.MaxAcceleration;
     }
 
     private void SetMoveSettings()
@@ -34,7 +39,6 @@ namespace CodeBase.FollowingTarget
       StopActiveCoroutine();
       
       _boostedMove = StartCoroutine(MoveWithAdditionalPower());
-      //FollowingTarget.GetComponent<Rigidbody>().AddForce(FollowingTarget.transform.forward * 15, ForceMode.VelocityChange);
     }
 
     private void StopActiveCoroutine()
@@ -56,14 +60,8 @@ namespace CodeBase.FollowingTarget
       ResetToDefaults();
     }
 
-    private void SetDefaults()
-    {
-      DefaultSpeed = FollowingTarget.MaxSpeed;
-      DefaultAcceleration = FollowingTarget.MaxAcceleration;
-    }
-
     private void ResetToDefaults() => 
-      MoveWith(DefaultSpeed, DefaultAcceleration);
+      MoveWith(CurrentSpeed, CurrentAcceleration);
 
     private void MoveWith(float speed, float acceleration)
     {
