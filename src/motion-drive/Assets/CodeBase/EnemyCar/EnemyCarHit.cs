@@ -39,12 +39,9 @@ namespace CodeBase.EnemyCar
       if (TryGetHit(out _player))
       {
         if (_enemyCarDeath)
-          _enemyCarDeath.BeginDeath();
-
-        if (PlayerOnLeft())
-          AddPushForceAfterHit(-_player.transform.right);
-        else
-          AddPushForceAfterHit(_player.transform.right);
+          _enemyCarDeath.BeginDeath(_player.ClosestPoint(transform.position), _player.transform.position);
+        
+          AddPushForceAfterHit(Vector3.forward);
 
         LevelRaceStatistics statistics = _player.GetComponent<LevelRaceStatistics>();
         
@@ -64,7 +61,7 @@ namespace CodeBase.EnemyCar
 
     private void AddPushForceAfterHit(Vector3 direction)
     {
-      _player.GetComponent<Rigidbody>().AddForce( direction * Power,
+      _player.GetComponent<Rigidbody>().AddForce( direction * Power / 2f,
         ForceMode.VelocityChange);
     }
 

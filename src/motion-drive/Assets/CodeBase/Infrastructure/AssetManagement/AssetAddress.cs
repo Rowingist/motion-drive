@@ -17,5 +17,6 @@ namespace CodeBase.Infrastructure.AssetManagement
     public const string EnemySplineWalkerPath = "EnemySplineWalker";
     public const string EnemyFollowingTargetPath = "EnemyFollowingTarget";
     public const string EnemyCarPath = "EnemyCar";
+    public const string EnemiesSpeedMixer = "EnemiesSpeedMixer";
   }
 }

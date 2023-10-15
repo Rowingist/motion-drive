@@ -4,16 +4,15 @@ using System.Threading.Tasks;
 using CodeBase.CameraLogic;
 using CodeBase.CameraLogic.Effects;
 using CodeBase.Car;
+using CodeBase.EnemiesSpeedHandler;
 using CodeBase.EnemyCar;
 using CodeBase.FollowingTarget;
 using CodeBase.HeroCar;
 using CodeBase.HeroCar.Effects;
 using CodeBase.HeroCar.TricksInAir;
 using CodeBase.Infrastructure.AssetManagement;
-using CodeBase.Infrastructure.Events;
 using CodeBase.Infrastructure.Events.LevelStart.Subscribers;
 using CodeBase.Infrastructure.Events.Subscribers;
-using CodeBase.Logic;
 using CodeBase.Logic.Bezier;
 using CodeBase.Logic.Bezier.Movement;
 using CodeBase.Logic.CameraSwitchPoint;
@@ -23,8 +22,9 @@ using CodeBase.Logic.MovementSettingsChangePoint;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using CodeBase.Services.Randomizer;
+using CodeBase.StaticData.EnemiesSpeed;
 using CodeBase.StaticData.Level;
-using CodeBase.UI;
 using CodeBase.UI.Animations;
 using CodeBase.UI.Elements;
 using CodeBase.UI.Services.Windows;
@@ -71,6 +71,8 @@ namespace CodeBase.Infrastructure.Factory
 
       indicators.GetComponentInChildren<SpeedActorUI>()
         .Construct(followingTarget.GetComponent<PlayerFollowingTarget>());
+      
+      indicators.GetComponentInChildren<FlipsCounterAnimation>().Construct(heroCar.GetComponent<PlayerCarSwipeRotationInAir>());
 
       hud.GetComponentInChildren<EnableFinishCongratulationWindowSubscriber>().Construct(_windowService);
 
@@ -85,19 +87,28 @@ namespace CodeBase.Infrastructure.Factory
       return joystick;
     }
 
-    public async Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt)
+    public async Task<GameObject> CreateCheckPoint(Vector3 at, Vector3 raycastAt, EnemiesSpeedMixerConfig mixerConfig)
     {
       GameObject checkPoint = await InstantiateRegisteredAsync(AssetAddress.CheckPoint);
       checkPoint.transform.position = at;
-      checkPoint.GetComponent<CheckPoint>().RaycasterToGround.transform.position = raycastAt;
-
+      CheckPoint point = checkPoint.GetComponent<CheckPoint>();
+      point.RaycasterToGround.transform.position = raycastAt;
+      point.EnemiesSpeedMixerConfig = mixerConfig;
+      
       return checkPoint;
     }
+    
+    public async Task<GameObject> CreateEnemiesSpeedMixer()
+    {
+      GameObject speedMixer = await InstantiateRegisteredAsync(AssetAddress.EnemiesSpeedMixer);
+      return speedMixer;
+    }
 
-    public async Task<GameObject> CreateCheckPointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition)
+    public async Task<GameObject> CreateCheckPointsHub(List<GameObject> checkPoints, Vector3 initialPointPosition,
+      GameObject enemiesSpeedMixer)
     {
       GameObject hub = await InstantiateRegisteredAsync(AssetAddress.CheckPointsHub);
-      hub.GetComponent<CheckPointsHub>().Construct(checkPoints, initialPointPosition);
+      hub.GetComponent<CheckPointsHub>().Construct(checkPoints, initialPointPosition, enemiesSpeedMixer.GetComponent<EnemySpeedMixer>());
 
       return hub;
     }
@@ -123,8 +134,7 @@ namespace CodeBase.Infrastructure.Factory
     public async Task<GameObject> CreateMoveSettingsPoint(Vector3 at,
       LevelMovementSettingPointStaticData levelMovementSettingsPointData)
     {
-      GameObject moveSettingsPoint = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPoint);
-      moveSettingsPoint.transform.position = at;
+      GameObject moveSettingsPoint = await InstantiateRegisteredAsync(AssetAddress.MovementSettingsPoint, at);
       moveSettingsPoint.GetComponent<MovementSettingsPoint>().Construct(levelMovementSettingsPointData);
 
       return moveSettingsPoint;
@@ -221,7 +231,7 @@ namespace CodeBase.Infrastructure.Factory
       return spline;
     }
 
-    public async Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline, float startDuration)
+    public async Task<GameObject> CreateEnemySplineWalker(Vector3 at, GameObject spline, float startDuration, GameObject playerFollowingTarget)
     {
       GameObject splineWalker = await InstantiateRegisteredAsync(AssetAddress.EnemySplineWalkerPath, at);
 
@@ -238,13 +248,13 @@ namespace CodeBase.Infrastructure.Factory
       return followingTarget;
     }
 
-    public async Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget, GameObject splineWalker)
+    public async Task<GameObject> CreateEnemyCar(Vector3 at, GameObject followingTarget, GameObject splineWalker, IInputService inputService)
     {
       GameObject enemyCar = await InstantiateRegisteredAsync(AssetAddress.EnemyCarPath, at);
 
       Rigidbody followingRigidbody = followingTarget.GetComponent<Rigidbody>();
       EnemyFollowingTarget enemyFollowingTarget = followingTarget.GetComponent<EnemyFollowingTarget>();
-
+      
       enemyFollowingTarget.Construct(enemyCar.GetComponent<CarOnGroundChecker>());
       enemyCar.GetComponent<CarMove>().Construct(followingRigidbody);
       enemyCar.GetComponent<EnemyCarDeath>().Construct(followingRigidbody);
@@ -252,7 +262,9 @@ namespace CodeBase.Infrastructure.Factory
       enemyCar.GetComponent<EnemyRespawn>()
         .Construct(walker, enemyFollowingTarget, enemyCar.GetComponentInChildren<CarJoints>());
       enemyCar.GetComponent<EnemyRespawnPositionUpdater>().Construct(walker);
+      enemyCar.GetComponent<WheelsDrive>().Construct(inputService, followingRigidbody);
 
+      
       return enemyCar;
     }
 

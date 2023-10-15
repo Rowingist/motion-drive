@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CodeBase.Infrastructure.States
 {
   public class GameLoopState : IState
@@ -13,6 +15,7 @@ namespace CodeBase.Infrastructure.States
 
     public void Enter()
     {
+      
     }
   }
 }

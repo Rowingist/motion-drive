@@ -25,6 +25,9 @@ namespace CodeBase.Services.Input
     
     protected Vector2 JoystickInputAxis()
     {
+      if (_gameFactory.InputJoystick == null)
+        return Vector2.zero;
+      
       return new Vector2(_gameFactory.InputJoystick.Horizontal, _gameFactory.InputJoystick.Vertical);
     }
   }

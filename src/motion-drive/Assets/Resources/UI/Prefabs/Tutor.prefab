@@ -129,7 +129,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.7
+  m_fontSize: 29.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -273,9 +273,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b82754846d1431f41b565230030b31cf, type: 3}
+  m_Sprite: {fileID: -769404264, guid: 1a9bacac40001dd4e80f723f1794eddb, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1cb7d4098be14564ea2a124f90b5ae5d, type: 3}
+  m_Sprite: {fileID: -2125919934, guid: 6dc452b23ace9a643b36ff88b8a1e734, type: 3}
   m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1

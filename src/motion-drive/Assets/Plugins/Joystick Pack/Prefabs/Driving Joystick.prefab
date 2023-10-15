@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1108a603d34096acf2e22ca370d919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PreviewDelayDuration: 0.25
 --- !u!1001 &3403492602846314859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7894396194964732706, guid: d803cea08206fa24c9f0c058f9cbbefc, type: 3}
       propertyPath: m_fontSize
-      value: 36.7
+      value: 20.3
       objectReference: {fileID: 0}
     - target: {fileID: 9215806310332471331, guid: d803cea08206fa24c9f0c058f9cbbefc, type: 3}
       propertyPath: m_Name

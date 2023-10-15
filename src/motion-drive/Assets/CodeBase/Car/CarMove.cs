@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace CodeBase.Car
@@ -19,7 +20,7 @@ namespace CodeBase.Car
 
     public MoveType MoveType = MoveType.Player;
 
-    public void Construct(Rigidbody followingRigidbody) => 
+    public void Construct(Rigidbody followingRigidbody) =>
       _followingRigidbody = followingRigidbody;
 
     private void Start()
@@ -51,10 +52,16 @@ namespace CodeBase.Car
 
     private void RotateRigidbody()
     {
-      Quaternion lookFollowingRotation;
-      lookFollowingRotation = MoveType == MoveType.Player
-        ? Quaternion.LookRotation(_followingRigidbody.velocity)
-        : Quaternion.LookRotation(_followingRigidbody.position - transform.position);
+      Vector3 lookDirection = new Vector3();
+
+      lookDirection = MoveType == MoveType.Player
+        ? _followingRigidbody.velocity
+        : _followingRigidbody.position - transform.position;
+
+      Quaternion lookFollowingRotation = quaternion.identity;
+
+      if (lookDirection != Vector3.zero)
+        lookFollowingRotation = Quaternion.LookRotation(lookDirection);
 
       SelfRigidbody.rotation =
         Quaternion.RotateTowards(SelfRigidbody.rotation, lookFollowingRotation, RotateSpeed * Time.deltaTime);

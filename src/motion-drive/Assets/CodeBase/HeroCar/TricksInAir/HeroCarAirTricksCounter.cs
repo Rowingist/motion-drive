@@ -10,6 +10,7 @@ namespace CodeBase.HeroCar.TricksInAir
     private PlayerCarCrashChecker _crashChecker;
     private PlayerCarSwipeRotationInAir _rotationInAir;
     
+    
     public int CompletedFlips { get; private set; }
 
     private void Awake()

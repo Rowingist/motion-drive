@@ -35,7 +35,7 @@ namespace CodeBase.Editor
         //levelData.LevelTransfer.Position = GameObject.FindWithTag(LevelTransferInitialPointTag).transform.position;
 
         levelData.LevelCheckPointsHub.Points = FindObjectsOfType<CheckPointMarker>()
-          .Select(x => new LevelCheckPointsStaticData(x.transform.position, x.RaycasterOnGround.position))
+          .Select(x => new LevelCheckPointsStaticData(x.transform.position, x.RaycasterOnGround.position, x.EnemiesSpeedChange))
           .Reverse().ToArray();
         
         levelData.LevelCameraSwitchPointsHub.Points = FindObjectsOfType<CameraSwitchPointMarker>()

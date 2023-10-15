@@ -21,7 +21,7 @@ namespace CodeBase.EnemyCar
     private EnemyRespawnPositionUpdater _respawnPositionUpdater;
     private CarJoints _carJoints;
 
-    public event Action Started;
+    public event Action Completed;
     
     public void Construct(SplineWalker splineWalker, EnemyFollowingTarget enemyFollowingTarget, CarJoints carJoints)
     {
@@ -48,12 +48,12 @@ namespace CodeBase.EnemyCar
 
     private void Respawn()
     {
+      _splineWalker.StopMovement();
       Invoke(nameof(StartRespawn), DeathDuration);
     }
 
     private void StartRespawn()
     {
-      _splineWalker.StopMovement();
       _splineWalker.BackToCachedProgress();
       _enemyFollowingTarget.Rigidbody.position = _respawnPositionUpdater.CurrentCheckpoint;
       transform.position = _respawnPositionUpdater.CurrentCheckpoint;
@@ -63,7 +63,7 @@ namespace CodeBase.EnemyCar
 
     private void StartMovement()
     {
-      Started?.Invoke();
+      Completed?.Invoke();
       
       _carDeath.enabled = true;
       _carEnemyCarHit.enabled = true;

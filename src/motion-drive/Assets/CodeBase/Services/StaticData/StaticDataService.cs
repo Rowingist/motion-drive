@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CodeBase.Services.PersistentProgress;
 using CodeBase.StaticData.EnemySplines;
 using CodeBase.StaticData.HeroCars;
 using CodeBase.StaticData.Level;
@@ -18,7 +19,7 @@ namespace CodeBase.Services.StaticData
     private const string WindowsStaticDataPath = "Static Data/UI/WindowStaticData";
     private const string SplinesDataPath = "Static Data/EnemySplines/SplinesStaticData_";
     private const string EnemySpline = "Enemy_Spline";
-
+    
     private Dictionary<string, LevelStaticData> _levels;
     private Dictionary<CarTypeId, CarStaticData> _cars;
     private Dictionary<WindowId, WindowConfig> _windowConfigs;
@@ -40,7 +41,7 @@ namespace CodeBase.Services.StaticData
 
       StringBuilder level = new StringBuilder();
       level.Append(SplinesDataPath);
-      level.Append(SceneManager.GetActiveScene().name);
+      level.Append("Desert_1");
       _splineConfigs = Resources
         .Load<LevelEnemySplinesStaticData>(level.ToString()).Configs
         .ToDictionary(x => x.Label, x => x);

@@ -1,4 +1,5 @@
 using System;
+using CodeBase.StaticData.EnemiesSpeed;
 using UnityEngine;
 
 namespace CodeBase.Logic.CheckPoint
@@ -9,15 +10,17 @@ namespace CodeBase.Logic.CheckPoint
 
     public TriggerObserver TriggerObserver;
     public RaycasterToGround RaycasterToGround;
-
-    private bool _isReachedByPlayer;
+    public EnemiesSpeedMixerConfig EnemiesSpeedMixerConfig;
     
-    public event Action<Vector3, Quaternion> Reached;
+    private bool _isReachedByPlayer;
 
-    private void Start() => 
+    public event Action<Vector3, Quaternion> Reached;
+    public event Action<CheckPoint> ReachedPoint;
+
+    private void Start() =>
       TriggerObserver.TriggerEnter += TriggerEnter;
 
-    private void OnDestroy() => 
+    private void OnDestroy() =>
       TriggerObserver.TriggerEnter -= TriggerEnter;
 
     private void TriggerEnter(Collider other)
@@ -25,10 +28,14 @@ namespace CodeBase.Logic.CheckPoint
       if (!other.TryGetComponent(out TriggerObserver triggerObserver)) return;
       if (_isReachedByPlayer) return;
 
-      if(triggerObserver.tag == Player)
-        Reached?.Invoke(RaycasterToGround.PointOnGround(other.transform.position).Item1, 
-                        RaycasterToGround.PointOnGround(other.transform.position).Item2);
-        
+      if (triggerObserver.tag == Player)
+      {
+        Reached?.Invoke(RaycasterToGround.PointOnGround(other.transform.position).Item1,
+          RaycasterToGround.PointOnGround(other.transform.position).Item2);
+
+        ReachedPoint?.Invoke(this);
+      }
+
       DisableObject();
     }
 

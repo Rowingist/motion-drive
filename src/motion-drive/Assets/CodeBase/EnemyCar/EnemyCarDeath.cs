@@ -7,12 +7,13 @@ namespace CodeBase.EnemyCar
   {
     public ParticleSystem BurnEffect;
     public ParticleSystem DieEffect;
-    
+    public ParticleSystem SparksEffect;
+
     private Rigidbody _affectedRigidBody;
 
     public float InFlameDuration;
     public float PushPower;
-    
+
     private EnemyFollowingTarget _followingTarget;
 
     public event Action Dead;
@@ -29,27 +30,37 @@ namespace CodeBase.EnemyCar
       DieEffect.gameObject.SetActive(false);
     }
 
-    public void BeginDeath()
+    public void BeginDeath(Vector3 hitPoint, Vector3 hitterPosition)
     {
-      if(!_followingTarget || !_affectedRigidBody)
+      if (!_followingTarget || !_affectedRigidBody)
         return;
-      
+
       _followingTarget.enabled = false;
-      
+
       BurnEffect.gameObject.SetActive(true);
-      
-      _affectedRigidBody.AddForce((Vector3.forward+Vector3.down) * PushPower, ForceMode.VelocityChange);
+
+      SparksEffect.transform.position = hitPoint;
+      SparksEffect.gameObject.SetActive(true);
+
+      AddForceAside(hitPoint - hitterPosition + (Vector3.forward + Vector3.down) * 5);
+
 
       Invoke(nameof(Die), InFlameDuration);
     }
 
+    private void AddForceAside(Vector3 direction)
+    {
+      _affectedRigidBody.AddForce(direction * PushPower, ForceMode.VelocityChange);
+    }
+
     public void Die()
     {
+      SparksEffect.gameObject.SetActive(false);
       BurnEffect.gameObject.SetActive(false);
       DieEffect.gameObject.SetActive(true);
-     
+
       enabled = false;
-      
+
       Dead?.Invoke();
     }
   }

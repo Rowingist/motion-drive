@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -6,6 +7,7 @@ namespace CodeBase.Logic.CarParts
   {
     public ConfigurableJoint[] BodyRotation;
     public ConfigurableJoint BodySpring;
+
 
     public void StopMove()
     {
@@ -28,11 +30,10 @@ namespace CodeBase.Logic.CarParts
     {
       BodySpring.yMotion = ConfigurableJointMotion.Locked;
       Rigidbody rigid = BodySpring.GetComponent<Rigidbody>();
-        
+
       rigid.velocity = Vector3.zero;
       rigid.angularVelocity = Vector3.zero;
     }
-
 
     public void Reset()
     {
@@ -50,7 +51,7 @@ namespace CodeBase.Logic.CarParts
         joint.angularYMotion = Constants.Free;
 
         Rigidbody rigid = joint.GetComponent<Rigidbody>();
-        
+
         rigid.velocity = Vector3.zero;
         rigid.angularVelocity = Vector3.zero;
       }

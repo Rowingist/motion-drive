@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _circularMoveCamera: {fileID: 2510853739969052785}
+  _mainMoveCamera: {fileID: 955817145590253235}
 --- !u!1 &955817145590253257
 GameObject:
   m_ObjectHideFlags: 0

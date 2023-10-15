@@ -7,15 +7,16 @@ namespace CodeBase.Logic.Bezier
 {
   public class SplineWalker : OnStartLevelSubscriber
   {
-    public TriggerObserver TriggerObserver;
     public Rigidbody SelfBody;
 
-    public float Duration;
+    public float MaxDuration;
     public bool LookForward;
 
     public SplineWalkerMode Mode;
 
     private BezierSpline _spline;
+
+    private float _currentDuration;
     
     private float _progress;
     private bool _goingForward = true;
@@ -29,27 +30,17 @@ namespace CodeBase.Logic.Bezier
     public void Construct(BezierSpline spline, float duration)
     {
       _spline = spline;
-      Duration = duration;
+      _currentDuration = duration;
     }
 
     private void Start()
     {
-      TriggerObserver.TriggerEnter += UpdateLastTrampolineTargetPointZ;
       MakeLastPointUnreachable();
       CacheCurrentProgress();
     }
 
-    private void OnDestroy() => 
-      TriggerObserver.TriggerEnter -= UpdateLastTrampolineTargetPointZ;
-
     protected override void OnLevelStarted(CurrentLevelStartInfo levelStartInfo) => 
       IsRunning = true;
-
-    private void UpdateLastTrampolineTargetPointZ(Collider obj)
-    {
-      if (obj.gameObject.layer == LayerMask.NameToLayer("Trampoline"))
-        _lastPositionZ = obj.GetComponentInParent<Trampoline.Trampoline>().LandingPoint.position.z;
-    }
 
     private void Update()
     {
@@ -61,7 +52,7 @@ namespace CodeBase.Logic.Bezier
 
       if (_goingForward)
       {
-        _progress += Time.deltaTime / Duration;
+        _progress += Time.deltaTime / _currentDuration;
         
         if (_progress > 1f)
         {
@@ -82,7 +73,7 @@ namespace CodeBase.Logic.Bezier
       }
       else
       {
-        _progress -= Time.deltaTime / Duration;
+        _progress -= Time.deltaTime / _currentDuration;
         
         if (_progress < 0f)
         {
@@ -112,20 +103,28 @@ namespace CodeBase.Logic.Bezier
     public void StartMovement() => 
       IsRunning = true;
 
-    [ContextMenu("back")]
     public void BackToCachedProgress() => 
       _progress = _cachedProgress;
 
-    [ContextMenu("Cache")]
     public void CacheCurrentProgress() => 
       _cachedProgress = _progress;
 
     public void ChangeDuration(float value)
     {
-      if(value <= 0)
+      if(_currentDuration - value < MaxDuration)
         return;
       
-      Duration = value;
+      print("update");
+      
+      _currentDuration -= value;
+    }
+
+    public void ChangeLastPositionZ(float currentValue)
+    { 
+      if(_lastPositionZ + currentValue < _lastPositionZ)
+        return;
+
+      _lastPositionZ = currentValue;
     }
   }
 }

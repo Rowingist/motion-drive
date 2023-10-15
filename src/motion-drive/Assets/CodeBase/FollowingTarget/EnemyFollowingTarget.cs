@@ -22,6 +22,8 @@ namespace CodeBase.EnemyCar
 
     private Vector3 _currentPosition;
 
+    public SplineWalker SplineWalker => _splineWalker;
+
     public void Construct(Transform target)
     {
       _target = target;

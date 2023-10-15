@@ -8,7 +8,7 @@ namespace CodeBase.Logic.CarParts
   public class WheelsDrive : MonoBehaviour
   {
     public MoveType MoveType = MoveType.Player;
-    
+
     public GameObject[] Wheels;
 
     public float Speed;
@@ -30,19 +30,25 @@ namespace CodeBase.Logic.CarParts
 
     private void Update()
     {
-      if (_inputService is null) return;
+      if (_inputService == null) return;
 
       if (MoveType == MoveType.Player)
+      {
         if (!_inputService.IsFingerHoldOnScreen() && !GroundChecker.IsOnGround) return;
-
-      ChoseRotationMagnitude(_following.velocity.magnitude);
-
+        
+        ChoseRotationMagnitude(_following.velocity.magnitude);
+      }
+      else
+      {
+        _rotationMagnitude = _following.velocity.magnitude;
+      }
+      
       _rotationX += _rotationMagnitude * Speed * Time.deltaTime;
 
       Drive(_rotationX);
     }
 
-    private void ChoseRotationMagnitude(float currentMagnitude) => 
+    private void ChoseRotationMagnitude(float currentMagnitude) =>
       _rotationMagnitude = currentMagnitude > MaxDriveSpeed ? MaxDriveSpeed : currentMagnitude;
 
     private void Drive(float rotationX)

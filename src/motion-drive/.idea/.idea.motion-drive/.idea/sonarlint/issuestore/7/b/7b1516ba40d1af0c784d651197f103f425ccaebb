@@ -1,7 +1,0 @@
-
-Scsharpsquid:S1172“")Remove this unused method parameter 'at'.(®‡Ýºùÿÿÿÿ8í¥•–°1
-|csharpsquid:S927?"ZRename parameter 'finishPosition' to 'finishZPosition' to match the interface declaration.(ÚåÉ<8Ïß”–°1
-ucsharpsquid:S927"RRename parameter 'playerProgress' to 'carData' to match the interface declaration.(ŽùüF8×€ë–°1
-ecsharpsquid:S927Ó"ARename parameter 'at' to 'ad' to match the interface declaration.(È¦¢¸8î¥•–°1
-^csharpsquid:S1144‹"9Remove the unused private method 'InstantiateRegistered'.(‹õ–ø8î¥•–°1
-ccsharpsquid:S1144“"9Remove the unused private method 'InstantiateRegistered'.(®‡Ýºùÿÿÿÿ8î¥•–°1

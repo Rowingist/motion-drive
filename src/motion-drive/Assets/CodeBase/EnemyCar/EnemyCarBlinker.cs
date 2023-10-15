@@ -19,13 +19,13 @@ namespace CodeBase.EnemyCar
     private void Start()
     {
       _carDeath.Dead += DisableParts;
-      _enemyRespawn.Started += Blink;
+      _enemyRespawn.Completed += Blink;
     }
 
     private void OnDestroy()
     {
       _carDeath.Dead -= DisableParts;
-      _enemyRespawn.Started -= Blink;
+      _enemyRespawn.Completed -= Blink;
     }
 
     protected override void Blink() => 

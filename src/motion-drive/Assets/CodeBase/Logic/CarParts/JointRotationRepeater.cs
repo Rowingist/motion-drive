@@ -54,7 +54,7 @@ namespace CodeBase.Logic.CarParts
 
     private void MakeProperRotation()
     {
-      transform.localRotation = quaternion.identity;
+      transform.DOLocalRotate(Vector3.zero, 0.25f) ;
       _isLookingStraight = true;
     }
 

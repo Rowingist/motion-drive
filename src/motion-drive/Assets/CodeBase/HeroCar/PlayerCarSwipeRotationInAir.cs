@@ -23,7 +23,8 @@ namespace CodeBase.HeroCar
 
     private Vector3 _downForwardDirection = Vector3.forward + Vector3.down;
     
-    public event Action Flipped; 
+    public event Action Flipped;
+    public event Action<string> FlippedDirection;
 
     public void Construct(CarOnGroundChecker groundChecker, SwipeListener swipeListener, PlayerFollowingTarget playerFollowingTarget)
     {
@@ -56,18 +57,22 @@ namespace CodeBase.HeroCar
         case "Up":
           _rotateTweener = Rotate360ByEuler(Constants.EulerAngleX360);
           AffectFightTrajectory(_downForwardDirection);
+          FlippedDirection?.Invoke("Front flip");
           break;
         case "Down":
           _rotateTweener = Rotate360ByEuler(Constants.EulerAngleMinusX360);
           AffectFightTrajectory(_downForwardDirection);
+          FlippedDirection?.Invoke("Back flip");
           break;
         case "Right":
           _rotateTweener = Rotate360ByEuler(Constants.EulerAngleMinusY360);
           AffectFightTrajectory(Vector3.right);
+          FlippedDirection?.Invoke("Right side flip");
           break;
         case "Left":
           _rotateTweener = Rotate360ByEuler(Constants.EulerAngleY360);
           AffectFightTrajectory(Vector3.left);
+          FlippedDirection?.Invoke("Left side flip");
           break;
       }
       

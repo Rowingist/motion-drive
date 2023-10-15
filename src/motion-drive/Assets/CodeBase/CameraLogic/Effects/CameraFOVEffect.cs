@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CodeBase.HeroCar.TricksInAir;
 using DG.Tweening;

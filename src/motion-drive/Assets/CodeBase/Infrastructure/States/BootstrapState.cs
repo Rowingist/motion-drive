@@ -4,6 +4,7 @@ using CodeBase.Services;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using CodeBase.Services.Randomizer;
 using CodeBase.Services.SaveLoad;
 using CodeBase.Services.StaticData;
 using CodeBase.UI.Services.Factory;
@@ -41,6 +42,7 @@ namespace CodeBase.Infrastructure.States
       RegisterStaticDataService();
       RegisterAssetProvider();
 
+      _services.RegisterSingle<IRandomService>(new RandomService());
       _services.RegisterSingle<IUIFactory>(new UIFactory(
         _services.Single<IAssetProvider>(),
         _services.Single<IStaticDataService>()));
@@ -54,6 +56,7 @@ namespace CodeBase.Infrastructure.States
       _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
       _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(),
         _services.Single<IGameFactory>()));
+      
     }
 
     private void RegisterStaticDataService()

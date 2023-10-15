@@ -1,5 +1,4 @@
 using CodeBase.Car;
-using CodeBase.HeroCar;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -24,14 +23,18 @@ namespace CodeBase.Logic.CarParts
       if (_groundChecker && _groundChecker.IsOnGround)
       {
         _following.y = InverseSpringTransformPoint();
-        transform.localPosition = SmoothFollowing();
+        transform.localPosition = SmoothFollowing(_following);
+      }
+      else
+      {
+        transform.localPosition = SmoothFollowing(Vector3.zero);
       }
     }
 
     private float InverseSpringTransformPoint() =>
       transform.InverseTransformPoint(Spring.position).y;
 
-    private Vector3 SmoothFollowing() =>
-      Vector3.SmoothDamp(transform.localPosition, _following, ref _velocity, SmoothTime, MaxSpeed);
+    private Vector3 SmoothFollowing(Vector3 localPosition) =>
+      Vector3.SmoothDamp(transform.localPosition, localPosition, ref _velocity, SmoothTime, MaxSpeed);
   }
 }

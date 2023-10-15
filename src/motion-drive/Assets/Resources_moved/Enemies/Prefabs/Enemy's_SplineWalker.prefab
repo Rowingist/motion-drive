@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddda6e3c4e894040896633476ead0204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerObserver: {fileID: 740926987892805717}
   SelfBody: {fileID: 4155437985952422750}
-  Duration: 60
+  MaxDuration: 10
   LookForward: 1
   Mode: 0
   IsRunning: 0
@@ -80,7 +79,6 @@ GameObject:
   - component: {fileID: 740926987892805716}
   - component: {fileID: 740926987892805719}
   - component: {fileID: 740926987892805722}
-  - component: {fileID: 740926987892805717}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -166,15 +164,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &740926987892805717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740926987892805712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6bc13591a19438eb265a55925027bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

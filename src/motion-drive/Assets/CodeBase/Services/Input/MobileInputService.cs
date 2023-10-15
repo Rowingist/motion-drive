@@ -19,6 +19,9 @@ namespace CodeBase.Services.Input
       if (_gameFactory == null)
         return false;
       
+      if (_gameFactory.InputJoystick == null)
+        return false;
+      
       return _gameFactory.InputJoystick.IsPointer;
     }
 

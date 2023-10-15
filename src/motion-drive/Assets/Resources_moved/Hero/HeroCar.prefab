@@ -1705,7 +1705,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6388f511ca43e474a83960f600484017, type: 2}
+  - {fileID: 2100000, guid: a0bf8104dfd0a5241be10e985716d5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1871,7 +1871,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6388f511ca43e474a83960f600484017, type: 2}
+  - {fileID: 2100000, guid: a0bf8104dfd0a5241be10e985716d5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3332,7 +3332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6388f511ca43e474a83960f600484017, type: 2}
+  - {fileID: 2100000, guid: a0bf8104dfd0a5241be10e985716d5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4143,7 +4143,7 @@ GameObject:
   - component: {fileID: 5668461971003284155}
   - component: {fileID: 2230146193596604060}
   - component: {fileID: 651998424177041352}
-  - component: {fileID: 6845640099482624135}
+  - component: {fileID: 3047252785739318712}
   m_Layer: 3
   m_Name: HeroCar
   m_TagString: Player
@@ -4425,7 +4425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CrashChecker: {fileID: 6758490157615344775}
   DeathFX: {fileID: 3445811285521343179}
---- !u!114 &6845640099482624135
+--- !u!114 &3047252785739318712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4434,15 +4434,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6758490157615344795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cc222cd2204a8291fba987646de7b4, type: 3}
+  m_Script: {fileID: 11500000, guid: ecde908e767849148e4718620696d690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _traceEffects:
+  TraceEffects:
   - {fileID: 7037902309264866996}
-  - {fileID: 1886819639953982735}
-  - {fileID: 367459819924886187}
   - {fileID: 5596265031172071326}
-  _groundChecker: {fileID: 6758490157615344774}
+  - {fileID: 367459819924886187}
+  - {fileID: 1886819639953982735}
+  GroundChecker: {fileID: 6758490157615344774}
   _carCrash: {fileID: 6758490157615344775}
   _carRespawn: {fileID: 7321269416440040754}
 --- !u!1 &6758490159107939115
@@ -5089,7 +5089,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6388f511ca43e474a83960f600484017, type: 2}
+  - {fileID: 2100000, guid: a0bf8104dfd0a5241be10e985716d5b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

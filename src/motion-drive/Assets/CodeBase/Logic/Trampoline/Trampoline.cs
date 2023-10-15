@@ -30,14 +30,14 @@ namespace CodeBase.Logic.Trampoline
     private void Start()
     {
       AdjustTakeOffPointRotation(TakeOffAngle);
-      TriggerObserver.TriggerEnter += TriggerEnter;
+        TriggerObserver.TriggerExit += LookStraight;
       TriggerObserver.TriggerExit += TriggerExit;
       _defaultTakeOffPower = ComputeTakeOffPower();
     }
 
     private void OnDestroy()
     {
-      TriggerObserver.TriggerEnter -= TriggerEnter;
+      TriggerObserver.TriggerExit -= LookStraight;
       TriggerObserver.TriggerExit -= TriggerExit;
     }
 
@@ -64,12 +64,12 @@ namespace CodeBase.Logic.Trampoline
       return Mathf.Sqrt(Mathf.Abs(v2));
     }
 
-    private void TriggerEnter(Collider obj)
+    private void LookStraight(Collider obj)
     {
       if (obj.TryGetComponent(out TriggerObserver heroCar) && ObjectLayerIsPlayer(heroCar))
       {
-        _lastTakeOffHorizontalForce = heroCar.transform.forward.x;
-        heroCar.transform.parent.transform.DORotate(Vector3.zero, 1);
+        //_lastTakeOffHorizontalForce = heroCar.transform.forward.x;
+        heroCar.transform.parent.transform.DORotate(Vector3.zero, 0.25f);
       }
     }
 
@@ -81,16 +81,18 @@ namespace CodeBase.Logic.Trampoline
       if (obj.TryGetComponent(out PlayerFollowingTarget heroFollowingTarget))
         TakeOff(heroFollowingTarget);
 
-      if (obj.TryGetComponent(out EnemyFollowingTarget enemyCarFollowingTarget)) 
+      if (obj.TryGetComponent(out EnemyFollowingTarget enemyCarFollowingTarget))
+      {
+        enemyCarFollowingTarget.SplineWalker.ChangeLastPositionZ(LandingPoint.position.z);
         TakeOff(enemyCarFollowingTarget);
-    }
+      }    }
 
     private void TakeOff(PlayerFollowingTarget playerFollowingTarget)
     {
       playerFollowingTarget.DisableSnapping();
       StartCoroutine(EnablingSnapping(playerFollowingTarget));
       Rigidbody targetBody = playerFollowingTarget.GetComponent<Rigidbody>();
-      Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
+      Vector3 targetForward = new Vector3(TakeOffPoint.forward.x, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       targetBody.velocity = targetForward * _defaultTakeOffPower;
     }
 
@@ -98,7 +100,7 @@ namespace CodeBase.Logic.Trampoline
     {
       enemyFollowingTarget.StopSnapping();
       Rigidbody enemyRigidBody = enemyFollowingTarget.GetComponent<Rigidbody>();
-      Vector3 targetForward = new Vector3(_lastTakeOffHorizontalForce, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
+      Vector3 targetForward = new Vector3(TakeOffPoint.forward.x, TakeOffPoint.forward.y, TakeOffPoint.forward.z);
       enemyRigidBody.velocity = targetForward * _defaultTakeOffPower;
     }
 

@@ -4,41 +4,36 @@ using UnityEngine;
 
 namespace CodeBase.HeroCar.Effects
 {
-  public class InAirTraceDisabler : MonoBehaviour
+  public abstract class InAirTraceDisabler : MonoBehaviour
   {
-    [SerializeField] private ParticleSystem[] _traceEffects;
-    [SerializeField] private CarOnGroundChecker _groundChecker;
-    [SerializeField] private PlayerCarCrashChecker _carCrash;
-    [SerializeField] private PlayerCarRespawn _carRespawn;
+    public ParticleSystem[] TraceEffects;
+    public CarOnGroundChecker GroundChecker;
 
     private void Awake() => 
       StopParticleEmission();
 
-    private void Start()
+    public virtual void Start()
     {
-      _carRespawn.Completed += StartParticleEmission;
-      _carCrash.Crashed += StopParticleEmission;
-      _groundChecker.TookOff += StopParticleEmission;
-      _groundChecker.LandedOnGround += StartParticleEmission;
+      GroundChecker.TookOff += StopParticleEmission;
+      GroundChecker.LandedOnGround += StartParticleEmission;
     }
 
-    private void OnDestroy()
+    public virtual void OnDestroy()
     {
-      _carRespawn.Completed += StartParticleEmission;
-      _carCrash.Crashed += StopParticleEmission;
-      _groundChecker.TookOff += StopParticleEmission;
-      _groundChecker.LandedOnGround += StartParticleEmission;
+      GroundChecker.TookOff += StopParticleEmission;
+      GroundChecker.LandedOnGround += StartParticleEmission;
     }
 
-    private void StartParticleEmission()
+
+    protected void StartParticleEmission()
     {
-      foreach (ParticleSystem traceEffect in _traceEffects) 
+      foreach (ParticleSystem traceEffect in TraceEffects) 
         traceEffect.Play();
     }
 
-    private void StopParticleEmission()
+    protected void StopParticleEmission()
     {
-      foreach (ParticleSystem traceEffect in _traceEffects) 
+      foreach (ParticleSystem traceEffect in TraceEffects) 
         traceEffect.Stop();
     }
   }

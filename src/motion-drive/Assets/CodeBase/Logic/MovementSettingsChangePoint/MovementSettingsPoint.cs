@@ -67,6 +67,8 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
 
       if (obj.TryGetComponent(out EnemyFollowingTarget enemyFollowingTarget))
       {
+        print(obj.transform.root.name);
+        
         enemyFollowingTarget.ChangeSpeed(_enemySpeedBySpline);
       }
     }

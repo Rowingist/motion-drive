@@ -21,4 +21,4 @@ MonoBehaviour:
   HoldingOnGroundHeight: 0
   SnapToGroundSpeed: 0
   GroundDetectionDistance: 0
-  EnemySpeedBySpline: 55
+  EnemySpeedBySpline: 40
