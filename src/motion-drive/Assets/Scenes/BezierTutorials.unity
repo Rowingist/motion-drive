@@ -234,7 +234,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.85
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1202,9 +1202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddda6e3c4e894040896633476ead0204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerObserver: {fileID: 0}
   SelfBody: {fileID: 0}
-  Duration: 5
+  MaxDuration: 0
   LookForward: 1
   Mode: 1
   IsRunning: 0

@@ -1,0 +1,5 @@
+
+lcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(öŸ€…
+ncsharpsquid:S2223"LChange the visibility of 'ServiceInstance' or make it 'const' or 'readonly'.(Ø™×şÿÿÿÿ
+rcsharpsquid:S2696	"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(ÌúÚ
+xcsharpsquid:S3260"[Private classes which are not derived in the current assembly should be marked as 'sealed'.(öŸ€…

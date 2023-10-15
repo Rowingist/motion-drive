@@ -1,0 +1,4 @@
+
+‹csharpsquid:S101"cRename class 'CameraFOVEffect' to match pascal case naming rules, consider using 'CameraFovEffect'.(©“µùÿÿÿÿ8¶á¨ù±1
+hcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(»†°¶8·á¨ù±1

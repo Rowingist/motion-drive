@@ -1,0 +1,6 @@
+
+Lcsharpsquid:S1125V"*Remove the unnecessary Boolean literal(s).(œ“”Íûÿÿÿÿ
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¨«ÿÿÿÿÿ
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(•Íœøşÿÿÿÿ
+Lcsharpsquid:S1066a"/Merge this if statement with the enclosing one.(ÙÔô“
+xcsharpsquid:S1450 "VRemove the field '_offset' and declare it as a local variable in the relevant methods.(¶µÄüÿÿÿÿ
