@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 0040827e58134ef45a3b642d79e68937
-  m_SerializeEntries:
-  - m_GUID: 1a5fadd096278fc42bb73d6c448668c5
-    m_Address: Hud
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8271955a51f96e34da51d2f490dc547a
-    m_Address: UIRoot
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

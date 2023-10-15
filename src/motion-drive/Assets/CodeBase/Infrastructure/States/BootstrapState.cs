@@ -4,8 +4,11 @@ using CodeBase.Services;
 using CodeBase.Services.HeroCar;
 using CodeBase.Services.Input;
 using CodeBase.Services.PersistentProgress;
+using CodeBase.Services.Randomizer;
 using CodeBase.Services.SaveLoad;
 using CodeBase.Services.StaticData;
+using CodeBase.UI.Services.Factory;
+using CodeBase.UI.Services.Windows;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.States
@@ -39,13 +42,21 @@ namespace CodeBase.Infrastructure.States
       RegisterStaticDataService();
       RegisterAssetProvider();
 
+      _services.RegisterSingle<IRandomService>(new RandomService());
+      _services.RegisterSingle<IUIFactory>(new UIFactory(
+        _services.Single<IAssetProvider>(),
+        _services.Single<IStaticDataService>()));
+      _services.RegisterSingle<IWindowService>( new WindowService(_services.Single<IUIFactory>()));
+      
       _services.RegisterSingle<IHeroCarProviderService>(new HeroCarProviderService());
       _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(),
-        _services.Single<IHeroCarProviderService>()));
+        _services.Single<IHeroCarProviderService>(), _services.Single<IWindowService>()));
+
       _services.RegisterSingle<IInputService>(InputService(_services.Single<IGameFactory>()));
       _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
       _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(),
         _services.Single<IGameFactory>()));
+      
     }
 
     private void RegisterStaticDataService()

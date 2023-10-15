@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CodeBase.HeroCar.TricksInAir;
 using DG.Tweening;
@@ -29,8 +28,10 @@ namespace CodeBase.CameraLogic.Effects
       Subscribe();
     }
 
-    private void Subscribe() => 
+    private void Subscribe()
+    {
       _boostEffect.Started += OnStartEffect;
+    }
 
     private void Awake()
     {
@@ -46,14 +47,19 @@ namespace CodeBase.CameraLogic.Effects
       _rightPipeFire.gameObject.SetActive(false);
     }
 
-    private void OnDisable() => 
+    private void OnDisable()
+    {
       _boostEffect.Started -= OnStartEffect;
+    }
 
     private void OnStartEffect()
     {
       DisableActive(_fOVEffect);
       _fOVEffect = StartCoroutine(ChangeCameraFOV());
     }
+    
+    public void OnStartEffectNoFX() => 
+      StartCoroutine(ChangeCameraFOVNoFX());
 
     private IEnumerator ChangeCameraFOV()
     {
@@ -71,6 +77,20 @@ namespace CodeBase.CameraLogic.Effects
       _windyFX.gameObject.SetActive(false);
       _leftPipeFire.gameObject.SetActive(false);
       _rightPipeFire.gameObject.SetActive(false);
+    }
+    
+    private IEnumerator ChangeCameraFOVNoFX()
+    {
+      DisableActive(_smoothTransition);
+      _smoothTransition = StartCoroutine(TransitSmooth(FOVMaxValue));
+      _windyFX.gameObject.SetActive(true);
+
+      yield return new WaitForSecondsRealtime(2f);
+      
+      DisableActive(_smoothTransition);
+      _smoothTransition = StartCoroutine(TransitSmooth(_fOVDefault));
+      _windyFX.Stop();
+      _windyFX.gameObject.SetActive(false);
     }
 
     private IEnumerator TransitSmooth(float targetFOV)

@@ -7,13 +7,13 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
   public class MovementSettingsPointsHub : MonoBehaviour
   {
     private List<GameObject> _movementSettingPoints;
-    private HeroFollowingTarget _heroFollowingTarget;
+    private PlayerFollowingTargetHandler _playerFollowingTarget;
 
     public void Construct(List<GameObject> movementSettingPoints,
-      HeroFollowingTarget heroFollowingTarget)
+      PlayerFollowingTargetHandler playerFollowingTarget)
     {
       _movementSettingPoints = movementSettingPoints;
-      _heroFollowingTarget = heroFollowingTarget;
+      _playerFollowingTarget = playerFollowingTarget;
       
       BindPoints();
     }
@@ -22,7 +22,7 @@ namespace CodeBase.Logic.MovementSettingsChangePoint
     {
       foreach (GameObject settingPoint in _movementSettingPoints)
       {
-        settingPoint.GetComponent<MovementSettingsPoint>().Construct(_heroFollowingTarget);
+        settingPoint.GetComponent<MovementSettingsPoint>().Construct(_playerFollowingTarget);
         settingPoint.transform.parent = transform;
       }
     }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using CodeBase.Car;
 using CodeBase.HeroCar;
 using UnityEngine;
 
@@ -10,22 +12,22 @@ namespace CodeBase.UI.Elements
     public float UpdateRate;
 
     private float _finishPositionZ;
-    private HeroCarMove _heroCar;
+    private CarMove _car;
 
-    public void Construct(float finishPositionZ, HeroCarMove heroCar)
+    public void Construct(float finishPositionZ, CarMove car)
     {
       _finishPositionZ = finishPositionZ;
-      _heroCar = heroCar;
-
+      _car = car;
+      
       StartCoroutine(UpdatePlayerPositionInfo());
     }
-
+    
     private IEnumerator UpdatePlayerPositionInfo()
     {
       WaitForSecondsRealtime updateRoutine = new WaitForSecondsRealtime(UpdateRate);
       while (true)
       {
-        ProgressBar.SetValue(_heroCar.transform.position.z, _finishPositionZ);
+        ProgressBar.SetValue(_car.transform.position.z, _finishPositionZ);
         
         yield return updateRoutine;
       }

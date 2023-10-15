@@ -19,10 +19,11 @@ namespace CodeBase.StaticData.Level
     public float HoldingOnGroundHeight;
     public float SnapToGroundSpeed;
     public float GroundDetectionDistance;
+    public float EnemySpeedBySpline;
 
     public LevelMovementSettingPointStaticData(Vector3 position, float maxSpeed, float acceleration,
       float horizontalDragPerVelocity, float maxLiftingAngle, float maxGroundHoldingSpeed, float holdingOnGroundHeight,
-      float snapToGroundSpeed, float groundDetectionDistance)
+      float snapToGroundSpeed, float groundDetectionDistance, float enemySpeedBySpline)
     {
       Position = position;
       
@@ -35,6 +36,7 @@ namespace CodeBase.StaticData.Level
       HoldingOnGroundHeight = holdingOnGroundHeight;
       SnapToGroundSpeed = snapToGroundSpeed;
       GroundDetectionDistance = groundDetectionDistance;
+      EnemySpeedBySpline = enemySpeedBySpline;
     }
   }
 }

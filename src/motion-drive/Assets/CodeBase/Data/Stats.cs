@@ -6,7 +6,7 @@ namespace CodeBase.Data
   public class Stats
   {
     public float Speed;
-    public float Steering;
     public float Acceleration;
+    public float Income;
   }
 }

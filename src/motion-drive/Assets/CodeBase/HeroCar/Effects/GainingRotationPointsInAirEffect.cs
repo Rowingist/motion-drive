@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using CodeBase.Car;
 using CodeBase.HeroCar.TricksInAir;
 using UnityEngine;
 
@@ -12,13 +13,13 @@ namespace CodeBase.HeroCar.Effects
     [SerializeField] private int _firstStep;
     [SerializeField] private int _secondStep;
 
-    private HeroCarSwipeRotationInAir _swipeRotationInAir;
-    private HeroCarOnGroundChecker _groundChecker;
+    private PlayerCarSwipeRotationInAir _swipeRotationInAir;
+    private CarOnGroundChecker _groundChecker;
     private HeroCarAirTricksCounter _tricksCounter;
 
     private int _nextCounter;
 
-    public void Construct(HeroCarSwipeRotationInAir swipeRotationInAir, HeroCarOnGroundChecker groundChecker,
+    public void Construct(PlayerCarSwipeRotationInAir swipeRotationInAir, CarOnGroundChecker groundChecker,
       HeroCarAirTricksCounter tricksCounter)
     {
       _swipeRotationInAir = swipeRotationInAir;

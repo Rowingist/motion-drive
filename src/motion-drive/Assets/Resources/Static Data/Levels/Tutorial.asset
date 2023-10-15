@@ -21,7 +21,10 @@ MonoBehaviour:
     Points:
     - Position: {x: 0, y: 0, z: 0}
       RaycastOnGroundOffset: {x: 0, y: 5.6, z: 13.799999}
+      EnemiesSpeedMixerConfig: {fileID: 0}
   LevelCameraSwitchPointsHub:
     Points: []
   LevelMovementSettingPointsHub:
     Points: []
+  FinishZPosition: 0
+  SplinesStaticData: {fileID: 0}

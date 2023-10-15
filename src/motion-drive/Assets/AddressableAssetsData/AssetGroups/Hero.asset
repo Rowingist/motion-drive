@@ -16,27 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a59b7edb7d4fc324db35f1fc5d121732
-  m_SerializeEntries:
-  - m_GUID: 7213207cac9b27340ba6dd27fa38e8c6
-    m_Address: HeroCar
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2b05593db96dc4b4790b86742f2f66e1
-    m_Address: HeroFollowingTarget
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7746633c7622e6b4aa1fe684e70c2361
-    m_Address: Car_Glass
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a0bf8104dfd0a5241be10e985716d5b9
-    m_Address: Car_Body
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b37c4fdfbfa620a4d985d8ebe2d6d80a
-    m_Address: DE_Atlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

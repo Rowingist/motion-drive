@@ -9,9 +9,9 @@ namespace CodeBase.UI.Elements
     public HeroCarSpeedBar SpeedBar;
     public float UpdateRate;
 
-    private HeroFollowingTarget _followingTarget;
+    private PlayerFollowingTarget _followingTarget;
 
-    public void Construct(HeroFollowingTarget followingTarget)
+    public void Construct(PlayerFollowingTarget followingTarget)
     {
       _followingTarget = followingTarget;
       StartCoroutine(UpdatePlayerPositionInfo());

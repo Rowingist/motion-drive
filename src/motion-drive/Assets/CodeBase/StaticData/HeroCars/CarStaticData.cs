@@ -10,7 +10,7 @@ namespace CodeBase.StaticData.HeroCars
     public bool IsLocked;
     
     public int Acceleration;
-    public int SteeringPower;
+    public int IncomePerActions;
     public int NitroCapacity;
 
     public float MaxSpeed;

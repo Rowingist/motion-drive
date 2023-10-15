@@ -35,7 +35,7 @@ namespace CodeBase.Editor
         //levelData.LevelTransfer.Position = GameObject.FindWithTag(LevelTransferInitialPointTag).transform.position;
 
         levelData.LevelCheckPointsHub.Points = FindObjectsOfType<CheckPointMarker>()
-          .Select(x => new LevelCheckPointsStaticData(x.transform.position, x.RaycasterOnGround.position))
+          .Select(x => new LevelCheckPointsStaticData(x.transform.position, x.RaycasterOnGround.position, x.EnemiesSpeedChange))
           .Reverse().ToArray();
         
         levelData.LevelCameraSwitchPointsHub.Points = FindObjectsOfType<CameraSwitchPointMarker>()
@@ -44,8 +44,8 @@ namespace CodeBase.Editor
         
         levelData.LevelMovementSettingPointsHub.Points = FindObjectsOfType<MovementSettingsPointMarker>()
           .Select(x => new LevelMovementSettingPointStaticData(x.transform.position,
-            x.MaxSpeed, x.Acceleration, x.HorizontalDragPerVelocity, x.MaxLiftingAngle, x.MaxGroundHoldingSpeed,
-            x.HoldingOnGroundHeight, x.SnapToGroundSpeed, x.GroundDetectionDistance))
+            x.StageSettingsTypeData.MaxSpeed, x.StageSettingsTypeData.Acceleration, x.StageSettingsTypeData.HorizontalDragPerVelocity, x.StageSettingsTypeData.MaxLiftingAngle, x.StageSettingsTypeData.MaxGroundHoldingSpeed,
+            x.StageSettingsTypeData.HoldingOnGroundHeight, x.StageSettingsTypeData.SnapToGroundSpeed, x.StageSettingsTypeData.GroundDetectionDistance, x.StageSettingsTypeData.EnemySpeedBySpline))
           .Reverse().ToArray();
 
         levelData.FinishZPosition = GameObject.FindWithTag(FinalPointTag).transform.position.z;

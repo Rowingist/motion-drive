@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using CodeBase.Car;
 using CodeBase.FollowingTarget;
 using UnityEngine;
 
@@ -9,23 +10,23 @@ namespace CodeBase.HeroCar.TricksInAir
   public class BoostEffectAfterLanding : MonoBehaviour
   {
     public HeroCarAirTricksCounter TricksCounter;
-    public HeroCarOnGroundChecker GroundChecker;
-    public HeroCarCrashChecker CrashChecker;
-    public HeroCarLandingEvaluator LandingEvaluator;
-    
-    public float BoostDuration;
+    public CarOnGroundChecker GroundChecker;
+    public PlayerCarCrashChecker CrashChecker;
+    public PlayerCarLandingEvaluator LandingEvaluator;
+
+    public float BoostDuration = 1f;
     public int MinFlipsToBoost;
-    
+
     public bool IsBoosting;
 
     private Coroutine _boosting;
 
     public event Action Started;
 
-    private HeroFollowingTarget _heroFollowingTarget;
+    private PlayerFollowingTarget _playerFollowingTarget;
 
-    public void Construct(HeroFollowingTarget heroFollowingTarget) => 
-      _heroFollowingTarget = heroFollowingTarget;
+    public void Construct(PlayerFollowingTarget playerFollowingTarget) =>
+      _playerFollowingTarget = playerFollowingTarget;
 
     private void Start()
     {
@@ -47,15 +48,15 @@ namespace CodeBase.HeroCar.TricksInAir
     private void BoostAttempt()
     {
       if (LandingEvaluator.IsHorizontalLandingWithSlowDown || LandingEvaluator.IsVerticalLandWithSlowDown) return;
-      
-      if (IsBoosting) 
+
+      if (IsBoosting)
         StopActiveCoroutine();
 
-      if(EnoughFlipsReached())
+      if (EnoughFlipsReached())
         _boosting = StartCoroutine(Boosting());
     }
 
-    private bool EnoughFlipsReached() => 
+    private bool EnoughFlipsReached() =>
       TricksCounter.CompletedFlips >= MinFlipsToBoost;
 
     private void StopActiveCoroutine()
@@ -64,19 +65,20 @@ namespace CodeBase.HeroCar.TricksInAir
       {
         StopCoroutine(_boosting);
         _boosting = null;
-        IsBoosting = false;
       }
+
+      IsBoosting = false;
     }
 
     private IEnumerator Boosting()
     {
       IsBoosting = true;
-      _heroFollowingTarget.IsBoosting = true;
+      _playerFollowingTarget.StartBoosting();
       Started?.Invoke();
-      yield return new WaitForSecondsRealtime(BoostDuration);
-      
+      yield return new WaitForSecondsRealtime(BoostDuration + MinFlipsToBoost / 100);
+
       IsBoosting = false;
-      _heroFollowingTarget.IsBoosting = false;
+      _playerFollowingTarget.StopBoosting();
     }
   }
 }

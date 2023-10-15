@@ -1,4 +1,8 @@
+using System;
+using CodeBase.Car;
 using CodeBase.HeroCar;
+using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -7,53 +11,54 @@ namespace CodeBase.Logic.CarParts
   {
     public Transform Rotator;
     public float Speed;
-    private HeroCarOnGroundChecker _groundChecker;
+    private CarOnGroundChecker _groundChecker;
 
-    private bool IsFollowing;
+    public bool IsNeedToCheckGround;
+    private bool _isLookingStraight;
 
-    public void Construct(HeroCarOnGroundChecker groundChecker)
+    public void Construct(CarOnGroundChecker groundChecker)
     {
       _groundChecker = groundChecker;
-      SubscribeOnGroundCheckEvents();
-    }
-    
-    private void SubscribeOnGroundCheckEvents()
-    {
-      _groundChecker.TookOff += StopFollowDelayed;
-      _groundChecker.LandedOnGround += StartFollow;
-    }
 
-    private void StartFollow() => 
-      IsFollowing = true;
-
-    private void StopFollowDelayed()
-    {
-      Invoke(nameof(StopFollow), Constants.DisableJointsAfterTookOffDelay);
-    }
-    
-    private void StopFollow()
-    {
-      IsFollowing = false;
+      _groundChecker.LandedOnGround += OnStopLookStraight;
     }
 
     private void Update()
     {
-      if(!IsFollowing)
-        return;
+      if (IsNeedToCheckGround)
+      {
+        if (_groundChecker && !_groundChecker.IsOnGround)
+        {
+          if (!_isLookingStraight)
+          {
+            MakeProperRotation();
+         
+            return;
+          }
+
+          return;
+        }
+      }
 
       transform.rotation = NewRotation();
     }
 
-    private void OnDestroy() => 
-      CleanUp();
-
-    private void CleanUp()
+    private void OnDestroy()
     {
-      _groundChecker.TookOff -= StopFollowDelayed;
-      _groundChecker.LandedOnGround -= StartFollow;
+      if(_groundChecker)
+        _groundChecker.LandedOnGround -= OnStopLookStraight;
     }
 
-    private Quaternion NewRotation() => 
+    private void OnStopLookStraight() => 
+      _isLookingStraight = false;
+
+    private void MakeProperRotation()
+    {
+      transform.DOLocalRotate(Vector3.zero, 0.25f) ;
+      _isLookingStraight = true;
+    }
+
+    private Quaternion NewRotation() =>
       Quaternion.Lerp(transform.rotation, Rotator.rotation, Time.deltaTime * Speed);
   }
 }

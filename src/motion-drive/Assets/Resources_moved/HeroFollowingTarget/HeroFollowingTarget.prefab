@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 1486592096315519225}
   - component: {fileID: 3062351924522059216}
   - component: {fileID: 3134922630314583465}
-  - component: {fileID: 1975305136469266711}
+  - component: {fileID: 3782690715834659343}
+  - component: {fileID: 897936309723541013}
+  - component: {fileID: 6989017000775264071}
   m_Layer: 12
   m_Name: HeroFollowingTarget
   m_TagString: Untagged
@@ -81,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FallSmoothTime: 0.1
   MaxSpeed: 100
-  MaxAcceleration: 57.6
+  MaxAcceleration: 100
   _maxAirAcceleration: 100
   _maxGroundAngle: 25
   _horizontalForce: 100
@@ -115,7 +117,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _snapToGroundSpeed: 1
-  IsBoosting: 0
 --- !u!114 &3062351924522059216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,10 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowingTarget: {fileID: 1486592096315519225}
   MaxBoostSpeed: 100
-  DefaultSpeed: 0
+  CurrentSpeed: 0
   MaxBoosAcceleration: 100
-  DefaultAcceleration: 0
---- !u!114 &1975305136469266711
+  CurrentAcceleration: 0
+--- !u!114 &3782690715834659343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,11 +157,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1486592096315519229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c26457e5a744e8b94c717bff8f14de6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fbaa0fa22804e618c3fe4b749bddeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 1486592096315519231}
-  target: {fileID: 0}
+--- !u!114 &897936309723541013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486592096315519229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0f1abc93cc4112ac5a667103e89dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6989017000775264071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486592096315519229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a21718976144c17a9af3ac0c5b91ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerFollowingTarget: {fileID: 1486592096315519225}
 --- !u!1 &9148587671610251292
 GameObject:
   m_ObjectHideFlags: 0

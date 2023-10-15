@@ -1,5 +1,4 @@
-using System;
-using CodeBase.HeroCar;
+using CodeBase.Car;
 using UnityEngine;
 
 namespace CodeBase.Logic.CarParts
@@ -12,57 +11,30 @@ namespace CodeBase.Logic.CarParts
 
     private Vector3 _following;
     private Vector3 _velocity;
-    private HeroCarOnGroundChecker _groundChecker;
-    private bool IsFollowing;
+    private CarOnGroundChecker _groundChecker;
 
-    public void Construct(HeroCarOnGroundChecker onGroundChecker)
+    public void Construct(CarOnGroundChecker onGroundChecker)
     {
       _groundChecker = onGroundChecker;
-      SubscribeOnGroundCheckEvents();
     }
 
-    private void SubscribeOnGroundCheckEvents()
-    {
-      _groundChecker.TookOff += StopFollowDelayed;
-      _groundChecker.LandedOnGround += StartFollow;
-    }
-
-    private void StartFollow() => 
-      IsFollowing = true;
-
-    private void StopFollowDelayed()
-    {
-      Invoke(nameof(StopFollow), Constants.DisableJointsAfterTookOffDelay);
-    }
-    
-    private void StopFollow() => 
-      IsFollowing = false;
-    
     private void Update()
     {
-      if(!IsFollowing)
-        return;
-      
       if (_groundChecker && _groundChecker.IsOnGround)
       {
         _following.y = InverseSpringTransformPoint();
-        transform.localPosition = SmoothFollowing();
+        transform.localPosition = SmoothFollowing(_following);
       }
-    }
-
-    private void OnDestroy() => 
-      CleanUp();
-
-    private void CleanUp()
-    {
-      _groundChecker.TookOff -= StopFollowDelayed;
-      _groundChecker.LandedOnGround -= StartFollow;
+      else
+      {
+        transform.localPosition = SmoothFollowing(Vector3.zero);
+      }
     }
 
     private float InverseSpringTransformPoint() =>
       transform.InverseTransformPoint(Spring.position).y;
 
-    private Vector3 SmoothFollowing() =>
-      Vector3.SmoothDamp(transform.localPosition, _following, ref _velocity, SmoothTime, MaxSpeed);
+    private Vector3 SmoothFollowing(Vector3 localPosition) =>
+      Vector3.SmoothDamp(transform.localPosition, localPosition, ref _velocity, SmoothTime, MaxSpeed);
   }
 }

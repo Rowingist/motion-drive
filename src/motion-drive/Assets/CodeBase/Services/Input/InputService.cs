@@ -15,7 +15,9 @@ namespace CodeBase.Services.Input
     public abstract bool IsFingerUpScreen();
     public abstract bool IsFingerDownScreen();
     public abstract bool IsFingerHoldOnScreen();
-    
+    public void Deactivate() => 
+      _gameFactory.InputJoystick.gameObject.SetActive(false);
+
     protected InputService(IGameFactory gameFactory)
     {
       _gameFactory = gameFactory;
@@ -23,6 +25,9 @@ namespace CodeBase.Services.Input
     
     protected Vector2 JoystickInputAxis()
     {
+      if (_gameFactory.InputJoystick == null)
+        return Vector2.zero;
+      
       return new Vector2(_gameFactory.InputJoystick.Horizontal, _gameFactory.InputJoystick.Vertical);
     }
   }

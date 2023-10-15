@@ -49,7 +49,7 @@ namespace CodeBase.Infrastructure.States
       progress.HeroGarage.ActiveCar = carData.TypeId;
       
       progress.HeroStats.Speed = carData.MaxSpeed;
-      progress.HeroStats.Steering = carData.SteeringPower;
+      progress.HeroStats.Income = carData.IncomePerActions;
       progress.HeroStats.Acceleration = carData.Acceleration;
       
       progress.HeroWallet.Money = 0;

@@ -35,8 +35,6 @@ namespace CodeBase.UI.Animations
         Curtain.alpha -= HideStep;
         yield return fadeInSeconds;
       }
-      
-      gameObject.SetActive(false);
     }
   }
 }

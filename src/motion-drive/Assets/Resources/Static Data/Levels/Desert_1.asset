@@ -21,10 +21,13 @@ MonoBehaviour:
     Points:
     - Position: {x: 0, y: 5.6, z: 91.4}
       RaycastOnGroundOffset: {x: 0, y: 5.6, z: 176.5}
-    - Position: {x: 0, y: 5.6, z: 266.5}
-      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 351.6}
-    - Position: {x: 0, y: -3.9, z: 446}
-      RaycastOnGroundOffset: {x: 0, y: -3.9, z: 531.1}
+      EnemiesSpeedMixerConfig: {fileID: 11400000, guid: ac15faa76c5fbd64aa61b3d496261cc8, type: 2}
+    - Position: {x: 0, y: 5.6, z: 456.9}
+      RaycastOnGroundOffset: {x: 0, y: 5.6, z: 542}
+      EnemiesSpeedMixerConfig: {fileID: 11400000, guid: de148bd15b75bd04aa70bfe3aae5a719, type: 2}
+    - Position: {x: 0, y: -103, z: 1330}
+      RaycastOnGroundOffset: {x: 0, y: -103, z: 1452.5}
+      EnemiesSpeedMixerConfig: {fileID: 11400000, guid: ca161600ecc8a074f99d2f72461b6dca, type: 2}
   LevelCameraSwitchPointsHub:
     Points:
     - Position: {x: 0, y: 0, z: -100}
@@ -57,30 +60,34 @@ MonoBehaviour:
   LevelMovementSettingPointsHub:
     Points:
     - Position: {x: 0, y: 0, z: 1380}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 70
+      Acceleration: 30
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 30
     - Position: {x: 0, y: 0, z: 502}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 90
+      Acceleration: 50
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 30
     - Position: {x: 0, y: 0, z: -39}
-      MaxSpeed: 1
-      Acceleration: 2
-      HorizontalDragPerVelocity: 3
-      MaxLiftingAngle: 4
-      MaxGroundHoldingSpeed: 5
-      HoldingOnGroundHeight: 6
-      SnapToGroundSpeed: 7
-      GroundDetectionDistance: 8
+      MaxSpeed: 80
+      Acceleration: 40
+      HorizontalDragPerVelocity: 0
+      MaxLiftingAngle: 0
+      MaxGroundHoldingSpeed: 0
+      HoldingOnGroundHeight: 0
+      SnapToGroundSpeed: 0
+      GroundDetectionDistance: 0
+      EnemySpeedBySpline: 60
   FinishZPosition: 2236.8
+  SplinesStaticData: {fileID: 11400000, guid: 82cac338e8a71b846aa8ae6b7fd0b279, type: 2}

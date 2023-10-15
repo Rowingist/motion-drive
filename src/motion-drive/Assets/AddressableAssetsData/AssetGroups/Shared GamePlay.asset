@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 2c5bc1e29731e684dac5e7ae4154ac8a
-  m_SerializeEntries:
-  - m_GUID: a13507a285eb80b4fb39e0f6a584fad6
-    m_Address: CheckPointTrigger
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6906aeefaf76b114380aa69c959cae58
-    m_Address: CheckPointsHub
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7bbdb04aada8c3f40a9fae78a1e9a5ca, type: 2}
   m_SchemaSet:

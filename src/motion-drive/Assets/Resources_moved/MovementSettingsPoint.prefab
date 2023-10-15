@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5709649075912203405}
   - component: {fileID: 5709649075912203506}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MovementSettingsPoint
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}

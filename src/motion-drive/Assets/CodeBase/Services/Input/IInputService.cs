@@ -8,5 +8,6 @@ namespace CodeBase.Services.Input
     bool IsFingerUpScreen();
     bool IsFingerDownScreen();
     bool IsFingerHoldOnScreen();
+    void Deactivate();
   }
 }

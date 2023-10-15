@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using CodeBase.Infrastructure;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CodeBase.CameraLogic
@@ -11,22 +12,18 @@ namespace CodeBase.CameraLogic
 
     private Coroutine _currentRotatingForces;
     private bool _isChangingOffset;
-
-    private void Start()
-    {
-      
-    }
-
+    
     public void OnSetNewOffset(Vector3 offset)
     {
-      if (_currentRotatingForces != null)
-      {
-        StopCoroutine(_currentRotatingForces);
-        _currentRotatingForces = null;
-      }
-      
-      _currentRotatingForces = 
-        StartCoroutine(RoutineUtils.MoveToTargetRotation(transform, Quaternion.Euler(offset), RotationDuration));
+      // if (_currentRotatingForces != null)
+      // {
+      //   StopCoroutine(_currentRotatingForces);
+      //   _currentRotatingForces = null;
+      // }
+
+        transform.DORotate(offset, RotationDuration);
+      //_currentRotatingForces = 
+        //StartCoroutine(RoutineUtils.MoveToTargetRotation(transform, Quaternion.Euler(offset), RotationDuration));
     }
   }
 }
