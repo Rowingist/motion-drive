@@ -34,7 +34,7 @@ namespace CodeBase.EnemiesSpeedHandler
       _speedConfig = speedConfig;
       
       CheckPlayerLeadingOrLoosingState();
-      //SetUpNewConfigs();
+      SetUpNewConfigs();
     }
 
     private void CheckPlayerLeadingOrLoosingState()
